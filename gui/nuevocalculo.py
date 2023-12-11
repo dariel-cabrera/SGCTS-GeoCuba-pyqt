@@ -12,7 +12,7 @@ class Nuevo():
     
     def EntrarNuevoCalculo(self):
         #Validando que no entre campos vacios
-        if float(self.nuevocalculo.lineEdit_densidadArena.text())<=0 or self.nuevocalculo.lineEdit_densidadArena.text()=="":
+        if self.nuevocalculo.lineEdit_densidadArena.text()=="" or float(self.nuevocalculo.lineEdit_densidadArena.text())<=0:
             mBox= QMessageBox()
             mBox.setText("Debe ingresar un dato de Densidad de Arena Válido")
             mBox.exec()
@@ -26,7 +26,7 @@ class Nuevo():
             self.nuevocalculo.lineEdit_densidadArena.setFocus()
 
         #Validando que no entre campos vacios
-        elif float(self.nuevocalculo.lineEdit_DensidadMar.text())<=0 or self.nuevocalculo.lineEdit_DensidadMar.text()== "":
+        elif self.nuevocalculo.lineEdit_DensidadMar.text()== ""  or float(self.nuevocalculo.lineEdit_DensidadMar.text())<=0  :
             mBox= QMessageBox()
             mBox.setText("Debe ingresar un dato de Densidad de Mar Válido")
             mBox.exec()
@@ -40,7 +40,7 @@ class Nuevo():
             self.nuevocalculo.lineEdit_DensidadMar.setFocus()
         
          #Validando que no entre campos vacios 
-        elif float(self.nuevocalculo.lineEdit_CoeficientePorocidad.text())<=0 or self.nuevocalculo.lineEdit_CoeficientePorocidad.text()== "" :
+        elif self.nuevocalculo.lineEdit_CoeficientePorocidad.text()== "" or float(self.nuevocalculo.lineEdit_CoeficientePorocidad.text())<=0   :
             mBox= QMessageBox()
             mBox.setText("Debe ingresar un dato de Coeficiente Porocidad Válido")
             mBox.exec()
@@ -55,7 +55,7 @@ class Nuevo():
             self.nuevocalculo.lineEdit_IndiceRompiente.setText("0")
 
         #Validando que no entre campos vacios
-        elif float(self.nuevocalculo.lineEdit_altura.text())<=0 or self.nuevocalculo.lineEdit_altura.text()=="":
+        elif self.nuevocalculo.lineEdit_altura.text()=="" or float(self.nuevocalculo.lineEdit_altura.text())<=0  :
             mBox= QMessageBox()
             mBox.setText("Debe ingresar un dato de Altura Válido")
             mBox.exec()
@@ -69,7 +69,7 @@ class Nuevo():
             self.nuevocalculo.lineEdit_altura.setFocus()
         
         #Validando que no entre campos vacios
-        elif float(self.nuevocalculo.lineEdit_AnguloRompiente.text())<=0 or self.nuevocalculo.lineEdit_AnguloRompiente.text()=="" :
+        elif  self.nuevocalculo.lineEdit_AnguloRompiente.text()=="" or  float(self.nuevocalculo.lineEdit_AnguloRompiente.text())<=0 :
             mBox= QMessageBox()
             mBox.setText("Debe ingresar un dato de Angulo Rompiente Válido")
             mBox.exec()
@@ -83,7 +83,7 @@ class Nuevo():
             self.nuevocalculo.lineEdit_AnguloRompiente.setFocus()
         
         #Validando que no entre campos vacios
-        elif float(self.nuevocalculo.lineEdit_IndiceRompiente.text())<=0 or self.nuevocalculo.lineEdit_IndiceRompiente.text()== "":
+        elif self.nuevocalculo.lineEdit_IndiceRompiente.text()== "" or  float(self.nuevocalculo.lineEdit_IndiceRompiente.text())<=0 :
             mBox= QMessageBox()
             mBox.setText("Debe ingresar un dato de Indice Rompiente Válido")
             mBox.exec()
