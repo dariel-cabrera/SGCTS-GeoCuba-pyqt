@@ -200,49 +200,11 @@ border-radius:8px;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;El usuario o Contraseña es &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Incorrecta&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_logo">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>47</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="img1.qrc">:/bn/Agregar_un_título-removebg-preview.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QLabel" name="label_foto">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>12</y>
-     <width>401</width>
-     <height>531</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="img1.qrc">:/bn/p7261147-2.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
   </widget>
  </widget>
  <resources>
-  <include location="../../DESCARGAS/Interfaz_quita_fondo/Interfaz_quita_fondo/imagenes.qrc"/>
   <include location="img1.qrc"/>
+  <include location="../iconos/nuevaimagen.qrc"/>
  </resources>
  <connections/>
 </ui>

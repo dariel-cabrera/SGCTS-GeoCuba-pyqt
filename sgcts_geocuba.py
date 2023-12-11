@@ -7,3 +7,6 @@ class SGCTS():
         self.login=Login()
 
         self.app.exec()
+
+
+app = SGCTS () 

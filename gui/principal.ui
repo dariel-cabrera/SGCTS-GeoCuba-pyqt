@@ -477,7 +477,7 @@ border:1px solid rgb(0, 74, 116);
                    </font>
                   </property>
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_inicio">
                    <widget class="QLabel" name="label_imagen_Bienvenida">
@@ -497,7 +497,7 @@ background-color:  #000000ff;</string>
                      <string/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="img1.qrc">:/bn/WhitehavenBeach.jpg</pixmap>
+                     <pixmap>:/bn/WhitehavenBeach.jpg</pixmap>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
