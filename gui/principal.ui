@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1378</width>
+    <height>726</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(7, 168, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,8">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_superior">
+         <property name="styleSheet">
+          <string notr="true">Qframe{
+background-color: rgb(0, 0, 0);
+}
+
+QPushButton{
+background-color: rgb(0, 85, 127);
+border-radius:20px;
+}
+QPushButton:hover{
+background-color:rgb(61,61,61);
+border-radius:20px;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color:#000000ff;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../iconos/pngegg.png</normaloff>../iconos/pngegg.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>38</width>
+              <height>38</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>272</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color:#000000ff;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../iconos/cerrar.png</normaloff>../iconos/cerrar.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_contenido">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QFrame" name="frame_3">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QFrame" name="frame_control">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>0</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+background-color: rgb(0, 74, 116);
+}
+
+QPushButton{
+background-color: rgb(7, 168, 255);
+border-top-left-radius:20px;
+border-bottom-left-radius:20px;
+
+}
+
+
+QPushButton:hover{
+background-color: rgb(0, 12, 255);
+border-top-left-radius:20px;
+border-bottom-left-radius:20px;
+
+}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QPushButton" name="button_Inicio">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>30</y>
+                  <width>151</width>
+                  <height>41</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Verdana</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>OpenHandCursor</cursorShape>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>Inicio</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../iconos/inicio.png</normaloff>../iconos/inicio.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="button_Usuarios">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>100</y>
+                  <width>151</width>
+                  <height>41</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Verdana</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>OpenHandCursor</cursorShape>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Usuarios</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../iconos/pngwing.com(2).png</normaloff>../iconos/pngwing.com(2).png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="button_Calculo">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>170</y>
+                  <width>151</width>
+                  <height>41</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Verdana</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>OpenHandCursor</cursorShape>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Cálculo</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../iconos/pngwing.com(1).png</normaloff>../iconos/pngwing.com(1).png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="button_Trazas">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>240</y>
+                  <width>151</width>
+                  <height>41</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Verdana</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>OpenHandCursor</cursorShape>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Trazas</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../iconos/pngwing.com(3).png</normaloff>../iconos/pngwing.com(3).png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="button_Ajustes">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>320</y>
+                  <width>151</width>
+                  <height>41</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Verdana</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>OpenHandCursor</cursorShape>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Ajustes</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../iconos/ajustes.png</normaloff>../iconos/ajustes.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_paginas">
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+}
+QLabel{
+background-color: rgb(0, 74, 116);
+color: rgb(255, 255, 255);
+border:8px solid#000000ff;
+}
+QLineButton{
+border:0px;
+color:rgb(255, 255, 255);
+border-bottom:2px solid rgb(61,61,61);
+}
+QPushButton{
+background-color:rgb(0, 74, 116);
+border-radius:15px;
+color: rgb(255, 255, 255);
+}
+
+
+QPushButton:hover{
+background-color: rgb(0, 12, 255);
+border-radius:15px;
+color: rgb(0, 0, 0);
+}
+
+QTableWidget{
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+gridine-color:rgb(0,206,151);
+font-size:12pt;
+color:#000000;
+}
+QHeaderView::section{
+background-color: rgb(0, 74, 116);
+border:1px solid rgb(0,0,0);
+font-size:12pt;
+
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(0, 0, 0);
+border:1px solid rgb(0, 74, 116);
+}
+</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>1</number>
+                </property>
+                <property name="topMargin">
+                 <number>1</number>
+                </property>
+                <property name="rightMargin">
+                 <number>1</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>1</number>
+                </property>
+                <item>
+                 <widget class="QStackedWidget" name="stackedWidget">
+                  <property name="font">
+                   <font>
+                    <family>Verdana</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="currentIndex">
+                   <number>2</number>
+                  </property>
+                  <widget class="QWidget" name="page_inicio">
+                   <widget class="QLabel" name="label_imagen_Bienvenida">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>10</y>
+                      <width>1111</width>
+                      <height>211</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border: 0px solid #000000ff;
+background-color:  #000000ff;</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="pixmap">
+                     <pixmap resource="img1.qrc">:/bn/WhitehavenBeach.jpg</pixmap>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_bienvenida">
+                    <property name="geometry">
+                     <rect>
+                      <x>280</x>
+                      <y>190</y>
+                      <width>651</width>
+                      <height>91</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border: 0px solid #000000ff;
+background-color:  #000000ff;
+color: rgb(0, 0, 0);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Bienvenidos a SGCTS &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;de GeoCuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </widget>
+                  <widget class="QWidget" name="page_usuarios">
+                   <widget class="QTableWidget" name="tableUsuarios">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>140</y>
+                      <width>1091</width>
+                      <height>401</height>
+                     </rect>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>id</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>CI</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Usuario</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Nombre</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Apellidos</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Correo</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Tipo de Trabajador</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </column>
+                   </widget>
+                   <widget class="QPushButton" name="buttonEliminarUsuario">
+                    <property name="geometry">
+                     <rect>
+                      <x>990</x>
+                      <y>550</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777212</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="buttonNuevoUsuario">
+                    <property name="geometry">
+                     <rect>
+                      <x>870</x>
+                      <y>550</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Nuevo</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="buttonEditarUsuario">
+                    <property name="geometry">
+                     <rect>
+                      <x>750</x>
+                      <y>550</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Editar</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="labelUsuariosSistema">
+                    <property name="geometry">
+                     <rect>
+                      <x>40</x>
+                      <y>0</y>
+                      <width>1051</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border:15px solid #000000ff;</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Usuarios del Sistema&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_7">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>50</y>
+                      <width>191</width>
+                      <height>71</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Buscar Usuario:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_8">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>80</y>
+                      <width>141</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);</string>
+                    </property>
+                    <property name="text">
+                     <string>CI</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="lineEdit_4">
+                    <property name="geometry">
+                     <rect>
+                      <x>132</x>
+                      <y>100</y>
+                      <width>141</width>
+                      <height>31</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(255, 255, 255);</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="pushButton_5">
+                    <property name="geometry">
+                     <rect>
+                      <x>290</x>
+                      <y>90</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Buscar</string>
+                    </property>
+                   </widget>
+                  </widget>
+                  <widget class="QWidget" name="page_calculo">
+                   <widget class="QLabel" name="label_CalculoLoginArena">
+                    <property name="geometry">
+                     <rect>
+                      <x>40</x>
+                      <y>10</y>
+                      <width>1061</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border:15px solid #000000ff;</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Cálculo Longitudinal de Arena&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QTableWidget" name="table_Calculos">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>140</y>
+                      <width>1091</width>
+                      <height>411</height>
+                     </rect>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>id</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>ρ</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>ρs</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>n</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Altura (Hb)</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>α</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>k</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Ubicación</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Fecha</string>
+                     </property>
+                    </column>
+                   </widget>
+                   <widget class="QPushButton" name="button_EliminarCalculo">
+                    <property name="geometry">
+                     <rect>
+                      <x>1000</x>
+                      <y>560</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="button_NuevoCalculo">
+                    <property name="geometry">
+                     <rect>
+                      <x>880</x>
+                      <y>560</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Nuevo</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="button_EditarCalculo">
+                    <property name="geometry">
+                     <rect>
+                      <x>760</x>
+                      <y>560</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Editar</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_4">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>50</y>
+                      <width>191</width>
+                      <height>71</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Buscar Cálculos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_5">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>80</y>
+                      <width>141</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Fecha:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="lineEdit_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>110</x>
+                      <y>100</y>
+                      <width>141</width>
+                      <height>31</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(255, 255, 255);</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_6">
+                    <property name="geometry">
+                     <rect>
+                      <x>250</x>
+                      <y>90</y>
+                      <width>141</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>14</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ubicación:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="lineEdit_3">
+                    <property name="geometry">
+                     <rect>
+                      <x>380</x>
+                      <y>100</y>
+                      <width>141</width>
+                      <height>31</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(255, 255, 255);</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="button_buscarCalculos">
+                    <property name="geometry">
+                     <rect>
+                      <x>530</x>
+                      <y>90</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Buscar</string>
+                    </property>
+                   </widget>
+                  </widget>
+                  <widget class="QWidget" name="page_trazas">
+                   <widget class="QLabel" name="label">
+                    <property name="geometry">
+                     <rect>
+                      <x>40</x>
+                      <y>10</y>
+                      <width>1061</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border:15px solid #000000ff;</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Trazas del Sistema&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QTableWidget" name="tableWidget">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>140</y>
+                      <width>1091</width>
+                      <height>411</height>
+                     </rect>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>ID</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Usuario</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Nombre</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Evento</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Fecha</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Hora</string>
+                     </property>
+                    </column>
+                   </widget>
+                   <widget class="QPushButton" name="pushButton_3">
+                    <property name="geometry">
+                     <rect>
+                      <x>980</x>
+                      <y>550</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>50</y>
+                      <width>191</width>
+                      <height>71</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>10</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);
+border:15px solid #000000ff;</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Buscar Trazas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_3">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>80</y>
+                      <width>141</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #000000ff;
+color: rgb(0, 0, 0);
+border:15px solid #000000ff;</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Fecha:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="lineEdit">
+                    <property name="geometry">
+                     <rect>
+                      <x>132</x>
+                      <y>100</y>
+                      <width>141</width>
+                      <height>31</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(255, 255, 255);</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="pushButton_4">
+                    <property name="geometry">
+                     <rect>
+                      <x>290</x>
+                      <y>90</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Verdana</family>
+                      <pointsize>12</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Buscar</string>
+                    </property>
+                   </widget>
+                  </widget>
+                  <widget class="QWidget" name="page_ajustes"/>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="img1.qrc"/>
+ </resources>
+ <connections/>
+</ui>
