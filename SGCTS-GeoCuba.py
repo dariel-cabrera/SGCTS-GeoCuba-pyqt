@@ -4,7 +4,7 @@ from gui.principal import Principal
 class SGCTS():
     def __init__(self):
         self.app=QApplication([])
-        self.login=Principal()
+        self.principal=Principal()
 
         self.app.exec()
 
