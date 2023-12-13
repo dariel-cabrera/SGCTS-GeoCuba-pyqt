@@ -5,7 +5,7 @@ class TLAData():
         self.db=sqlite3.connect('database/tla.db')
         try:
             cursor=self.db.cursor()
-            sql_create_tla= """CREATE TABLE IF NOT EXISTS tla
+            sql_create_tla= """CREATE TABLE IF NOT EXISTS calculo
                 (id_tla INTERGER,
                 Ubicacion TEXT,
                 Densidad_mar  REAL,
@@ -26,7 +26,7 @@ class TLAData():
     
     def insertar_datos_tla(self,Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado):
         self.cursor=self.db.cursor()
-        self.cursor().execute(""" INSERT INTO tla values(null,'{}','{}','{}','{}','{}','{}','{}','{}')   """   
+        self.cursor().execute(""" INSERT INTO calculo values(null,'{}','{}','{}','{}','{}','{}','{}','{}')   """   
         .format(Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado))
         self.db.commit()
         
