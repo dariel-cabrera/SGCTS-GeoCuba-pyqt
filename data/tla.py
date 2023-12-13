@@ -56,4 +56,13 @@ class TLA():
         self.conexion.commit()
         cursor.close()
     
+    def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result):
+        cursor=self.conexion.cursor()
+        db= """ UPDATE  tabla_datos VALUES(null,Ubicacion='{}',Densidad_mar ='{}',Densidad_arena='{}',Coeficiente_porocidad ='{}', Altura='{}',Angulo_rompiente='{}',Indice_rompiente ='{}',Fecha='{}',Resultado='{}')   """    .format (id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result)
+        cursor.execute(db)
+        a= cursor.rowcount
+        self.conexion.commit()
+        cursor.close()
+        return a
+    
 
