@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Principal</class>
+ <widget class="QMainWindow" name="Principal">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SGCTS-GeoCuba </string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>FormatFactoryAgregar un título.ico</normaloff>FormatFactoryAgregar un título.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -153,7 +160,7 @@ border-radius:20px;
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #000000ff</string>
+           <string notr="true">background-color: #000000ff;</string>
           </property>
           <property name="text">
            <string/>
@@ -179,7 +186,7 @@ border-radius:20px;
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #000000ff</string>
+           <string notr="true">background-color: #000000ff;</string>
           </property>
           <property name="text">
            <string/>
@@ -205,7 +212,7 @@ border-radius:20px;
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: #000000ff</string>
+           <string notr="true">background-color: #000000ff;</string>
           </property>
           <property name="text">
            <string/>
@@ -230,6 +237,9 @@ border-radius:20px;
             <height>714</height>
            </rect>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -239,6 +249,9 @@ border-radius:20px;
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <widget class="QFrame" name="frame_3">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
@@ -460,6 +473,9 @@ border-bottom-left-radius:20px;
                  <property name="whatsThis">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
                   <string>Ajustes</string>
                  </property>
@@ -557,7 +573,7 @@ border:1px solid rgb(0, 74, 116);
                     </font>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_inicio">
                     <widget class="QLabel" name="label_imagen_Bienvenida">
@@ -845,6 +861,9 @@ color: rgb(0, 0, 0);</string>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Buscar</string>

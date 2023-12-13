@@ -17,6 +17,9 @@ class Principal(QMainWindow):
         self.showMaximized()
         #Llamando a la Funcion iniGUi()
         self.iniGUI()
+
+        #Llamando a la funcion Mover Menu
+        self.but_mover.clicked.connect(self.mover_menu)
         
 
         #Conexion de Botones 
@@ -31,6 +34,23 @@ class Principal(QMainWindow):
         self.Button_Minimizar.clicked.connect(self.control_bt_normal)
         self.Button_Maximizar.clicked.connect(self.control_bt_maximizar)
         self.Button_Cerrar.clicked.connect(lambda: self.close())
+
+        #Eliminar barra de titulos
+        #self.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
+        #self.setWindowOpacity(1)
+
+        #SizeGrip
+        self.gripSize=10
+        self.grip=QtWidgets.QSizeGrip(self)
+        self.grip.resize(self.gripSize,self.gripSize)
+
+        #Ancho de columna adaptable
+        #self.tableUsuarios.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        #self.table_Calculos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        #Mover ventana
+        #self.frame_superior.mouseMoveEvent= self.mover_ventana
+
     
     def iniGUI(self):
         #Conectando el Boton Nuevo Calculo con la ventana Nuevo Calculo
@@ -52,6 +72,38 @@ class Principal(QMainWindow):
         self.showMaximized()
         self.Button_Maximizar.hide()
         self.Button_Minimizar.show()
+
+    #def mover_ventana(self,event):
+        #if self.isMaximized()==False:
+            #if event.buttons()==QtCore.Qt.LeftButton:
+                #self.move(self.pos()+ event.globalPos()-self.click_position)
+                #self.click_position=event.globalPos()
+                #event.accept()
+            #if event.globalPos().y()<=10:
+                #self.showMaximized()
+                #self.Button_Maximizar.hide()
+                #self.Button_Minimizar.show()
+            #else:
+                #self.showNormal()
+                #self.Button_Minimizar.hide()
+                #self.Button_Maximizar.show()
+    
+    # Mover Menu 
+    def mover_menu(self):
+        if True:
+            width = self.frame_control.width()
+            normal=0
+            if width==0:
+                extender=200
+            else:
+                extender=normal
+            self.animacion= QPropertyAnimation(self.frame_control,b'minimumWidth')
+            self.animacion.setDuration(300)
+            self.animacion.setStartValue(width)
+            self.animacion.setEndValue(extender)
+            #self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.animacion.start()
+
 
 
 
