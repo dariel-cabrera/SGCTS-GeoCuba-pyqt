@@ -169,7 +169,7 @@ border-radius:20px;
            </size>
           </property>
          </widget>
-         <widget class="QPushButton" name="button_Minimizar">
+         <widget class="QPushButton" name="Button_Minimizar">
           <property name="geometry">
            <rect>
             <x>1160</x>
@@ -557,7 +557,7 @@ border:1px solid rgb(0, 74, 116);
                     </font>
                    </property>
                    <property name="currentIndex">
-                    <number>2</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="page_inicio">
                     <widget class="QLabel" name="label_imagen_Bienvenida">
@@ -1292,7 +1292,7 @@ border:15px solid #000000ff;</string>
   </widget>
  </widget>
  <resources>
-  <include location="../iconos/nuevaimagen.qrc"/>
+  <include location="nimg.qrc"/>
   <include location="nimg.qrc"/>
  </resources>
  <connections/>
