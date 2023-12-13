@@ -38,4 +38,13 @@ class TLA():
         cursor.execute(db)
         registro=cursor.fetchall()
         return registro
+    
+    def buscar_datos_tla(self,fecha):
+        self.conexion= Conexion().conectar()
+        cursor=self.conexion.cursor()
+        db=""" SELECT * FROM tabla_datos WHERE Fecha={} """ .format(fecha)
+        cursor.execute(db)
+        fechaX= cursor.fetchall()
+        cursor.close()
+        return fechaX
 
