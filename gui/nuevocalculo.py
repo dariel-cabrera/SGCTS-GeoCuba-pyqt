@@ -2,6 +2,7 @@ from PyQt6.uic import loadUi
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
 from model.ecuaciones import transporte_logitudinal_arena 
+#from data.tla import TLA
 
 class NuevoCalculo(QMainWindow):
     def __init__(self):
@@ -121,3 +122,6 @@ class NuevoCalculo(QMainWindow):
             mBox= QMessageBox()
             mBox.setText("Datos Guardados con Exito Q="+ str(resultado))
             mBox.exec()
+
+            #self.tla= TLA()
+            #self.tla.insertar_datos_tla(self,ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,fecha,resultado)

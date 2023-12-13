@@ -7,6 +7,7 @@ from PyQt6 import QtCore,QtWidgets
 from PyQt6.uic import loadUi
 from PyQt6.QtWidgets import QMessageBox
 from .nuevocalculo import NuevoCalculo
+from data.tla import TLA
 
 class Principal(QMainWindow):
     def __init__(self):
@@ -20,6 +21,9 @@ class Principal(QMainWindow):
 
         #Llamando a la funcion Mover Menu
         self.but_mover.clicked.connect(self.mover_menu)
+
+        # Conexion con la Tabla TLA
+        self.tla= TLA()
         
 
         #Conexion de Botones 
@@ -103,6 +107,8 @@ class Principal(QMainWindow):
             self.animacion.setEndValue(extender)
             #self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animacion.start()
+    
+
 
 
 

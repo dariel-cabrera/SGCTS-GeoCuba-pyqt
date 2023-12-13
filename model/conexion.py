@@ -6,6 +6,7 @@ class Conexion ():
             self.conexion=sqlite3.connect('database/tla.db')
         except Exception as ex:
             print (ex)
+        self.conectar()
     
     def conectar(self):
         return self.conexion
