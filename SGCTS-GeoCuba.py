@@ -1,10 +1,10 @@
 from PyQt6.QtWidgets import QApplication
-from gui.principal import Principal
+from gui.inicio import Login
 
 class SGCTS():
     def __init__(self):
         self.app=QApplication([])
-        self.principal=Principal()
+        self.inicio=Login()
 
         self.app.exec()
 
