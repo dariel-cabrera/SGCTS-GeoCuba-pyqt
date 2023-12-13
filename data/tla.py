@@ -22,4 +22,20 @@ class TLA():
             PRIMARY KEY(id_sgcts AUTOINCREMENT) """
         cursor.execute(db)
         cursor.close()
+    
+    def insertar_datos_tla(self,ubicacion,dm,da,cp,hb,a,ir,fecha,result):
+        self.conexion= Conexion().conectar()
+        cursor=self.conexion.cursor()
+        db= """ INSERT INTO tabla_datos VALUES(null,'{}','{}','{}','{}','{}','{}','{}','{}','{}')   """   .format      (ubicacion,dm,da,cp,hb,a,ir,fecha,result)
+        cursor.execute(db)
+        self.conexion.commit()
+        cursor.close()
+    
+    def mostrar_datos_tla(self):
+        self.conexion= Conexion().conectar()
+        cursor=self.conexion.cursor()
+        db="SELECT * FROM tabla_datos"
+        cursor.execute(db)
+        registro=cursor.fetchall()
+        return registro
 
