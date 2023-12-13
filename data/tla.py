@@ -47,4 +47,13 @@ class TLA():
         fechaX= cursor.fetchall()
         cursor.close()
         return fechaX
+    
+    def eliminar_datos_tla(self,id):
+        self.conexion= Conexion().conectar()
+        cursor=self.conexion.cursor()
+        db=""" DELETE * FROM tabla_datos WHERE id_tla={} """ .format(id)
+        cursor.execute(db)
+        self.conexion.commit()
+        cursor.close()
+    
 
