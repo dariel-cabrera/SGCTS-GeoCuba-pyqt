@@ -121,10 +121,9 @@ class NuevoCalculo(QMainWindow):
             resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
             
             self.tla= TLAData()
-            #mBox= QMessageBox()
-            #if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
-                #mBox.setText("Datos Guardados con Exito Q="+ str(resultado))
-            #else:
-                #mBox.setText("Los Datos NO se Guardados")
-                  
-            #mBox.exec()
+            mBox= QMessageBox()
+            if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
+                mBox.setText("Datos Guardados con Exito Q="+ str(resultado))
+            else:
+                mBox.setText("Los Datos NO se Guardados")
+            mBox.exec()

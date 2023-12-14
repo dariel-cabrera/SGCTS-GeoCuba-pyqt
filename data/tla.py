@@ -3,31 +3,13 @@ import sqlite3
 class TLAData():
     def __init__(self):
         self.db=sqlite3.connect('database/tla.db')
-        try:
-            cursor=self.db.cursor()
-            sql_create_tla= """CREATE TABLE IF NOT EXISTS calculo
-                (id_tla INTERGER,
-                Ubicacion TEXT,
-                Densidad_mar  REAL,
-                Densidad_arena REAL ,
-                Coeficiente_porocidad REAL,
-                Altura REAL,
-                Angulo_rompiente REAL,
-                Indice_rompiente REAL,
-                Resultado REAL,  
-                PRIMARY KEY(id_tla AUTOINCREMENT) """
-            self.cursor().execute(sql_create_tla)
-            self.db.commit()
-            self.cursor().close()
-            self.db.close()
-            print("Tabla Creada ",ex)
-        except  Exception as ex:
-            print("Tabla Creada Ok ",ex)
     
+        
     def insertar_datos_tla(self,Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado):
         self.cursor=self.db.cursor()
-        self.cursor().execute(""" INSERT INTO calculo values(null,'{}','{}','{}','{}','{}','{}','{}','{}')   """   
+        res=(""" INSERT INTO calculo(UBICACION,DENSIDAD_MAR,DENSIDAD_ARENA,COEFICIENTE,ALTURA,ANGULO,INDICE,RESULTADO) values('{}','{}','{}','{}','{}','{}','{}','{}')   """   
         .format(Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado))
+        self.cursor.execute(res)
         self.db.commit()
         
         if self.cursor.rowcount == 1:
