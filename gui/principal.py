@@ -9,7 +9,7 @@ from PyQt6 import uic
 from PyQt6.QtWidgets import QMessageBox
 from data.tla import TLAData
 from model.ecuaciones import transporte_logitudinal_arena 
-
+import re
 class Principal(QMainWindow):
     def __init__(self):
         #Iniciando
@@ -130,19 +130,145 @@ class Principal(QMainWindow):
             self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[8]))
             tablerow += 1 
     
-     def nuevocalculo(self):
+    def nuevocalculo(self):
         #Llamando a la ventana NuevoCalculo
         self.nuevocalculo.but_GuardarNuevoCalculo.clicked.connect(self.EntrarNuevoCalculo)
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.nuevocalculo.show()
 
 ########################## Nuevo Calculo #########################
-    def EntrarNuevoCalculo(self):
-        if self.nuevocalculo.lineEdit_densidadArena.text()=="" and self.nuevocalculo.lineEdit_DensidadMar.text()=="" and self.nuevocalculo.lineEdit_CoeficientePorocidad.text()=="" and self.nuevocalculo.lineEdit_altura.text()=="" and self.nuevocalculo.lineEdit_AnguloRompiente.text()=="" and self.nuevocalculo.lineEdit_IndiceRompiente.text()=="" and self.nuevocalculo.lineEdit_Ubicacion.text()=="":
+    def validarCampos(self):
+        DensidadArena=self.nuevocalculo.lineEdit_densidadArena.text()
+        DensidadMar=self.nuevocalculo.lineEdit_DensidadMar.text()
+        CoeficienteP=self.nuevocalculo.lineEdit_CoeficientePorocidad.text()
+        altura=self.nuevocalculo.lineEdit_altura.text()
+        angulo=self.nuevocalculo.lineEdit_AnguloRompiente.text()
+        indice=self.nuevocalculo.lineEdit_IndiceRompiente.text()
+        ubicacion=self.nuevocalculo.lineEdit_Ubicacion.text()
+
+        validarDA=re.match('^[0-9\.]+$',DensidadArena,re.I)
+        validarDM=re.match('^[0-9\.]+$',DensidadMar,re.I)
+        validarC=re.match('^[0-9\.]+$',CoeficienteP,re.I)
+        validarAl=re.match('^[0-9\.]+$',altura,re.I)
+        validarAn=re.match('^[0-9\.]+$',angulo,re.I)
+        validarindice= re.match('^[0-9\.]+$',indice,re.I)
+        validarU=re.match('^[a-z A-Z\sÀÈÌÒÙáéíóúàèìòùäëïüö]+$',DensidadMar,re.I)
+        ####### Validaciones Densidad Arena #############
+        if DensidadArena=="":
+            self.nuevocalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
             mBox= QMessageBox()
             mBox.setText("No se pueden entrar campos Vacios")
             mBox.exec()
+            self.nuevocalculo.lineEdit_densidadArena.setFocus()
+            self.nuevocalculo.lineEdit_densidadArena.setText("0")
+            return False
+        
+        elif not validarDA:
+            self.nuevocalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Solo Puede Entrar Numeros")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_densidadArena.setFocus()
+            self.nuevocalculo.lineEdit_densidadArena.setText("0")
+            return False
+        
+        elif float(self.nuevocalculo.lineEdit_densidadArena.text())<=0:
+            self.nuevocalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Debe entrar un Dato Mayor a 0")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_densidadArena.setFocus()
+            self.nuevocalculo.lineEdit_densidadArena.setText("0")
+            return False
+        ####### Validaciones Densidad Mar #############
+        elif  DensidadMar=="":
+            self.nuevocalculo.lineEdit_DensidadMar.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("No se pueden entrar campos Vacios")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_DensidadMar.setFocus()
+            self.nuevocalculo.lineEdit_DensidadMar.setText("0")
+            return False
+        
+        elif not validarDM:
+            self.nuevocalculo.lineEdit_DensidadMar.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Solo Puede Entrar Numeros")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_DensidadMar.setFocus()
+            self.nuevocalculo.lineEdit_DensidadMar.setText("0")
+            return False
+        
+        elif float(self.nuevocalculo.lineEdit_DensidadMar.text())<=0:
+            self.nuevocalculo.lineEdit_DensidadMar.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Debe entrar un Dato Mayor a 0")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_DensidadMar.setFocus()
+            self.nuevocalculo.lineEdit_DensidadMar.setText("0")
+            return False
+        ################ Validaciones Coeficiente ################
+        elif  CoeficienteP=="":
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("No se pueden entrar campos Vacios")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setFocus()
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setText("0")
+            return False
+        
+        elif not validarC:
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Solo Puede Entrar Numeros")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setFocus()
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setText("0")
+            return False
+        
+        elif float(self.nuevocalculo.lineEdit_CoeficientePorocidad.text())<=0:
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Debe entrar un Dato Mayor a 0")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setFocus()
+            self.nuevocalculo.lineEdit_CoeficientePorocidad.setText("0")
+            return False
+        ####### Validaciones Altura #############
+        elif  altura=="":
+            self.nuevocalculo.lineEdit_altura.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("No se pueden entrar campos Vacios")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_altura.setFocus()
+            self.nuevocalculo.lineEdit_altura.setText("0")
+            return False
+        
+        elif not validarAl:
+            self.nuevocalculo.lineEdit_altura.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Solo Puede Entrar Numeros")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_altura.setFocus()
+            self.nuevocalculo.lineEdit_altura.setText("0")
+            return False
+        
+        elif float(self.nuevocalculo.lineEdit_altura.text())<=0:
+            self.nuevocalculo.lineEdit_altura.setStyleSheet("border: 1px solid red;")
+            mBox= QMessageBox()
+            mBox.setText("Debe entrar un Dato Mayor a 0")
+            mBox.exec()
+            self.nuevocalculo.lineEdit_altura.setFocus()
+            self.nuevocalculo.lineEdit_altura.setText("0")
+            return False
+        else:
+            return True
 
+    def EntrarNuevoCalculo(self):
+        if self.validarCampos()== False:
+            mBox= QMessageBox()
+            mBox.setText("Datos Incorrecto Verifiquelos")
+            mBox.exec()
         else:
             DensidadArena= float(self.nuevocalculo.lineEdit_densidadArena.text())
             DensidadMar=  float(self.nuevocalculo.lineEdit_DensidadMar.text())
