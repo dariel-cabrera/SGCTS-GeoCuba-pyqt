@@ -1,7 +1,7 @@
 import sys
 #Donde estan todas las fotos
 from .nimgC import *
-from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView,QTableWidgetItem
+from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView 
 from PyQt6.QtCore import QPropertyAnimation,QEasingCurve 
 from PyQt6 import QtCore,QtWidgets
 from PyQt6.uic import loadUi

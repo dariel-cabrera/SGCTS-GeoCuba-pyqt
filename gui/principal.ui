@@ -524,19 +524,20 @@ color: rgb(0, 0, 0);
 QTableWidget{
 background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);
-gridine-color:rgb(0,206,151);
+gridline-color: rgb(0,74,116);
 font-size:12pt;
-color:#000000;
+color: rgb(0, 0, 0);
 }
 QHeaderView::section{
-background-color: rgb(0, 74, 116);
+background-color: rgb(0,74,116);
+color: rgb(255, 255, 255);
 border:1px solid rgb(0,0,0);
 font-size:12pt;
 
 }
 QTableWidgetQTableCornerButton::section{
-background-color: rgb(0, 0, 0);
-border:1px solid rgb(0, 74, 116);
+background-color: rgb(255, 255, 255);
+border:1px solid rgb(255,255,255);
 }
 </string>
                 </property>
@@ -896,49 +897,92 @@ color: rgb(0, 0, 0);</string>
                        <height>411</height>
                       </rect>
                      </property>
+                     <property name="styleSheet">
+                      <string notr="true">
+</string>
+                     </property>
                      <column>
                       <property name="text">
                        <string>id</string>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>MS UI Gothic</family>
+                       </font>
+                      </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
+                      </property>
+                      <property name="background">
+                       <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
                       </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Ubicacion</string>
                       </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
+                      </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Den_Mar (ρ)</string>
+                      </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
                       </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>DensArena (ρs)</string>
                       </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
+                      </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Coefic (n)</string>
+                      </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
                       </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Altura (Hb)</string>
                       </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
+                      </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Angulo (α)</string>
+                      </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
                       </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Indice (k)</string>
                       </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
+                      </property>
                      </column>
                      <column>
                       <property name="text">
                        <string>Resultado</string>
+                      </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
                       </property>
                      </column>
                     </widget>
