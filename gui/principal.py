@@ -5,9 +5,10 @@ from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
 from PyQt6.QtCore import QPropertyAnimation,QEasingCurve 
 from PyQt6 import QtCore,QtWidgets
 from PyQt6.uic import loadUi
+from PyQt6 import uic
 from PyQt6.QtWidgets import QMessageBox
-from .nuevocalculo import NuevoCalculo
-#from data.tla import TLA
+from data.tla import TLAData
+from model.ecuaciones import transporte_logitudinal_arena 
 
 class Principal(QMainWindow):
     def __init__(self):
@@ -18,14 +19,8 @@ class Principal(QMainWindow):
         self.showMaximized()
         #Llamando a la Funcion iniGUi()
         self.iniGUI()
-
         #Llamando a la funcion Mover Menu
         self.but_mover.clicked.connect(self.mover_menu)
-
-        # Conexion con la Tabla TLA
-        #self.tla= TLA()
-        
-
         #Conexion de Botones 
         self.button_Inicio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_inicio))
         self.button_Usuarios.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_usuarios))
@@ -55,17 +50,19 @@ class Principal(QMainWindow):
         #Mover ventana
         #self.frame_superior.mouseMoveEvent= self.mover_ventana
 
-    
+ ######################  Principal ###########################   
     def iniGUI(self):
         #Conectando el Boton Nuevo Calculo con la ventana Nuevo Calculo
         self.button_NuevoCalculo.clicked.connect(self.nuevocalculo)
+        self.nuevocalculo= uic.loadUi("gui/nuevoCalculo.ui")
+        self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
     
-    def nuevocalculo(self):
-        #Llamando a la ventana NuevoCalculo
-        self.nuevocalculo= NuevoCalculo()
+    
+   
     
     def control_bt_minimizar(self):
         self.showMinimized()
+    
     
     def control_bt_normal(self):
         self.showNormal()
@@ -108,19 +105,79 @@ class Principal(QMainWindow):
             #self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animacion.start()
     
-    #def mostrar_datos_tla(self):
-        #datos=self.tla.mostrar_datos_tla()
-        #i=len(datos)
-        #self.table_Calculos.setRowCount(i)
-        #tablerow=0
-        #for row in datos:
-            #self.id_tla=row[0]
+    
+    def mostrar_datos_tablaCalculos(self):
+        self.mostrar= TLAData()
+        datos=self.mostrar.mostrar_datos_tla()
+        a=[]
+        for x in datos:
+            a.append([str(i) for i in x])
+        print(a)
+        
+        i=len(a)
+        self.table_Calculos.setRowCount(i)
+        tablerow=0
+
+        for row in a:
+            self.table_Calculos.setItem(tablerow,0,QtWidgets.QTableWidgetItem(row[0]))
+            self.table_Calculos.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.table_Calculos.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.table_Calculos.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
+            self.table_Calculos.setItem(tablerow,4,QtWidgets.QTableWidgetItem(row[4]))
+            self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
+            self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
+            self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[8]))
+            tablerow += 1 
+    
+     def nuevocalculo(self):
+        #Llamando a la ventana NuevoCalculo
+        self.nuevocalculo.but_GuardarNuevoCalculo.clicked.connect(self.EntrarNuevoCalculo)
+        self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
+        self.nuevocalculo.show()
+
+########################## Nuevo Calculo #########################
+    def EntrarNuevoCalculo(self):
+        if self.nuevocalculo.lineEdit_densidadArena.text()=="" and self.nuevocalculo.lineEdit_DensidadMar.text()=="" and self.nuevocalculo.lineEdit_CoeficientePorocidad.text()=="" and self.nuevocalculo.lineEdit_altura.text()=="" and self.nuevocalculo.lineEdit_AnguloRompiente.text()=="" and self.nuevocalculo.lineEdit_IndiceRompiente.text()=="" and self.nuevocalculo.lineEdit_Ubicacion.text()=="":
+            mBox= QMessageBox()
+            mBox.setText("No se pueden entrar campos Vacios")
+            mBox.exec()
+
+        else:
+            DensidadArena= float(self.nuevocalculo.lineEdit_densidadArena.text())
+            DensidadMar=  float(self.nuevocalculo.lineEdit_DensidadMar.text())
+            CoeficienteP=float(self.nuevocalculo.lineEdit_CoeficientePorocidad.text())
+            altura=float(self.nuevocalculo.lineEdit_altura.text())
+            angulo=float(self.nuevocalculo.lineEdit_AnguloRompiente.text())
+            indice=float(self.nuevocalculo.lineEdit_IndiceRompiente.text())
+            ubicacion=self.nuevocalculo.lineEdit_Ubicacion.text()
+           
+
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
+            
+            self.tla= TLAData()
+            mBox= QMessageBox()
+            if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
+                mBox.setText("Datos Guardados con Exito Q="+ str(resultado))  
+                self.mostrar_datos_tablaCalculos()
+                self.nuevocalculo.hide()
+                self.limpiarCamposNuevoCalculo()
+                
+            else:
+                mBox.setText("Los Datos NO se Guardados")
+            mBox.exec()
     
 
-
-
-
-
-        
-
-
+    def limpiarCamposNuevoCalculo(self):
+        self.nuevocalculo.lineEdit_DensidadMar.setText("")
+        self.nuevocalculo.lineEdit_densidadArena.setText("")
+        self.nuevocalculo.lineEdit_DensidadMar.setText("")
+        self.nuevocalculo.lineEdit_CoeficientePorocidad.setText("")
+        self.nuevocalculo.lineEdit_altura.setText("")
+        self.nuevocalculo.lineEdit_AnguloRompiente.setText("")
+        self.nuevocalculo.lineEdit_IndiceRompiente.setText("")
+        self.nuevocalculo.lineEdit_Ubicacion.setText("")
+    
+    def boton_Cancelar_NuevoCalculo(self):
+        self.nuevocalculo.hide()
+        self.limpiarCamposNuevoCalculo()

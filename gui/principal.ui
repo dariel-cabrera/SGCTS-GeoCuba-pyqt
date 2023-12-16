@@ -573,7 +573,7 @@ border:1px solid rgb(0, 74, 116);
                     </font>
                    </property>
                    <property name="currentIndex">
-                    <number>1</number>
+                    <number>2</number>
                    </property>
                    <widget class="QWidget" name="page_inicio">
                     <widget class="QLabel" name="label_imagen_Bienvenida">
@@ -903,17 +903,22 @@ color: rgb(0, 0, 0);</string>
                      </column>
                      <column>
                       <property name="text">
-                       <string>ρ</string>
+                       <string>Ubicacion</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>ρs</string>
+                       <string>Den_Mar (ρ)</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>n</string>
+                       <string>DensArena (ρs)</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>Coefic (n)</string>
                       </property>
                      </column>
                      <column>
@@ -923,22 +928,17 @@ color: rgb(0, 0, 0);</string>
                      </column>
                      <column>
                       <property name="text">
-                       <string>α</string>
+                       <string>Angulo (α)</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>k</string>
+                       <string>Indice (k)</string>
                       </property>
                      </column>
                      <column>
                       <property name="text">
-                       <string>Ubicación</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Fecha</string>
+                       <string>Resultado</string>
                       </property>
                      </column>
                     </widget>

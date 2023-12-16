@@ -21,37 +21,36 @@ class TLAData():
         self.db.close()
     
     
-    #def mostrar_datos_tla(self):
-        #self.conexion= Conexion().conectar()
-        #self.cursor=self.conexion.cursor()
-        #db="SELECT * FROM tabla_datos"
-        #self.cursor().execute(db)
-        #registro=cursor.fetchall()
-        #return registro
+    def mostrar_datos_tla(self):
+        cursor=self.db.cursor()
+        mostrar="SELECT * FROM calculo"
+        cursor.execute(mostrar)
+        registro=cursor.fetchall()
+        cursor.close()
+        return registro 
     
     
     #def buscar_datos_tla(self,fecha):
-        #self.conexion= Conexion().conectar()
-        #self.cursor=self.conexion.cursor()
+        #self.cursor=self.db.cursor()
         
-        # db=""" SELECT * FROM tabla_datos WHERE Fecha={} """ .format(fecha)
-        #cursor.execute(db)
+        # buscar=""" SELECT * FROM tabla_datos WHERE Fecha={} """ .format(fecha)
+        #cursor.execute(buscar)
         #fechaX= cursor.fetchall()
         #self.cursor().close()
         #return fechaX
     
     #def eliminar_datos_tla(self,id):
-        #self.conexion= Conexion().conectar()
-        #self.cursor=self.conexion.cursor()
-        #db=""" DELETE * FROM tabla_datos WHERE id_tla={} """ .format(id)
-        #self.cursor().execute(db)
+        
+        #self.cursor=self.db.cursor()
+        #eliminar=""" DELETE * FROM tabla_datos WHERE id_tla={} """ .format(id)
+        #self.cursor().execute(eliminar)
         #self.conexion.commit()
         #self.cursor().close()
     
     #def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result):
-        #self.cursor=self.conexion.cursor()
-        #db= """ UPDATE  tabla_datos VALUES(null,Ubicacion='{}',Densidad_mar ='{}',Densidad_arena='{}',Coeficiente_porocidad ='{}', Altura='{}',Angulo_rompiente='{}',Indice_rompiente ='{}',Fecha='{}',Resultado='{}')   """    .format (id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result)
-        #self.cursor().execute(db)
+        #self.cursor=self.conexdbion.cursor()
+        #actualizar= """ UPDATE  tabla_datos VALUES(null,Ubicacion='{}',Densidad_mar ='{}',Densidad_arena='{}',Coeficiente_porocidad ='{}', Altura='{}',Angulo_rompiente='{}',Indice_rompiente ='{}',Fecha='{}',Resultado='{}')   """    .format (id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result)
+        #self.cursor().execute(actualizar)
         #a= self.cursor().rowcount
         #self.conexion.commit()
         #self.cursor().close()
