@@ -39,13 +39,13 @@ class TLAData():
         #self.cursor().close()
         #return fechaX
     
-    #def eliminar_datos_tla(self,id):
-        
-        #self.cursor=self.db.cursor()
-        #eliminar=""" DELETE * FROM tabla_datos WHERE id_tla={} """ .format(id)
-        #self.cursor().execute(eliminar)
-        #self.conexion.commit()
-        #self.cursor().close()
+    def eliminar_datos_tla(self,id):
+        self.cursor=self.db.cursor()
+        eliminar=""" DELETE FROM calculo WHERE ID={} """ .format(id)
+        self.cursor.execute(eliminar)
+        self.db.commit()
+        self.cursor.close()
+        self.db.close()
     
     #def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result):
         #self.cursor=self.conexdbion.cursor()

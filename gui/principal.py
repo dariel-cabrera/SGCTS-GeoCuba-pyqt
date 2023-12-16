@@ -1,7 +1,7 @@
 import sys
 #Donde estan todas las fotos
 from .nimgC import *
-from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
+from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView,QTableWidgetItem
 from PyQt6.QtCore import QPropertyAnimation,QEasingCurve 
 from PyQt6 import QtCore,QtWidgets
 from PyQt6.uic import loadUi
@@ -56,6 +56,7 @@ class Principal(QMainWindow):
         self.button_NuevoCalculo.clicked.connect(self.nuevocalculo)
         self.nuevocalculo= uic.loadUi("gui/nuevoCalculo.ui")
         self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
+        self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
     
     
    
@@ -135,6 +136,27 @@ class Principal(QMainWindow):
         self.nuevocalculo.but_GuardarNuevoCalculo.clicked.connect(self.EntrarNuevoCalculo)
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.nuevocalculo.show()
+    
+    def EliminarCalculo(self):
+        rows=self.table_Calculos.selectionModel().selectedRows()
+        print(rows)
+        if len(rows)==0:
+            mBox= QMessageBox()
+            mBox.setText("Debe seleccionar una Fila de la Tabla para eliminar")
+            mBox.exec()
+
+        else:
+            index=[]
+            for i in rows:
+                index.append(i.row())
+            index.sort(reverse=True)
+            for i in index:
+                id= self.table_Calculos.item(i,0).text()
+                self.table_Calculos.removeRow(i)
+                self.tla= TLAData()
+                self.tla.eliminar_datos_tla(id)
+       
+        
 
 ########################## Nuevo Calculo #########################
     def validarCampos(self):
