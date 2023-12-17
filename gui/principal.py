@@ -140,8 +140,8 @@ class Principal(QMainWindow):
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.nuevocalculo.show()
     
-    def editarcalculo(self):
-
+    def editarcalculoGUI(self):
+        self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
         self.editarcalculo.show()
     
     def EliminarCalculo(self):
@@ -171,7 +171,7 @@ class Principal(QMainWindow):
             mBox.setText("Debe seleccionar una Fila de la Tabla para editar")
             mBox.exec()
         else:
-            self.editarcalculo.show()
+            self.editarcalculoGUI()
             index=[]
             for i in rows:
                 index.append(i.row())
@@ -182,25 +182,7 @@ class Principal(QMainWindow):
                 self.idx=self.tla.buscar_datos_tla_DI(id)
             
             self.mostrarDatosEditar()
-
-
-    def mostrarDatosEditar(self):
-        datos= self.idx
-        a=[]
-        for x in datos:
-            a.append([str(i) for i in x])
-        
-        self.editarcalculo.lineEdit_Ubicacion.setText(a[0][1])
-        self.editarcalculo.lineEdit_densidadArena.setText(a[0][2])
-        self.editarcalculo.lineEdit_DensidadMar.setText(a[0][3])
-        self.editarcalculo.lineEdit_CoeficientePorocidad.setText(a[0][4])
-        self.editarcalculo.lineEdit_altura.setText(a[0][5])
-        self.editarcalculo.lineEdit_AnguloRompiente.setText(a[0][6])
-        self.editarcalculo.lineEdit_IndiceRompiente.setText(a[0][7])
-
-
-       
-        
+            
 
 ########################## Nuevo Calculo #########################
     def validarCampos(self):
@@ -459,4 +441,32 @@ class Principal(QMainWindow):
         self.limpiarCamposNuevoCalculo()
     
     ################ Editar Calculo ###########
+    def mostrarDatosEditar(self):
+        datos= self.idx
+        a=[]
+        for x in datos:
+            a.append([str(i) for i in x])
+        
+        self.editarcalculo.lineEdit_Ubicacion.setText(a[0][1])
+        self.editarcalculo.lineEdit_densidadArena.setText(a[0][2])
+        self.editarcalculo.lineEdit_DensidadMar.setText(a[0][3])
+        self.editarcalculo.lineEdit_CoeficientePorocidad.setText(a[0][4])
+        self.editarcalculo.lineEdit_altura.setText(a[0][5])
+        self.editarcalculo.lineEdit_AnguloRompiente.setText(a[0][6])
+        self.editarcalculo.lineEdit_IndiceRompiente.setText(a[0][7])
+    
+    def limpiarCamposEditarCalculo(self):
+        self.editarcalculo.lineEdit_DensidadMar.setText("")
+        self.editarcalculo.lineEdit_densidadArena.setText("")
+        self.editarcalculo.lineEdit_DensidadMar.setText("")
+        self.editarcalculo.lineEdit_CoeficientePorocidad.setText("")
+        self.editarcalculo.lineEdit_altura.setText("")
+        self.editarcalculo.lineEdit_AnguloRompiente.setText("")
+        self.editarcalculo.lineEdit_IndiceRompiente.setText("")
+        self.editarcalculo.lineEdit_Ubicacion.setText("")
+    
+    def boton_Cancelar_EditarCalculo(self):
+        self.editarcalculo.hide()
+        self.limpiarCamposEditarCalculo()
+    
 
