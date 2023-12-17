@@ -57,11 +57,11 @@ class TLAData():
         self.cursor.close()
         self.db.close()
     
-    def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,a,ir,result):
+    def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,angulo,ir,result):
         self.cursor=self.db.cursor()
-        actualizar= """ UPDATE  calculo VALUES(null,Ubicacion='{}',Densidad_mar ='{}',Densidad_arena='{}',Coeficiente_porocidad ='{}', Altura='{}',Angulo_rompiente='{}',Indice_rompiente ='{}',Resultado='{}')   """    .format (id_tla,ubicacion,dm,da,cp,hb,a,ir,result)
-        self.cursor().execute(actualizar)
-        a= self.cursor().rowcount
+        actualizar= """ UPDATE  calculo SET UBICACION='{}',DENSIDAD_MAR ='{}',DENSIDAD_ARENA='{}',COEFICIENTE ='{}', ALTURA='{}',ANGULO='{}',INDICE ='{}',RESULTADO='{}' WHERE ID= '{}'  """    .format (ubicacion,dm,da,cp,hb,angulo,ir,result,id_tla)
+        self.cursor.execute(actualizar)
+        a= self.cursor.rowcount
         self.db.commit()
         self.cursor.close()
         return a

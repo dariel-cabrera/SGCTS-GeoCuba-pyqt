@@ -370,7 +370,7 @@ color: rgb(255, 255, 255);</string>
         <number>50</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="but_ActualizarEditar">
+      <widget class="QPushButton" name="but_NuevoEditar">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -412,7 +412,7 @@ color: rgb(255, 255, 255);</string>
         <string>Cancelar</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="but_ActualizarEditar_2">
+      <widget class="QPushButton" name="but_ActualizarEditar">
        <property name="geometry">
         <rect>
          <x>280</x>
