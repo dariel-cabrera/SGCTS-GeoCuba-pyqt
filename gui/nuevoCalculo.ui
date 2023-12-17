@@ -100,7 +100,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad de Arena (ρ) *</string>
+        <string>Densidad de Arena (ρs) *</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_densidadArena">
@@ -140,7 +140,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad del Mar (ρs) *</string>
+        <string>Densidad del Mar (ρ) *</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_DensidadMar">

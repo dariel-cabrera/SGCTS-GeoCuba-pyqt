@@ -139,6 +139,7 @@ class Principal(QMainWindow):
         self.nuevocalculo.show()
     
     def editarcalculoGUI(self):
+        self.editarcalculo.label_Error.setText("")
         self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
         self.editarcalculo.but_ActualizarEditar.clicked.connect(self.entrarEditarCalculo)
         self.editarcalculo.but_NuevoEditar.clicked.connect(self.entrarNuevoEditarCalculo)
@@ -338,30 +339,37 @@ class Principal(QMainWindow):
             self.editarcalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_densidadArena.setFocus()
             self.editarcalculo.lineEdit_densidadArena.setText("0")
+            self.editarcalculo.label_Error.setText("En la Densidad de Arena sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif DensidadMar ==False:
             self.editarcalculo.lineEdit_DensidadMar.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_DensidadMar.setFocus()
             self.editarcalculo.lineEdit_DensidadMar.setText("0")
+            self.editarcalculo.label_Error.setText("En la Densidad del Mar sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif CoeficienteP ==False:
             self.editarcalculo.lineEdit_CoeficientePorocidad.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_CoeficientePorocidad.setFocus()
             self.editarcalculo.lineEdit_CoeficientePorocidad.setText("0")
+            self.editarcalculo.label_Error.setText("En el Coeficiente sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif altura ==False:
             self.editarcalculo.lineEdit_altura.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_altura.setFocus()
             self.editarcalculo.lineEdit_altura.setText("0")
+            self.editarcalculo.label_Error.setText("En la Altura sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif angulo ==False:
             self.editarcalculo.lineEdit_AnguloRompiente.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_AnguloRompiente.setFocus()
             self.editarcalculo.lineEdit_AnguloRompiente.setText("0")
+            self.editarcalculo.label_Error.setText("En el Ángulo sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif indice ==False:
             self.editarcalculo.lineEdit_IndiceRompiente.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_IndiceRompiente.setFocus()
             self.editarcalculo.lineEdit_IndiceRompiente.setText("0")
+            self.editarcalculo.label_Error.setText("En el Índice sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif ubicacion ==False:
             self.editarcalculo.lineEdit_Ubicacion.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_Ubicacion.setFocus()
             self.editarcalculo.lineEdit_Ubicacion.setText("")
+            self.editarcalculo.label_Error.setText("En la Ubicación sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
         else:
             validando=True
         return validando
