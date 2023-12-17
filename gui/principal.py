@@ -11,6 +11,8 @@ from data.tla import TLAData
 from model.ecuaciones import transporte_logitudinal_arena 
 import re
 from model.validarcampos import ValidarCampos
+from model.usuario import Usuario
+from data.usuario import UsuarioData
 class Principal(QMainWindow):
     def __init__(self):
         #Iniciando
@@ -60,6 +62,8 @@ class Principal(QMainWindow):
         self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
         self.button_EditarCalculo.clicked.connect(self.EditarCalculo)
         self.editarcalculo= uic.loadUi("gui/EditarCalculo.ui")
+        self.buttonNuevoUsuario.clicked.connect(self.nuevoUsuario)
+        self.nuevousuario=uic.loadUi("gui/nuevoUsuario.ui")
         
     def control_bt_minimizar(self):
         self.showMinimized()
@@ -449,6 +453,16 @@ class Principal(QMainWindow):
                     mBox= QMessageBox()
                     mBox.setText("Los Datos NO se Guardaron")
                     mBox.exec()
+    
+##################### Usuarios ##############################
+    usu=Usuario('Dariel','dariel.cabrera','darielcabrera','Cabrera','López',2011460106,'darielcabreralopez@gmail.com','informatico','masculino')
+    usuData= UsuarioData()
+    usuData.crearUsuario(usu)
+    
+    def nuevoUsuario(self):
+        self.nuevousuario.label_Error.setText("")
+        self.nuevousuario.show()
+    
     
     
 
