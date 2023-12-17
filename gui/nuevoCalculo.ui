@@ -79,7 +79,7 @@ color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nuevo Cálculo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nuevo Usuario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_DensidadArena">
@@ -100,13 +100,13 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad de Arena (ρs) *</string>
+        <string>Nombre*</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_densidadArena">
+      <widget class="QLineEdit" name="lineEdit_Nombre">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>150</x>
          <y>150</y>
          <width>121</width>
          <height>41</height>
@@ -119,7 +119,7 @@ color: rgb(255, 255, 255);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>20</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_DensidadMar">
@@ -140,13 +140,13 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad del Mar (ρ) *</string>
+        <string>Primer Apellido*</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_DensidadMar">
+      <widget class="QLineEdit" name="lineEdit_PrimerApellido">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>150</x>
          <y>210</y>
          <width>121</width>
          <height>41</height>
@@ -156,7 +156,7 @@ color: rgb(255, 255, 255);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>20</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_CoeficientePorocidad">
@@ -177,13 +177,13 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Coeficiente de Porocidad (n)*</string>
+        <string>Segundo Apellido*</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_CoeficientePorocidad">
+      <widget class="QLineEdit" name="lineEdit_SegundoApellido">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>150</x>
          <y>270</y>
          <width>121</width>
          <height>41</height>
@@ -193,7 +193,7 @@ color: rgb(255, 255, 255);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>20</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_ALtura">
@@ -214,13 +214,13 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Altura (Hb)*</string>
+        <string>Carnet de Identidad*</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_altura">
+      <widget class="QLineEdit" name="lineEdit_CI">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>150</x>
          <y>330</y>
          <width>121</width>
          <height>41</height>
@@ -230,13 +230,13 @@ color: rgb(255, 255, 255);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>12</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_AnguloR">
        <property name="geometry">
         <rect>
-         <x>330</x>
+         <x>290</x>
          <y>150</y>
          <width>191</width>
          <height>41</height>
@@ -251,14 +251,14 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Ángulo de Rompiente (α)*</string>
+        <string>Tipo de Trabajador*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_IndiceR">
        <property name="geometry">
         <rect>
-         <x>340</x>
-         <y>210</y>
+         <x>290</x>
+         <y>200</y>
          <width>191</width>
          <height>41</height>
         </rect>
@@ -272,14 +272,14 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Índice de Rompiente(k)*</string>
+        <string>Correo*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_Ubicacion">
        <property name="geometry">
         <rect>
-         <x>340</x>
-         <y>270</y>
+         <x>290</x>
+         <y>250</y>
          <width>191</width>
          <height>41</height>
         </rect>
@@ -293,7 +293,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Ubicación *</string>
+        <string>Nombre de Usuario*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
@@ -322,11 +322,27 @@ color: rgb(255, 255, 255);</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;SGCTS-GeoCuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_Ubicacion">
+      <widget class="QLineEdit" name="lineEdit_NombreUsuario">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>270</y>
+         <x>520</x>
+         <y>250</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Correo">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>200</y>
          <width>121</width>
          <height>41</height>
         </rect>
@@ -338,26 +354,10 @@ color: rgb(255, 255, 255);</string>
         <number>50</number>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_IndiceRompiente">
+      <widget class="QLineEdit" name="lineEdit_TipoTrabajador">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>210</y>
-         <width>121</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="maxLength">
-        <number>50</number>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_AnguloRompiente">
-       <property name="geometry">
-        <rect>
-         <x>530</x>
+         <x>520</x>
          <y>150</y>
          <width>121</width>
          <height>41</height>
@@ -367,14 +367,14 @@ color: rgb(255, 255, 255);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>20</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="but_GuardarNuevoCalculo">
+      <widget class="QPushButton" name="but_CrearNuevoUsuario">
        <property name="geometry">
         <rect>
          <x>400</x>
-         <y>450</y>
+         <y>460</y>
          <width>111</width>
          <height>41</height>
         </rect>
@@ -388,14 +388,14 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Guardar</string>
+        <string>Crear</string>
        </property>
       </widget>
       <widget class="QPushButton" name="butCancelarNuevoCalculo">
        <property name="geometry">
         <rect>
          <x>530</x>
-         <y>450</y>
+         <y>460</y>
          <width>111</width>
          <height>41</height>
         </rect>
@@ -416,7 +416,7 @@ color: rgb(255, 255, 255);</string>
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>390</y>
+         <y>420</y>
          <width>641</width>
          <height>31</height>
         </rect>
@@ -451,6 +451,135 @@ color: rgb(255, 255, 255);</string>
        <property name="text">
         <string>Los campos con (*)  son obligatorios</string>
        </property>
+      </widget>
+      <widget class="QLabel" name="label_Ubicacion_2">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>300</y>
+         <width>191</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Contraseña*</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Contrasena">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>300</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>25</number>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Ubicacion_3">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>350</y>
+         <width>191</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Confirmar Contraseña*</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_ConfirmarConstrasena">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>350</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>25</number>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_ALtura_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>211</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sexo *</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>380</y>
+         <width>141</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccione una opción</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Masculino</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Femenino</string>
+        </property>
+       </item>
       </widget>
      </widget>
     </item>

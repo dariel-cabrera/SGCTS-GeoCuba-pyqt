@@ -461,7 +461,43 @@ class Principal(QMainWindow):
     
     def nuevoUsuario(self):
         self.nuevousuario.label_Error.setText("")
+        self.nuevousuario.but_CrearrNuevoUsuario.clicked.connect(self.validandonuevousuario)
         self.nuevousuario.show()
+    
+    def validandonuevousuario(self):
+        validando=False
+        self.validarcampo=ValidarCampos()
+        nombre=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_Nombre.text())
+        primerapellido=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_PrimerApellido.text())
+        segundoapellido=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_SegundoApellido.text())
+        tipo=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_TipoTrabajador.text())
+
+        if nombre== False:
+            self.nuevousuario.lineEdit_Nombre.setStyleSheet("border: 1px solid red;")
+            self.nuevousuario.lineEdit_Nombre.setFocus()
+            self.nuevousuario.lineEdit_Nombre.setText("")
+            self.nuevousuario.label_Error.setText("El Nombre sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
+        elif primerapellido==False:
+            self.nuevousuario.lineEdit_PrimerApellido.setStyleSheet("border: 1px solid red;")
+            self.nuevousuario.lineEdit_PrimerApellido.setFocus()
+            self.nuevousuario.lineEdit_PrimerApellido.setText("")
+            self.nuevousuario.label_Error.setText("El Primer Apellido sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
+        elif segundoapellido==False:
+            self.nuevousuario.lineEdit_SegundoApellido.setStyleSheet("border: 1px solid red;")
+            self.nuevousuario.lineEdit_SegundoApellido.setFocus()
+            self.nuevousuario.lineEdit_SegundoApellido.setText("")
+            self.nuevousuario.label_Error.setText("El Segundo Apellido sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
+        elif tipo==False:
+            self.nuevousuario.lineEdit_TipoTrabajador.setStyleSheet("border: 1px solid red;")
+            self.nuevousuario.lineEdit_TipoTrabajador.setFocus()
+            self.nuevousuario.lineEdit_TipoTrabajador.setText("")
+            self.nuevousuario.label_Error.setText("El Segundo Apellido sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
+        else:
+            print("correcto")
+            
+        
+
+
     
     
     

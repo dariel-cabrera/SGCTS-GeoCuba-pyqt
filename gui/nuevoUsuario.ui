@@ -370,7 +370,7 @@ color: rgb(255, 255, 255);</string>
         <number>20</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="but_GuardarNuevoCalculo">
+      <widget class="QPushButton" name="but_CrearrNuevoUsuario">
        <property name="geometry">
         <rect>
          <x>400</x>

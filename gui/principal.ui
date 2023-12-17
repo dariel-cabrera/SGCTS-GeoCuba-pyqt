@@ -574,7 +574,7 @@ border:1px solid rgb(255,255,255);
                     </font>
                    </property>
                    <property name="currentIndex">
-                    <number>2</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_inicio">
                     <widget class="QLabel" name="label_imagen_Bienvenida">
@@ -898,8 +898,7 @@ color: rgb(0, 0, 0);</string>
                       </rect>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">
-</string>
+                      <string notr="true"/>
                      </property>
                      <column>
                       <property name="text">
