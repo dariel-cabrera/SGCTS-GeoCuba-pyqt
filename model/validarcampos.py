@@ -36,7 +36,7 @@ class ValidarCampos():
         
         elif not validarNombre:
             mBox= QMessageBox()
-            mBox.setText("SSólo Puede Entrar Letras")
+            mBox.setText("Sólo Puede Entrar Letras")
             mBox.exec()
             return False
         

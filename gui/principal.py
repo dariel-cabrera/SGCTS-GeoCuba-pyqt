@@ -473,21 +473,14 @@ class Principal(QMainWindow):
     
     def entrarEditarCalculo(self):
         self.validarcampo=ValidarCampos()
-        DensidadArena= self.editarcalculo.lineEdit_densidadArena.text()
-        DensidadMar=  self.editarcalculo.lineEdit_DensidadMar.text()
-        CoeficienteP=self.editarcalculo.lineEdit_CoeficientePorocidad.text()
-        altura=self.editarcalculo.lineEdit_altura.text()
-        angulo=self.editarcalculo.lineEdit_AnguloRompiente.text()
-        indice=self.editarcalculo.lineEdit_IndiceRompiente.text()
-        ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
       
-        DensidadArena=self.validarcampo.validarCamposfloat(DensidadArena)
-        DensidadMar=self.validarcampo.validarCamposfloat(DensidadMar)
-        CoeficienteP=self.validarcampo.validarCamposfloat(CoeficienteP)
-        altura=self.validarcampo.validarCamposfloat(altura)
-        angulo=self.validarcampo.validarCamposfloat(angulo)
-        indice=self.validarcampo.validarCamposfloat(indice)
-        ubicacion=self.validarcampo.validarCamposNombre(ubicacion)
+        DensidadArena=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_densidadArena.text())
+        DensidadMar=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_DensidadMar.text())
+        CoeficienteP=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_CoeficientePorocidad.text())
+        altura=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_altura.text())
+        angulo=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_AnguloRompiente.text())
+        indice=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_IndiceRompiente.text())
+        ubicacion=self.validarcampo.validarCamposNombre(self.editarcalculo.lineEdit_Ubicacion.text())
         
         if DensidadArena==False:
             self.editarcalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
@@ -525,19 +518,22 @@ class Principal(QMainWindow):
             angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
             indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
             ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
+            
+            print(DensidadMar)
+            print(DensidadArena)
+            print(ubicacion)
+
            
 
             resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
             
             self.tla= TLAData()
-            mBox= QMessageBox()
-            print(self.idEditar)
             actualizar=self.tla.actualizar_datos_tla(self.idEditar,ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
-            print(actualizar)
+            mBox= QMessageBox()
             if actualizar==1:
                 mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
                 self.mostrar_datos_tablaCalculos()
-                self.editarcalculo.hide()
+                self.editarcalculo.close()
                 self.limpiarCamposEditarCalculo()
                 
             else:
