@@ -57,6 +57,9 @@ class Principal(QMainWindow):
         self.nuevocalculo= uic.loadUi("gui/nuevoCalculo.ui")
         self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
         self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
+        self.button_EditarCalculo.clicked.connect(self.EditarCalculo)
+        self.editarcalculo= uic.loadUi("gui/EditarCalculo.ui")
+        
     
     
    
@@ -137,9 +140,13 @@ class Principal(QMainWindow):
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.nuevocalculo.show()
     
+    def editarcalculo(self):
+
+        self.editarcalculo.show()
+    
     def EliminarCalculo(self):
         rows=self.table_Calculos.selectionModel().selectedRows()
-        print(rows)
+        
         if len(rows)==0:
             mBox= QMessageBox()
             mBox.setText("Debe seleccionar una Fila de la Tabla para eliminar")
@@ -155,6 +162,43 @@ class Principal(QMainWindow):
                 self.table_Calculos.removeRow(i)
                 self.tla= TLAData()
                 self.tla.eliminar_datos_tla(id)
+    
+    def EditarCalculo(self):
+        rows=self.table_Calculos.selectionModel().selectedRows()
+        
+        if len(rows)==0:
+            mBox= QMessageBox()
+            mBox.setText("Debe seleccionar una Fila de la Tabla para editar")
+            mBox.exec()
+        else:
+            self.editarcalculo.show()
+            index=[]
+            for i in rows:
+                index.append(i.row())
+            index.sort(reverse=True)
+            for i in index:
+                id= self.table_Calculos.item(i,0).text()
+                self.tla= TLAData()
+                self.idx=self.tla.buscar_datos_tla_DI(id)
+            
+            self.mostrarDatosEditar()
+
+
+    def mostrarDatosEditar(self):
+        datos= self.idx
+        a=[]
+        for x in datos:
+            a.append([str(i) for i in x])
+        
+        self.editarcalculo.lineEdit_Ubicacion.setText(a[0][1])
+        self.editarcalculo.lineEdit_densidadArena.setText(a[0][2])
+        self.editarcalculo.lineEdit_DensidadMar.setText(a[0][3])
+        self.editarcalculo.lineEdit_CoeficientePorocidad.setText(a[0][4])
+        self.editarcalculo.lineEdit_altura.setText(a[0][5])
+        self.editarcalculo.lineEdit_AnguloRompiente.setText(a[0][6])
+        self.editarcalculo.lineEdit_IndiceRompiente.setText(a[0][7])
+
+
        
         
 
@@ -413,3 +457,6 @@ class Principal(QMainWindow):
     def boton_Cancelar_NuevoCalculo(self):
         self.nuevocalculo.hide()
         self.limpiarCamposNuevoCalculo()
+    
+    ################ Editar Calculo ###########
+

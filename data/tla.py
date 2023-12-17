@@ -33,11 +33,21 @@ class TLAData():
     #def buscar_datos_tla(self,fecha):
         #self.cursor=self.db.cursor()
         
-        # buscar=""" SELECT * FROM tabla_datos WHERE Fecha={} """ .format(fecha)
+        #buscar=""" SELECT * FROM calculo WHERE Fecha={} """ .format(fecha)
         #cursor.execute(buscar)
         #fechaX= cursor.fetchall()
-        #self.cursor().close()
+        #self.cursor.close()
         #return fechaX
+    
+    def buscar_datos_tla_DI(self,id):
+        self.cursor=self.db.cursor()
+        
+        buscar=""" SELECT * FROM calculo WHERE ID={} """ .format(id)
+        self.cursor.execute(buscar)
+        iDX= self.cursor.fetchall()
+        self.cursor.close()
+        self.db.close()
+        return iDX
     
     def eliminar_datos_tla(self,id):
         self.cursor=self.db.cursor()
@@ -47,13 +57,13 @@ class TLAData():
         self.cursor.close()
         self.db.close()
     
-    #def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result):
-        #self.cursor=self.conexdbion.cursor()
-        #actualizar= """ UPDATE  tabla_datos VALUES(null,Ubicacion='{}',Densidad_mar ='{}',Densidad_arena='{}',Coeficiente_porocidad ='{}', Altura='{}',Angulo_rompiente='{}',Indice_rompiente ='{}',Fecha='{}',Resultado='{}')   """    .format (id_tla,ubicacion,dm,da,cp,hb,a,ir,fecha,result)
-        #self.cursor().execute(actualizar)
-        #a= self.cursor().rowcount
-        #self.conexion.commit()
-        #self.cursor().close()
-        #return a
+    def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,a,ir,result):
+        self.cursor=self.db.cursor()
+        actualizar= """ UPDATE  calculo VALUES(null,Ubicacion='{}',Densidad_mar ='{}',Densidad_arena='{}',Coeficiente_porocidad ='{}', Altura='{}',Angulo_rompiente='{}',Indice_rompiente ='{}',Resultado='{}')   """    .format (id_tla,ubicacion,dm,da,cp,hb,a,ir,result)
+        self.cursor().execute(actualizar)
+        a= self.cursor().rowcount
+        self.db.commit()
+        self.cursor.close()
+        return a
     
 
