@@ -100,7 +100,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad de Arena (ρ)</string>
+        <string>Densidad de Arena (ρ) *</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_densidadArena">
@@ -140,7 +140,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad del Mar (ρs)</string>
+        <string>Densidad del Mar (ρs) *</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_DensidadMar">
@@ -164,7 +164,7 @@ color: rgb(255, 255, 255);</string>
         <rect>
          <x>0</x>
          <y>270</y>
-         <width>211</width>
+         <width>221</width>
          <height>41</height>
         </rect>
        </property>
@@ -177,7 +177,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Coeficiente de Porocidad (n)</string>
+        <string>Coeficiente de Porocidad (n)*</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_CoeficientePorocidad">
@@ -214,7 +214,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Altura (Hb)</string>
+        <string>Altura (Hb)*</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_altura">
@@ -236,7 +236,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_AnguloR">
        <property name="geometry">
         <rect>
-         <x>340</x>
+         <x>330</x>
          <y>150</y>
          <width>191</width>
          <height>41</height>
@@ -251,7 +251,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Ángulo de Rompiente (α)</string>
+        <string>Ángulo de Rompiente (α)*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_IndiceR">
@@ -272,7 +272,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Índice de Rompiente(k)</string>
+        <string>Índice de Rompiente(k)*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_Ubicacion">
@@ -293,7 +293,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Ubicación</string>
+        <string>Ubicación *</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
@@ -410,6 +410,46 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
         <string>Cancelar</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_Error">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>390</y>
+         <width>641</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 1, 5);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Label Error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>110</y>
+         <width>261</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>8</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 1, 5);</string>
+       </property>
+       <property name="text">
+        <string>Los campos con (*)  son obligatorios</string>
        </property>
       </widget>
      </widget>
