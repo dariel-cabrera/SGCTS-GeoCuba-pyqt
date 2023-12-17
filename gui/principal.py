@@ -141,6 +141,7 @@ class Principal(QMainWindow):
     def editarcalculoGUI(self):
         self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
         self.editarcalculo.but_ActualizarEditar.clicked.connect(self.entrarEditarCalculo)
+        self.editarcalculo.but_NuevoEditar.clicked.connect(self.entrarNuevoEditarCalculo)
         self.editarcalculo.show()
     
     def EliminarCalculo(self):
@@ -260,18 +261,22 @@ class Principal(QMainWindow):
            
 
             resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
-            
-            self.tla= TLAData()
-            mBox= QMessageBox()
-            if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
-                mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
-                self.mostrar_datos_tablaCalculos()
-                self.nuevocalculo.hide()
-                self.limpiarCamposNuevoCalculo()
-                
+            if resultado== False:
+                mBox= QMessageBox()
+                mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
+                mBox.exec()
             else:
-                mBox.setText("Los Datos NO se Guardaron")
-            mBox.exec()
+                self.tla= TLAData()
+                mBox= QMessageBox()
+                if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
+                    mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
+                    self.mostrar_datos_tablaCalculos()
+                    self.nuevocalculo.hide()
+                    self.limpiarCamposNuevoCalculo()
+                    
+                else:
+                    mBox.setText("Los Datos NO se Guardaron")
+                mBox.exec()
     
 
     def limpiarCamposNuevoCalculo(self):
@@ -377,14 +382,7 @@ class Principal(QMainWindow):
             indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
             ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
             
-            print(DensidadMar)
-            print(DensidadArena)
-            print(CoeficienteP)
-            print(altura)
-            print(angulo)
-            print(indice)
-            print(ubicacion)
-        
+           
             resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
             
             if resultado== False:
@@ -394,7 +392,7 @@ class Principal(QMainWindow):
             else:
                 self.tla= TLAData()
                 actualizar=self.tla.actualizar_datos_tla(self.idEditar,ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
-                
+
                 if actualizar==1:
                     mBox= QMessageBox()
                     mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
@@ -405,6 +403,45 @@ class Principal(QMainWindow):
                     mBox= QMessageBox()
                     mBox.setText("Los Datos NO se Guardaron")
                     mBox.exec()
+    
+    def entrarNuevoEditarCalculo(self):
+        validando= self.validandocamposEditarCalculo()
+        
+        if validando==False:
+            mBox= QMessageBox()
+            mBox.setText("Datos Incorrectos Verfíquelos ")
+            mBox.exec()
+        else:
+            DensidadArena= float(self.editarcalculo.lineEdit_densidadArena.text())
+            DensidadMar=  float(self.editarcalculo.lineEdit_DensidadMar.text())
+            CoeficienteP=float(self.editarcalculo.lineEdit_CoeficientePorocidad.text())
+            altura=float(self.editarcalculo.lineEdit_altura.text())
+            angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
+            indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
+            ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
+            
+           
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
+            
+            if resultado== False:
+                mBox= QMessageBox()
+                mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
+                mBox.exec()
+            else:
+                self.tla= TLAData()
+                actualizar=self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
+
+                if actualizar==1:
+                    mBox= QMessageBox()
+                    mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
+                    self.mostrar_datos_tablaCalculos()
+                    self.editarcalculo.close()
+                    mBox.exec()
+                else:
+                    mBox= QMessageBox()
+                    mBox.setText("Los Datos NO se Guardaron")
+                    mBox.exec()
+    
     
 
     
