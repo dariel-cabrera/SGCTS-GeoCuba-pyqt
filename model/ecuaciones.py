@@ -8,19 +8,11 @@ def transporte_logitudinal_arena(p,k,ps,n,hb,a,g=9.8,K=0.77):
     # hb altura 0.29
     # a- angulo de Rompiente 20
     # K- Constante de Komar e Inman 0.77
-    print("p=",p)
-    print("k= ",k)
-    print("ps=",ps)
-    print("n=",n)
-    print("hb=",hb)
-    print("a",a)
-    print("g",g) 
-    print("K",K)
+   
 
     N=(p * math.sqrt(g))
     D=(16 * math.sqrt(k) )* (ps-p)*(1-n)
-    print(N)
-    print(D)
+   
     
     if D==0:
         return False

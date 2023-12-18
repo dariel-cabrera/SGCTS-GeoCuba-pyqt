@@ -671,7 +671,12 @@ border-image: url(:/xy/WhitehavenBeach.jpg);</string>
                      </column>
                      <column>
                       <property name="text">
-                       <string>Apellidos</string>
+                       <string>Primer Apelllido</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>Segundo Apellido</string>
                       </property>
                      </column>
                      <column>
@@ -686,7 +691,7 @@ border-image: url(:/xy/WhitehavenBeach.jpg);</string>
                      </column>
                      <column>
                       <property name="text">
-                       <string/>
+                       <string>Sexo</string>
                       </property>
                      </column>
                      <column>

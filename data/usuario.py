@@ -20,7 +20,6 @@ class UsuarioData():
         TIPOTRABAJADOR TEXT,
         SEXO TEXT,
         ) """
-        cur= self.conexion.cursor()
         cur.execute(sql_create_table1)
         cur.close()
         self.db.close()
@@ -64,6 +63,16 @@ class UsuarioData():
            return usuario
         else:
             return None 
+    
+
+
+    def mostrarUsuario(self):
+        self.cursor=self.db.cursor()
+        mostrar="SELECT * FROM usuarios"
+        self.cursor.execute(mostrar)
+        registro=self.cursor.fetchall()
+        self.cursor.close()
+        return registro 
     
  
             
