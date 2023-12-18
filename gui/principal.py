@@ -178,8 +178,7 @@ class Principal(QMainWindow):
             index.sort(reverse=True)
             for i in index:
                 id= self.table_Calculos.item(i,0).text()
-                self.tla= TLAData()
-                self.idx=self.tla.buscar_datos_tla_DI(id)
+                self.idx=self.usuarioData.buscarusuarioID(id)
             
             self.editarcalculo.mostrarDatosEditar(self.idx)
             self.mostrar_datos_tablaCalculos()
@@ -198,7 +197,7 @@ class Principal(QMainWindow):
         actualizar.clicked.connect(self.mostrar_datos_tablaCalculos)
         nuevo=self.editarcalculo.boton_nuevo()
         nuevo.clicked.connect(self.mostrar_datos_tablaCalculos)
-##################### Usuarios ##############################
+##################### PAGINA USUARIOS ##############################
     def nuevoUsuario(self):
         self.nuevousuario= NuevoUsuario()
     

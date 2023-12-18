@@ -1,5 +1,5 @@
 from model.usuario import Usuario
-from  model.conexion import Conexion
+from model.conexion import Conexion
 
 
 class UsuarioData():
@@ -70,7 +70,6 @@ class UsuarioData():
         self.cursor.execute(mostrar)
         registro=self.cursor.fetchall()
         self.cursor.close()
-        self.db.close()
         return registro 
     
     def eliminarUsuario(self,id):
@@ -86,7 +85,6 @@ class UsuarioData():
         buscar=""" SELECT * FROM usuarios WHERE ID={} """ .format(id)
         self.cursor.execute(buscar)
         iDX= self.cursor.fetchall()
-        self.db.commit()
         self.cursor.close()
         self.db.close()
         return iDX

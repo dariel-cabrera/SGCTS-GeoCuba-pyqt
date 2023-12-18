@@ -16,6 +16,7 @@ class NuevoUsuario():
     def iniGUI(self):
         self.nuevousuario.label_Error.setText("")
         self.nuevousuario.but_CrearrNuevoUsuario.clicked.connect(self.EntrarNuevoUsuario)
+        self.nuevousuario.butCancelarNuevoUsuario.clicked.connect(self.bt_Cancelar)
         self.nuevousuario.show()
     
 
@@ -122,8 +123,27 @@ class NuevoUsuario():
                 mBox= QMessageBox()
                 mBox.setText("Datos Guardados con Èxitos")
                 mBox.exec()
+                self.limpiarlosCamposNuevoUsuario()
                 self.nuevousuario.close()
             else:
                 mBox= QMessageBox()
                 mBox.setText("No se  Guardaron ")
                 mBox.exec()
+    
+    def limpiarlosCamposNuevoUsuario(self):
+        nombre=self.nuevousuario.lineEdit_Nombre.clear()
+        primerapellido=self.nuevousuario.lineEdit_PrimerApellido.clear()
+        segundoapellido=self.nuevousuario.lineEdit_SegundoApellido.clear()
+        CI=self.nuevousuario.lineEdit_CI.clear()
+        sexo=self.nuevousuario.comboBox.currentText()
+        tipo=self.nuevousuario.lineEdit_TipoTrabajador.clear()
+        correo=self.nuevousuario.lineEdit_Correo.clear()
+        usuario=self.nuevousuario.lineEdit_NombreUsuario.clear()
+        contrasena=self.nuevousuario.lineEdit_Contrasena.clear()
+
+    def bt_Cancelar(self):
+        self.limpiarlosCamposNuevoUsuario()
+        self.nuevousuario.close()
+    
+    def buton_GuardarUsuario(self):
+        return self.nuevousuario.but_CrearrNuevoUsuario

@@ -391,7 +391,7 @@ color: rgb(255, 255, 255);</string>
         <string>Crear</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="butCancelarNuevoCalculo">
+      <widget class="QPushButton" name="butCancelarNuevoUsuario">
        <property name="geometry">
         <rect>
          <x>530</x>
