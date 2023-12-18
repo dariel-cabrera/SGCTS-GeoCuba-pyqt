@@ -81,5 +81,15 @@ class UsuarioData():
         self.db.commit()
         self.cursor.close()
         self.db.close()
+    
+    def buscarusuarioID (self,id):
+        self.cursor=self.db.cursor()
+        
+        buscar=""" SELECT * FROM usuarios WHERE ID={} """ .format(id)
+        self.cursor.execute(buscar)
+        iDX= self.cursor.fetchall()
+        self.cursor.close()
+        self.db.close()
+        return iDX
  
             

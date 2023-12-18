@@ -13,6 +13,9 @@ import re
 from model.validarcampos import ValidarCampos
 from .nuevousuario import NuevoUsuario
 from data.usuario import UsuarioData
+from .editarusuario import EditarUsuario
+
+
 class Principal(QMainWindow):
     def __init__(self):
         #Iniciando
@@ -66,6 +69,7 @@ class Principal(QMainWindow):
         self.usuarioData=UsuarioData()
         self.mostrar_datos_tablaUsuarios()
         self.buttonEliminarUsuario.clicked.connect(self.EliminarUsuario)
+        self.buttonEditarUsuario.clicked.connect(self.botonEditarUsuario)
        
         
     def control_bt_minimizar(self):
@@ -499,6 +503,28 @@ class Principal(QMainWindow):
                 id= self.tableUsuarios.item(i,0).text()
                 self.tableUsuarios.removeRow(i)
                 self.usuarioData.eliminarUsuario(id)
+    
+    def EditarUsuario(self):
+        self.editarusuario= EditarUsuario()
+    
+    def botonEditarUsuario(self):
+        rows=self.tableUsuarios.selectionModel().selectedRows()
+        
+        if len(rows)==0:
+            mBox= QMessageBox()
+            mBox.setText("Debe seleccionar una Fila de la Tabla para editar")
+            mBox.exec()
+        else:
+            self.EditarUsuario()
+            index=[]
+            for i in rows:
+                index.append(i.row())
+            index.sort(reverse=True)
+            for i in index:
+                id= self.tableUsuarios.item(i,0).text()
+                self.idx=self.usuarioData.buscarusuarioID (id)
+            
+            self.editarusuario.mostrarDatos(self.idx)
    
 
 
