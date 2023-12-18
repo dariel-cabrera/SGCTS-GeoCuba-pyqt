@@ -1,4 +1,3 @@
-from model.conexion import Conexion
 
 class Usuario():
     def __init__(self,nombre="",usuario="",clave="",primerApellido="",segundoApellido="",ci="",correo="",tipotrabajador="",sexo=""):

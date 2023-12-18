@@ -15,7 +15,7 @@ class UsuarioData():
         CLAVE TEXT,
         PRIMERAPELLIDO TEXT,
         SEGUNDOAPELLIDO TEXT,
-        CI INTEGER,
+        CI TEXT,
         CORREO TEXT,
         TIPOTRABAJADOR TEXT,
         SEXO TEXT,
@@ -40,12 +40,16 @@ class UsuarioData():
     def crearUsuario(self,usuario:Usuario):
         
         try:
-            sql_insert= """INSERT INTO usuarios(NOMBRE,USUARIO,CLAVE,PRIMERAPELLIDO,SEGUNDOAPELLIDO,CI,CORREO,TIPOTRABAJADOR,SEXO) VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}') """.format(usuario._nombre,usuario._usuario,usuario._clave,usuario._primerApellido,usuario._segundoApellido,usuario._ci,usuario._correo,usuario._tipotrabajador,usuario._sexo,)
+            sql_insert= """INSERT INTO usuarios(NOMBRE,USUARIO,CLAVE,PRIMERAPELLIDO,SEGUNDOAPELLIDO,CI,CORREO,TIPOTRABAJADOR,SEXO) VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}') """.format(usuario._nombre,usuario._usuario,usuario._clave,usuario._primerApellido,usuario._segundoApellido,usuario._ci,usuario._correo,usuario._tipotrabajador,usuario._sexo)
             cur= self.db.cursor()
             cur.execute(sql_insert)
             self.db.commit()
         except Exception as ex:
             print ("Ya se Creo el usuario",ex)
+        if cur.rowcount == 1:
+            return True 
+        else:
+            return  False
         cur.close()
         self.db.close()
 

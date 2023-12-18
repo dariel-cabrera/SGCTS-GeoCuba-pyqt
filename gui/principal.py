@@ -455,18 +455,15 @@ class Principal(QMainWindow):
                     mBox.exec()
     
 ##################### Usuarios ##############################
-    usu=Usuario('Dariel','dariel.cabrera','darielcabrera','Cabrera','López',2011460106,'darielcabreralopez@gmail.com','informatico','masculino')
-    usuData= UsuarioData()
-    usuData.crearUsuario(usu)
-    
     def nuevoUsuario(self):
         self.nuevousuario.label_Error.setText("")
-        self.nuevousuario.but_CrearrNuevoUsuario.clicked.connect(self.validandonuevousuario)
+        self.nuevousuario.but_CrearrNuevoUsuario.clicked.connect(self.EntrarNuevoUsuario)
         self.nuevousuario.show()
     
     def validandonuevousuario(self):
         validando=False
         self.validarcampo=ValidarCampos()
+
         nombre=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_Nombre.text())
         primerapellido=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_PrimerApellido.text())
         segundoapellido=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_SegundoApellido.text())
@@ -475,7 +472,7 @@ class Principal(QMainWindow):
         tipo=self.validarcampo.validarCamposNombre(self.nuevousuario.lineEdit_TipoTrabajador.text())
         correo=self.validarcampo.validarEmail(self.nuevousuario.lineEdit_Correo.text())
         usuario=self.nuevousuario.lineEdit_NombreUsuario.text()
-        contraseña=self.nuevousuario.lineEdit_Contrasena.text()
+        contrasena=self.nuevousuario.lineEdit_Contrasena.text()
         confirmarContrasena=self.nuevousuario.lineEdit_ConfirmarConstrasena.text()
 
         if nombre== False:
@@ -524,20 +521,58 @@ class Principal(QMainWindow):
             self.nuevousuario.lineEdit_NombreUsuario.setText("")
             self.nuevousuario.label_Error.setText("En el usuario no puede entrar campos vacios")
             
-        elif contraseña=="" and confirmarContrasena=="":
+        elif contrasena=="" and confirmarContrasena=="":
             self.nuevousuario.lineEdit_Contrasena.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_ConfirmarConstrasena.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_Contrasena.setFocus()
             self.nuevousuario.label_Error.setText("Debe introduccir una contraseña y confirmarla")
         
-        elif not contraseña== confirmarContrasena:
+        elif not contrasena== confirmarContrasena:
             self.nuevousuario.lineEdit_Contrasena.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_ConfirmarConstrasena.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_Contrasena.setFocus()
             self.nuevousuario.lineEdit_Contrasena.setText("")
             self.nuevousuario.label_Error.setText("La Contraseñas no Coinciden")
         else:
-            print("correcto")
+            validando=True
+        return validando
+    
+    def EntrarNuevoUsuario(self):
+        validando=self.validandonuevousuario()
+        if validando==False:
+            mBox= QMessageBox()
+            mBox.setText("Datos Incorrectos Verfíquelos ")
+            mBox.exec()
+        else:
+            nombre=self.nuevousuario.lineEdit_Nombre.text()
+            primerapellido=self.nuevousuario.lineEdit_PrimerApellido.text()
+            segundoapellido=self.nuevousuario.lineEdit_SegundoApellido.text()
+            CI=self.nuevousuario.lineEdit_CI.text()
+            sexo=self.nuevousuario.comboBox.currentText()
+            tipo=self.nuevousuario.lineEdit_TipoTrabajador.text()
+            correo=self.nuevousuario.lineEdit_Correo.text()
+            usuario=self.nuevousuario.lineEdit_NombreUsuario.text()
+            contrasena=self.nuevousuario.lineEdit_Contrasena.text()
+
+            self.usu=Usuario(nombre,usuario,contrasena,primerapellido,segundoapellido,CI,correo,tipo,sexo)
+            usuData=UsuarioData()
+            print(self.usu)
+            confirmar=usuData.crearUsuario(self.usu)
+            print(confirmar)
+            if confirmar==True:
+                mBox= QMessageBox()
+                mBox.setText("Datos Guardados con Èxitos")
+                mBox.exec()
+            else:
+                mBox= QMessageBox()
+                mBox.setText("No se  Guardaron ")
+                mBox.exec()
+
+
+
+
+
+
             
         
 
