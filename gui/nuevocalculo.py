@@ -6,7 +6,7 @@ from PyQt6 import QtWidgets, QtGui
 from data.tla import TLAData
 from PyQt6 import QtCore,QtWidgets
 from model.validarcampos import ValidarCampos
-from model.ecuaciones import transporte_logitudinal_arena 
+
 
 class NuevoCalculo():
     def __init__(self):
@@ -19,6 +19,7 @@ class NuevoCalculo():
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.nuevocalculo.show()
     
+
     def limpiarCamposNuevoCalculo(self):
         self.nuevocalculo.lineEdit_DensidadMar.setText("")
         self.nuevocalculo.lineEdit_densidadArena.setText("")
@@ -115,8 +116,7 @@ class NuevoCalculo():
                 if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
                     mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
                     self.nuevocalculo.hide()
-                    self.limpiarCamposNuevoCalculo()
-                    
+                    self.limpiarCamposNuevoCalculo()         
                 else:
                     mBox.setText("Los Datos NO se Guardaron")
                 mBox.exec()
@@ -124,5 +124,8 @@ class NuevoCalculo():
     def boton_Cancelar_NuevoCalculo(self):
         self.nuevocalculo.close()
         self.limpiarCamposNuevoCalculo()
+    
+    def boton_guardar(self):
+        return self.nuevocalculo.but_GuardarNuevoCalculo
     
     

@@ -12,6 +12,7 @@ from model.ecuaciones import transporte_logitudinal_arena
 import re
 from model.validarcampos import ValidarCampos
 from .nuevocalculo import NuevoCalculo
+from .editarcalculo import EditarCalculo
 from .nuevousuario import NuevoUsuario
 from data.usuario import UsuarioData
 from .editarusuario import EditarUsuario
@@ -59,13 +60,12 @@ class Principal(QMainWindow):
 
  ######################  Principal ###########################   
     def iniGUI(self):
-       
+        self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
         #####  Pagina Calculo ############
         self.button_NuevoCalculo.clicked.connect(self.nuevocalculo)
-        self.mostrar_datos_tablaCalculos()
         self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
         self.button_EditarCalculo.clicked.connect(self.EditarCalculo)
-        self.editarcalculo= uic.loadUi("gui/EditarCalculo.ui")
+        
        
        ##### PAGINA USUARIO #############
         self.buttonNuevoUsuario.clicked.connect(self.nuevoUsuario)
@@ -120,7 +120,7 @@ class Principal(QMainWindow):
             #self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animacion.start()
     
-    
+########################## PAGINA CALCULO #########################
     def mostrar_datos_tablaCalculos(self):
         self.mostrar= TLAData()
         datos=self.mostrar.mostrar_datos_tla()
@@ -144,13 +144,6 @@ class Principal(QMainWindow):
             self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[8]))
             tablerow += 1 
     
-    def editarcalculoGUI(self):
-        self.editarcalculo.label_Error.setText("")
-        self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
-        self.editarcalculo.but_ActualizarEditar.clicked.connect(self.entrarEditarCalculo)
-        self.editarcalculo.but_NuevoEditar.clicked.connect(self.entrarNuevoEditarCalculo)
-        self.editarcalculo.show()
-    
     def EliminarCalculo(self):
         rows=self.table_Calculos.selectionModel().selectedRows()
         
@@ -169,7 +162,7 @@ class Principal(QMainWindow):
                 self.table_Calculos.removeRow(i)
                 self.tla= TLAData()
                 self.tla.eliminar_datos_tla(id)
-    
+        
     def EditarCalculo(self):
         rows=self.table_Calculos.selectionModel().selectedRows()
         
@@ -188,170 +181,23 @@ class Principal(QMainWindow):
                 self.tla= TLAData()
                 self.idx=self.tla.buscar_datos_tla_DI(id)
             
-            self.mostrarDatosEditar()
-            
-
-########################## Nuevo Calculo #########################
+            self.editarcalculo.mostrarDatosEditar(self.idx)
+            self.mostrar_datos_tablaCalculos()
+    
+    ################# Nuevo  Calculo ##########        
     def nuevocalculo(self):
         #Llamando a la ventana NuevoCalculo
         self.nuevocalculo=NuevoCalculo()
+        guardar=self.nuevocalculo.boton_guardar()
+        guardar.clicked.connect(self.mostrar_datos_tablaCalculos)
 
-################## Editar Calculo ###########
-    def mostrarDatosEditar(self):
-        datos= self.idx
-        a=[]
-        for x in datos:
-            a.append([str(i) for i in x])
-        self.idEditar= a[0][0]
-        self.editarcalculo.lineEdit_Ubicacion.setText(a[0][1])
-        self.editarcalculo.lineEdit_densidadArena.setText(a[0][3])
-        self.editarcalculo.lineEdit_DensidadMar.setText(a[0][2])
-        self.editarcalculo.lineEdit_CoeficientePorocidad.setText(a[0][4])
-        self.editarcalculo.lineEdit_altura.setText(a[0][5])
-        self.editarcalculo.lineEdit_AnguloRompiente.setText(a[0][6])
-        self.editarcalculo.lineEdit_IndiceRompiente.setText(a[0][7])
-    
-    def limpiarCamposEditarCalculo(self):
-        self.editarcalculo.lineEdit_DensidadMar.setText("")
-        self.editarcalculo.lineEdit_densidadArena.setText("")
-        self.editarcalculo.lineEdit_DensidadMar.setText("")
-        self.editarcalculo.lineEdit_CoeficientePorocidad.setText("")
-        self.editarcalculo.lineEdit_altura.setText("")
-        self.editarcalculo.lineEdit_AnguloRompiente.setText("")
-        self.editarcalculo.lineEdit_IndiceRompiente.setText("")
-        self.editarcalculo.lineEdit_Ubicacion.setText("")
-    
-    def boton_Cancelar_EditarCalculo(self):
-        self.editarcalculo.hide()
-        self.limpiarCamposEditarCalculo()
-   
-    def validandocamposEditarCalculo(self):
-        validando= False
-        self.validarcampo=ValidarCampos()
-
-        DensidadArena=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_densidadArena.text())
-        DensidadMar=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_DensidadMar.text())
-        CoeficienteP=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_CoeficientePorocidad.text())
-        altura=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_altura.text())
-        angulo=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_AnguloRompiente.text())
-        indice=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_IndiceRompiente.text())
-        ubicacion=self.validarcampo.validarCamposNombre(self.editarcalculo.lineEdit_Ubicacion.text())
-        
-        if DensidadArena==False:
-            self.editarcalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_densidadArena.setFocus()
-            self.editarcalculo.lineEdit_densidadArena.setText("0")
-            self.editarcalculo.label_Error.setText("En la Densidad de Arena sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif DensidadMar ==False:
-            self.editarcalculo.lineEdit_DensidadMar.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_DensidadMar.setFocus()
-            self.editarcalculo.lineEdit_DensidadMar.setText("0")
-            self.editarcalculo.label_Error.setText("En la Densidad del Mar sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif CoeficienteP ==False:
-            self.editarcalculo.lineEdit_CoeficientePorocidad.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_CoeficientePorocidad.setFocus()
-            self.editarcalculo.lineEdit_CoeficientePorocidad.setText("0")
-            self.editarcalculo.label_Error.setText("En el Coeficiente sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif altura ==False:
-            self.editarcalculo.lineEdit_altura.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_altura.setFocus()
-            self.editarcalculo.lineEdit_altura.setText("0")
-            self.editarcalculo.label_Error.setText("En la Altura sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif angulo ==False:
-            self.editarcalculo.lineEdit_AnguloRompiente.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_AnguloRompiente.setFocus()
-            self.editarcalculo.lineEdit_AnguloRompiente.setText("0")
-            self.editarcalculo.label_Error.setText("En el Ángulo sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif indice ==False:
-            self.editarcalculo.lineEdit_IndiceRompiente.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_IndiceRompiente.setFocus()
-            self.editarcalculo.lineEdit_IndiceRompiente.setText("0")
-            self.editarcalculo.label_Error.setText("En el Índice sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif ubicacion ==False:
-            self.editarcalculo.lineEdit_Ubicacion.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_Ubicacion.setFocus()
-            self.editarcalculo.lineEdit_Ubicacion.setText("")
-            self.editarcalculo.label_Error.setText("En la Ubicación sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
-        else:
-            validando=True
-        return validando
-
-    def entrarEditarCalculo(self):
-        validando= self.validandocamposEditarCalculo()
-        
-        if validando==False:
-            mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verfíquelos ")
-            mBox.exec()
-        else:
-            DensidadArena= float(self.editarcalculo.lineEdit_densidadArena.text())
-            DensidadMar=  float(self.editarcalculo.lineEdit_DensidadMar.text())
-            CoeficienteP=float(self.editarcalculo.lineEdit_CoeficientePorocidad.text())
-            altura=float(self.editarcalculo.lineEdit_altura.text())
-            angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
-            indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
-            ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
-            
-           
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
-            
-            if resultado== False:
-                mBox= QMessageBox()
-                mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
-                mBox.exec()
-            else:
-                self.tla= TLAData()
-                actualizar=self.tla.actualizar_datos_tla(self.idEditar,ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
-
-                if actualizar==1:
-                    mBox= QMessageBox()
-                    mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
-                    self.mostrar_datos_tablaCalculos()
-                    self.editarcalculo.close()
-                    mBox.exec()
-                else:
-                    mBox= QMessageBox()
-                    mBox.setText("Los Datos NO se Guardaron")
-                    mBox.exec()
-    
-    def entrarNuevoEditarCalculo(self):
-        validando= self.validandocamposEditarCalculo()
-        
-        if validando==False:
-            mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verfíquelos ")
-            mBox.exec()
-        else:
-            DensidadArena= float(self.editarcalculo.lineEdit_densidadArena.text())
-            DensidadMar=  float(self.editarcalculo.lineEdit_DensidadMar.text())
-            CoeficienteP=float(self.editarcalculo.lineEdit_CoeficientePorocidad.text())
-            altura=float(self.editarcalculo.lineEdit_altura.text())
-            angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
-            indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
-            ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
-            
-           
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
-            
-            if resultado== False:
-                mBox= QMessageBox()
-                mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
-                mBox.exec()
-            else:
-                self.tla= TLAData()
-                actualizar=self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
-
-                if actualizar==1:
-                    mBox= QMessageBox()
-                    mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
-                    self.mostrar_datos_tablaCalculos()
-                    self.editarcalculo.close()
-                    mBox.exec()
-                else:
-                    mBox= QMessageBox()
-                    mBox.setText("Los Datos NO se Guardaron")
-                    mBox.exec()
-    
+    ################# Editar Calculo ##########
+    def editarcalculoGUI(self):
+        self.editarcalculo=EditarCalculo()
+        actualizar=self.editarcalculo.boton_actualizar()
+        actualizar.clicked.connect(self.mostrar_datos_tablaCalculos)
+        nuevo=self.editarcalculo.boton_nuevo()
+        nuevo.clicked.connect(self.mostrar_datos_tablaCalculos)
 ##################### Usuarios ##############################
     def nuevoUsuario(self):
         self.nuevousuario= NuevoUsuario()
