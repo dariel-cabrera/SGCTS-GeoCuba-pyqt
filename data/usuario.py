@@ -74,5 +74,12 @@ class UsuarioData():
         self.cursor.close()
         return registro 
     
+    def eliminarUsuario(self,id):
+        self.cursor=self.db.cursor()
+        eliminar=""" DELETE FROM usuarios WHERE ID={} """ .format(id)
+        self.cursor.execute(eliminar)
+        self.db.commit()
+        self.cursor.close()
+        self.db.close()
  
             

@@ -651,7 +651,7 @@ border-image: url(:/xy/WhitehavenBeach.jpg);</string>
                      </property>
                      <column>
                       <property name="text">
-                       <string>id</string>
+                       <string>ID</string>
                       </property>
                      </column>
                      <column>

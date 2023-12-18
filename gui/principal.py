@@ -65,6 +65,7 @@ class Principal(QMainWindow):
         self.buttonNuevoUsuario.clicked.connect(self.nuevoUsuario)
         self.usuarioData=UsuarioData()
         self.mostrar_datos_tablaUsuarios()
+        self.buttonEliminarUsuario.clicked.connect(self.EliminarUsuario)
        
         
     def control_bt_minimizar(self):
@@ -119,8 +120,7 @@ class Principal(QMainWindow):
         a=[]
         for x in datos:
             a.append([str(i) for i in x])
-        print(a)
-        
+       
         i=len(a)
         self.table_Calculos.setRowCount(i)
         tablerow=0
@@ -465,8 +465,7 @@ class Principal(QMainWindow):
         a=[]
         for x in datos:
             a.append([str(i) for i in x])
-        print(a)
-        
+       
         i=len(a)
         self.tableUsuarios.setRowCount(i)
         tablerow=0
@@ -483,6 +482,23 @@ class Principal(QMainWindow):
             self.tableUsuarios.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
     
+    def EliminarUsuario(self):
+        rows=self.tableUsuarios.selectionModel().selectedRows()
+        
+        if len(rows)==0:
+            mBox= QMessageBox()
+            mBox.setText("Debe seleccionar una Fila de la Tabla para eliminar")
+            mBox.exec()
+
+        else:
+            index=[]
+            for i in rows:
+                index.append(i.row())
+            index.sort(reverse=True)
+            for i in index:
+                id= self.tableUsuarios.item(i,0).text()
+                self.tableUsuarios.removeRow(i)
+                self.usuarioData.eliminarUsuario(id)
    
 
 
