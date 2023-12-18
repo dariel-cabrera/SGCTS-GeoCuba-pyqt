@@ -30,3 +30,27 @@ class ValidarCampos():
             return False
         else:
             return True
+    
+    def validarInt(self,campo):
+        validando=False
+        validarcampo=re.match('^[0-9]+$',campo,re.I)
+        if campo=="":
+           return validando
+        elif not  validarcampo:
+            return validando
+        elif float(campo)<=0:
+            return validando
+        else:
+            validando=True
+        return validando
+    
+    def validarEmail(self,campo):
+        validando=False
+        validarcampo=re.match(r"[^@]+@[^@]+\.[^@]+",campo,re.I)
+        if campo=="":
+            return validando
+        elif not validarcampo:
+            return validando
+        else:
+            validando=True
+        return validando
