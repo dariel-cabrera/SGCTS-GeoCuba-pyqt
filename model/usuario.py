@@ -7,8 +7,7 @@ class Usuario():
         self._primerApellido=primerApellido
         self._segundoApellido=segundoApellido
         self._ci=ci
-        self._correo=primerApellido
-        self._segundoApellido=segundoApellido
+        self._correo=correo
         self._tipotrabajador=tipotrabajador
         self._sexo=sexo
 

@@ -563,6 +563,7 @@ class Principal(QMainWindow):
                 mBox= QMessageBox()
                 mBox.setText("Datos Guardados con Èxitos")
                 mBox.exec()
+                self.nuevousuario.close()
             else:
                 mBox= QMessageBox()
                 mBox.setText("No se  Guardaron ")
