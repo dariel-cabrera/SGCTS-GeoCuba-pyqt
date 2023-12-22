@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>EditarCalculo</class>
+ <widget class="QMainWindow" name="EditarCalculo">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>675</width>
-    <height>549</height>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>MoreBeaches    Editar Cálculo</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>FormatFactoryAgregar un título.ico</normaloff>FormatFactoryAgregar un título.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 74, 116);</string>
@@ -22,32 +26,20 @@
      <widget class="QFrame" name="frame_NuevoCalculo">
       <property name="styleSheet">
        <string notr="true">QFrame{
-background-color: rgb(7, 168, 255);
+background-color: rgb(201, 230, 255);
 }
 QLabel{
 background-color: #000000ff;
 color::rgb(0, 74, 116);
 border:8px solid#000000ff;
 }
-QLineButton{
-border:0px;
-color:rgb(255, 255, 255);
-border-bottom:2px solid rgb(61,61,61);
-}
-QPushButton{
-background-color:rgb(0, 74, 116);
-border-radius:15px;
-color: rgb(255, 255, 255);
-}
+
+
 
 QLineEdit{
 background-color: rgb(255, 255, 255);
 }
-QPushButton:hover{
-background-color: rgb(0, 12, 255);
-border-radius:15px;
-color: rgb(0, 0, 0);
-}
+
 
 </string>
       </property>
@@ -299,7 +291,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>450</x>
          <y>0</y>
          <width>221</width>
          <height>51</height>
@@ -316,10 +308,10 @@ color: rgb(255, 255, 255);</string>
        <property name="styleSheet">
         <string notr="true">background-color: #000000ff;
 
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;SGCTS-GeoCuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;MoreBeaches&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_Ubicacion">
@@ -373,19 +365,33 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="but_NuevoEditar">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>450</y>
-         <width>111</width>
-         <height>41</height>
+         <x>460</x>
+         <y>460</y>
+         <width>91</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Verdana</family>
-         <pointsize>12</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color: rgb(0, 0, 0);
+	background-color: rgb(25, 255, 98);
+border-radius:8px;
+}
+
+QPushButton:hover{
+background-color: rgb(47, 255, 158);
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}</string>
        </property>
        <property name="text">
         <string>Nuevo</string>
@@ -394,19 +400,33 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="butCancelarEditar">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>450</y>
-         <width>111</width>
-         <height>41</height>
+         <x>560</x>
+         <y>460</y>
+         <width>91</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Verdana</family>
-         <pointsize>12</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+	background-color: rgb(221, 1, 5);
+border-radius:8px;
+}
+
+QPushButton:hover{
+background-color: rgb(255, 120, 129);
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}</string>
        </property>
        <property name="text">
         <string>Cancelar</string>
@@ -415,19 +435,33 @@ color: rgb(255, 255, 255);</string>
       <widget class="QPushButton" name="but_ActualizarEditar">
        <property name="geometry">
         <rect>
-         <x>280</x>
-         <y>450</y>
-         <width>111</width>
-         <height>41</height>
+         <x>360</x>
+         <y>460</y>
+         <width>91</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Verdana</family>
-         <pointsize>12</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: rgb(11, 15, 255);
+color: rgb(0, 0, 0);
+border-radius:8px;
+}
+
+QPushButton:hover{
+background-color: rgb(16, 132, 255);
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}</string>
        </property>
        <property name="text">
         <string>Actualizar</string>
@@ -471,6 +505,25 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
         <string>Los campos con (*)  son obligatorios</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>0</y>
+         <width>51</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>Agregar_un_título-removebg-preview.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>

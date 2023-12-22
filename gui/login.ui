@@ -7,14 +7,18 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>549</height>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>SGCTS-GeoCuba</string>
+   <string>MoreBeaches</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>FormatFactoryAgregar un título.ico</normaloff>FormatFactoryAgregar un título.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(7, 168, 255);</string>
+   <string notr="true">background-color: rgb(201, 230, 255);</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -37,8 +41,8 @@
    <widget class="QLabel" name="Label_text_logo">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>90</y>
+      <x>70</x>
+      <y>100</y>
       <width>191</width>
       <height>21</height>
      </rect>
@@ -49,7 +53,7 @@ gridline-color: rgb(255, 170, 0);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;SGCTS-GeoCuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;MoreBeaches&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_Autenticarse">
@@ -213,21 +217,43 @@ border-radius:8px;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>90</y>
+      <width>47</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>Agregar_un_título-removebg-preview.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>256</x>
-     <y>10</y>
+     <y>0</y>
      <width>411</width>
-     <height>531</height>
+     <height>551</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-image: url(:/nimg/p7261147-2.jpg);</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>p7261147-2.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

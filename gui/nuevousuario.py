@@ -6,11 +6,18 @@ from PyQt6 import QtCore,QtWidgets
 from model.usuario import Usuario
 from data.usuario import UsuarioData
 from model.validarcampos import ValidarCampos
+from model.traza import Traza
+from model.eventos import Evento 
+from data.Trazas import TrazaData
 
 class NuevoUsuario():
     def __init__(self):
         self. nuevousuario=uic.loadUi("gui/nuevoUsuario.ui")
         self.iniGUI()
+
+        #Trazas
+        self.eventos=Evento()
+        self.trazadata= TrazaData()
        
     
     def iniGUI(self):
@@ -18,6 +25,9 @@ class NuevoUsuario():
         self.nuevousuario.but_CrearrNuevoUsuario.clicked.connect(self.EntrarNuevoUsuario)
         self.nuevousuario.butCancelarNuevoUsuario.clicked.connect(self.bt_Cancelar)
         self.nuevousuario.show()
+    
+    def recibirUsuario(self,usuario):
+        self.nombreUsuario=usuario
     
 
     def validandonuevousuario(self):
@@ -103,6 +113,10 @@ class NuevoUsuario():
             mBox= QMessageBox()
             mBox.setText("Datos Incorrectos Verfíquelos ")
             mBox.exec()
+
+            datoErroneo=self.eventos.datoErroneousuario()
+            self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoErroneo)
+            self.trazadata.insertarTraza(self.trazas)
         else:
             nombre=self.nuevousuario.lineEdit_Nombre.text()
             primerapellido=self.nuevousuario.lineEdit_PrimerApellido.text()
@@ -121,13 +135,18 @@ class NuevoUsuario():
             print(confirmar)
             if confirmar==True:
                 mBox= QMessageBox()
-                mBox.setText("Datos Guardados con Èxitos")
+                mBox.setText("Datos Guardados con Éxitos")
                 mBox.exec()
                 self.limpiarlosCamposNuevoUsuario()
                 self.nuevousuario.close()
+
+                mostrar= self.eventos.CreoUsuario()
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= mostrar)
+                self.trazadata.insertarTraza(self.trazas)
+
             else:
                 mBox= QMessageBox()
-                mBox.setText("No se  Guardaron ")
+                mBox.setText("No se  Guardaron, El Nombre de Usuario o CI ya está Registrado ")
                 mBox.exec()
     
     def limpiarlosCamposNuevoUsuario(self):
@@ -144,6 +163,9 @@ class NuevoUsuario():
     def bt_Cancelar(self):
         self.limpiarlosCamposNuevoUsuario()
         self.nuevousuario.close()
+        mostrar= self.eventos.cancelarNuevoUsuario()
+        self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= mostrar)
+        self.trazadata.insertarTraza(self.trazas)
     
     def buton_GuardarUsuario(self):
         return self.nuevousuario.but_CrearrNuevoUsuario

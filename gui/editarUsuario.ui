@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>MoreBeaches  Editar Usuario</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>FormatFactoryAgregar un título.ico</normaloff>FormatFactoryAgregar un título.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 74, 116);</string>
@@ -22,7 +26,7 @@
      <widget class="QFrame" name="frame_NuevoCalculo">
       <property name="styleSheet">
        <string notr="true">QFrame{
-background-color: rgb(7, 168, 255);
+background-color: rgb(201, 230, 255);
 }
 QLabel{
 background-color: #000000ff;
@@ -262,7 +266,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>460</x>
          <y>0</y>
          <width>221</width>
          <height>51</height>
@@ -278,11 +282,10 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: #000000ff;
-
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;SGCTS-GeoCuba&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;MoreBeaches&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_NombreUsuario">
@@ -333,43 +336,71 @@ color: rgb(255, 255, 255);</string>
         <number>20</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="but_CrearrNuevoUsuario">
+      <widget class="QPushButton" name="but_actualizarUsuario">
        <property name="geometry">
         <rect>
-         <x>400</x>
-         <y>460</y>
-         <width>111</width>
-         <height>41</height>
+         <x>450</x>
+         <y>470</y>
+         <width>91</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Verdana</family>
-         <pointsize>12</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: rgb(11, 15, 255);
+color: rgb(0, 0, 0);
+border-radius:8px;
+}
+
+QPushButton:hover{
+background-color: rgb(16, 132, 255);
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}</string>
        </property>
        <property name="text">
         <string>Actualizar</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="butCancelarNuevoCalculo">
+      <widget class="QPushButton" name="butCancelarEditarUsuario">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>460</y>
-         <width>111</width>
-         <height>41</height>
+         <x>560</x>
+         <y>470</y>
+         <width>91</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Verdana</family>
-         <pointsize>12</pointsize>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+	background-color: rgb(221, 1, 5);
+border-radius:8px;
+}
+
+QPushButton:hover{
+background-color: rgb(255, 120, 129);
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}</string>
        </property>
        <property name="text">
         <string>Cancelar</string>
@@ -493,6 +524,25 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>0</y>
+         <width>51</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>Agregar_un_título-removebg-preview.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>

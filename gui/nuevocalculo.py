@@ -7,11 +7,19 @@ from data.tla import TLAData
 from PyQt6 import QtCore,QtWidgets
 from model.validarcampos import ValidarCampos
 
+from model.traza import Traza
+from model.eventos import Evento 
+from data.Trazas import TrazaData
+
 
 class NuevoCalculo():
     def __init__(self):
         self.nuevocalculo=uic.loadUi("gui/nuevoCalculo.ui")
         self.iniGUI()
+
+        #Trazas
+        self.eventos=Evento()
+        self.trazadata= TrazaData()
     
     def iniGUI(self):
         self.nuevocalculo.label_Error.setText("")
@@ -19,6 +27,9 @@ class NuevoCalculo():
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.nuevocalculo.show()
     
+    def recibirUsuario(self,usuario,id):
+        self.nombreUsuario=usuario
+        self.idUsuario=id
 
     def limpiarCamposNuevoCalculo(self):
         self.nuevocalculo.lineEdit_DensidadMar.setText("")
@@ -95,6 +106,10 @@ class NuevoCalculo():
             mBox.setText("Datos Incorrectos Verfíquelos ")
             mBox.exec()
 
+            datoError= self.eventos.datoErroneo()
+            self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
+            self.trazadata.insertarTraza(self.trazas)
+
         else:
             DensidadArena= float(self.nuevocalculo.lineEdit_densidadArena.text())
             DensidadMar=  float(self.nuevocalculo.lineEdit_DensidadMar.text())
@@ -110,13 +125,22 @@ class NuevoCalculo():
                 mBox= QMessageBox()
                 mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
                 mBox.exec()
+
+                datoError= self.eventos.divisionporCero()
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
+                self.trazadata.insertarTraza(self.trazas)
+
             else:
                 self.tla= TLAData()
                 mBox= QMessageBox()
-                if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado):
+                if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.idUsuario):
                     mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
                     self.nuevocalculo.hide()
-                    self.limpiarCamposNuevoCalculo()         
+                    self.limpiarCamposNuevoCalculo()  
+
+                    editarCalculo= self.eventos.crearNuevoCalculo()
+                    self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= editarCalculo)
+                    self.trazadata.insertarTraza(self.trazas)       
                 else:
                     mBox.setText("Los Datos NO se Guardaron")
                 mBox.exec()

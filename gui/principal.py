@@ -8,14 +8,15 @@ from PyQt6.uic import loadUi
 from PyQt6 import uic
 from PyQt6.QtWidgets import QMessageBox
 from data.tla import TLAData
-from model.ecuaciones import transporte_logitudinal_arena 
-import re
-from model.validarcampos import ValidarCampos
 from .nuevocalculo import NuevoCalculo
 from .editarcalculo import EditarCalculo
 from .nuevousuario import NuevoUsuario
 from data.usuario import UsuarioData
 from .editarusuario import EditarUsuario
+
+from model.traza import Traza
+from model.eventos import Evento 
+from data.Trazas import TrazaData
 
 
 class Principal(QMainWindow):
@@ -23,24 +24,26 @@ class Principal(QMainWindow):
         #Iniciando
         super(Principal,self).__init__()
         loadUi("gui/principal.ui",self)
+
         #Mostrando La Ventana a Maximizada
-        self.showMaximized()
+        self.show()
         #Llamando a la Funcion iniGUi()
         self.iniGUI()
+
         #Llamando a la funcion Mover Menu
         self.but_mover.clicked.connect(self.mover_menu)
+
+        #Trazas
+        self.eventos=Evento()
+        self.trazadata= TrazaData()
+
         #Conexion de Botones 
         self.button_Inicio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_inicio))
-        self.button_Usuarios.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_usuarios))
+        self.button_Usuarios.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_Usuario))
         self.button_Calculo.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_calculo))
         self.button_Trazas.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_trazas))
         self.button_Ajustes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_ajustes))
 
-        #Control de Barra de Titulo
-        self.button_MinimizarVentana.clicked.connect(self.control_bt_minimizar)
-        self.Button_Minimizar.clicked.connect(self.control_bt_normal)
-        self.Button_Maximizar.clicked.connect(self.control_bt_maximizar)
-        self.Button_Cerrar.clicked.connect(lambda: self.close())
 
         #Eliminar barra de titulos
         #self.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
@@ -58,6 +61,24 @@ class Principal(QMainWindow):
         #Mover ventana
         #self.frame_superior.mouseMoveEvent= self.mover_ventana
 
+    def recibirUsuario(self,usuario,id):
+        self.idUsuario=id
+        self.nombreUsuario= usuario
+    
+    def recibirInicio(self,inicio):
+        self.inicio= inicio
+    
+    def cerrarSesion(self):
+        cerrar= self.eventos.cerroSesion()
+        self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= cerrar)
+        self.trazadata.insertarTraza(self.trazas)
+
+        self.close()
+        self.inicio.show()
+
+        
+
+
  ######################  Principal ###########################   
     def iniGUI(self):
         self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
@@ -65,6 +86,7 @@ class Principal(QMainWindow):
         self.button_NuevoCalculo.clicked.connect(self.nuevocalculo)
         self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
         self.button_EditarCalculo.clicked.connect(self.EditarCalculo)
+        self.button_CerrarS.clicked.connect(self.cerrarSesion)
         
        
        ##### PAGINA USUARIO #############
@@ -73,21 +95,10 @@ class Principal(QMainWindow):
         self.mostrar_datos_tablaUsuarios()
         self.buttonEliminarUsuario.clicked.connect(self.EliminarUsuario)
         self.buttonEditarUsuario.clicked.connect(self.botonEditarUsuario)
-       
-        
-    def control_bt_minimizar(self):
-        self.showMinimized()
-    
-    
-    def control_bt_normal(self):
-        self.showNormal()
-        self.Button_Minimizar.hide()
-        self.Button_Maximizar.show()
-    
-    def control_bt_maximizar(self):
-        self.showMaximized()
-        self.Button_Maximizar.hide()
-        self.Button_Minimizar.show()
+
+        #### PAGINA TRAZAS #######
+        self.button_Trazas.clicked.connect(self.mostrar_datos_tablaTraza)
+        self.Button_EliminarTraza.clicked.connect(self.EliminarTraza)
 
     #def mover_ventana(self,event):
         #if self.isMaximized()==False:
@@ -119,6 +130,8 @@ class Principal(QMainWindow):
             self.animacion.setEndValue(extender)
             #self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animacion.start()
+        
+       
     
 ########################## PAGINA CALCULO #########################
     def mostrar_datos_tablaCalculos(self):
@@ -142,6 +155,7 @@ class Principal(QMainWindow):
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
             self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[8]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
     
     def EliminarCalculo(self):
@@ -162,6 +176,12 @@ class Principal(QMainWindow):
                 self.table_Calculos.removeRow(i)
                 self.tla= TLAData()
                 self.tla.eliminar_datos_tla(id)
+            
+            eliminado= self.eventos.eliminarCalculo()
+            self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= eliminado)
+            self.trazadata.insertarTraza(self.trazas)
+        
+
         
     def EditarCalculo(self):
         rows=self.table_Calculos.selectionModel().selectedRows()
@@ -178,15 +198,17 @@ class Principal(QMainWindow):
             index.sort(reverse=True)
             for i in index:
                 id= self.table_Calculos.item(i,0).text()
-                self.idx=self.usuarioData.buscarusuarioID(id)
+                self.idx=self.mostrar.buscar_datos_tla_DI(id)
             
+            print(self.idx)
             self.editarcalculo.mostrarDatosEditar(self.idx)
-            self.mostrar_datos_tablaCalculos()
+            
     
     ################# Nuevo  Calculo ##########        
     def nuevocalculo(self):
         #Llamando a la ventana NuevoCalculo
         self.nuevocalculo=NuevoCalculo()
+        self.nuevocalculo.recibirUsuario(self.nombreUsuario)
         guardar=self.nuevocalculo.boton_guardar()
         guardar.clicked.connect(self.mostrar_datos_tablaCalculos)
 
@@ -197,9 +219,13 @@ class Principal(QMainWindow):
         actualizar.clicked.connect(self.mostrar_datos_tablaCalculos)
         nuevo=self.editarcalculo.boton_nuevo()
         nuevo.clicked.connect(self.mostrar_datos_tablaCalculos)
+        self.editarcalculo.recibirUsuario(self.nombreUsuario)
 ##################### PAGINA USUARIOS ##############################
     def nuevoUsuario(self):
         self.nuevousuario= NuevoUsuario()
+        self.nuevousuario.recibirUsuario(self.nombreUsuario)
+        crear=self.nuevousuario.buton_GuardarUsuario()
+        crear.clicked.connect(self.mostrar_datos_tablaUsuarios)
     
     def mostrar_datos_tablaUsuarios(self):
         datos=self.usuarioData.mostrarUsuario()
@@ -240,9 +266,16 @@ class Principal(QMainWindow):
                 id= self.tableUsuarios.item(i,0).text()
                 self.tableUsuarios.removeRow(i)
                 self.usuarioData.eliminarUsuario(id)
+            
+            eliminado= self.eventos.eliminoUsuario()
+            self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= eliminado)
+            self.trazadata.insertarTraza(self.trazas) 
     
     def EditarUsuario(self):
         self.editarusuario= EditarUsuario()
+        self.editarusuario.recibirUsuario(self.nombreUsuario)
+        actualizar=self.editarusuario.bt_actualizar()
+        actualizar.clicked.connect(self.mostrar_datos_tablaUsuarios)
     
     def botonEditarUsuario(self):
         rows=self.tableUsuarios.selectionModel().selectedRows()
@@ -262,6 +295,46 @@ class Principal(QMainWindow):
                 self.idx=self.usuarioData.buscarusuarioID (id)
             
             self.editarusuario.mostrarDatos(self.idx)
+    
+    ############# TRAZAS ##################
+    def EliminarTraza(self):
+        rows=self.table_Trazas.selectionModel().selectedRows()
+        
+        if len(rows)==0:
+            mBox= QMessageBox()
+            mBox.setText("Debe seleccionar una Fila de la Tabla para eliminar")
+            mBox.exec()
+
+        else:
+            index=[]
+            for i in rows:
+                index.append(i.row())
+            index.sort(reverse=True)
+            for i in index:
+                id= self.table_Trazas.item(i,0).text()
+                self.table_Trazas.removeRow(i)
+                self.trazadata.eliminarTraza(id)
+    
+    def mostrar_datos_tablaTraza(self):
+        datos=self.trazadata.mostrarTraza()
+        a=[]
+        for x in datos:
+            a.append([str(i) for i in x])
+       
+        i=len(a)
+        self.table_Trazas.setRowCount(i)
+        tablerow=0
+    
+        for row in a:
+            self.table_Trazas.setItem(tablerow,0,QtWidgets.QTableWidgetItem(row[0]))
+            self.table_Trazas.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.table_Trazas.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.table_Trazas.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
+            
+            tablerow += 1 
+            
+            
+
    
 
 
