@@ -686,7 +686,7 @@ border-bottom-left-radius:12px;
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Contraseña Actual&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="lineEditContActual">
        <property name="geometry">
         <rect>
          <x>370</x>
@@ -697,6 +697,9 @@ border-bottom-left-radius:12px;
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_14">
@@ -715,7 +718,7 @@ border-bottom-left-radius:12px;
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Nueva Contraseña &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="lineEditContNueva">
        <property name="geometry">
         <rect>
          <x>370</x>
@@ -726,6 +729,9 @@ border-bottom-left-radius:12px;
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_15">
@@ -744,7 +750,7 @@ border-bottom-left-radius:12px;
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Confirmar Contraseña &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="lineEditConfContr">
        <property name="geometry">
         <rect>
          <x>370</x>
@@ -755,6 +761,9 @@ border-bottom-left-radius:12px;
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
        </property>
       </widget>
       <widget class="QPushButton" name="button_CerrarS">
@@ -842,11 +851,11 @@ border-bottom-left-radius:12px;
       <zorder>label_SApellido</zorder>
       <zorder>label_12</zorder>
       <zorder>label_13</zorder>
-      <zorder>lineEdit</zorder>
+      <zorder>lineEditContActual</zorder>
       <zorder>label_14</zorder>
-      <zorder>lineEdit_2</zorder>
+      <zorder>lineEditContNueva</zorder>
       <zorder>label_15</zorder>
-      <zorder>lineEdit_3</zorder>
+      <zorder>lineEditConfContr</zorder>
       <zorder>label_6</zorder>
       <zorder>button_CerrarS</zorder>
       <zorder>buttonCambiarContrasena</zorder>

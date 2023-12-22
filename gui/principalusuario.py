@@ -7,6 +7,7 @@ from PyQt6 import QtCore,QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 from data.tla import TLAData
 from data.usuario import UsuarioData
+from model.usuario import Usuario
 
 from model.traza import Traza
 from model.eventos import Evento 
@@ -41,6 +42,7 @@ class PrincipalUsuario(QMainWindow):
         self.button_EditarCalculo.clicked.connect(self.EditarCalculo)
         self.button_CerrarS.clicked.connect(self.cerrarSesion)
         self.button_Perfil.clicked.connect(self.MiPerfil)
+        self.buttonCambiarContrasena.clicked.connect(self.CambiarContrasena)
     
     def recibirUsuario(self,usuario,id):
         self.idUsuario=id
@@ -141,18 +143,63 @@ class PrincipalUsuario(QMainWindow):
         nuevo.clicked.connect(self.mostrar_datos_tablaCalculos)
         self.editarcalculo.recibirUsuario(self.nombreUsuario)
     
+    ################ MI PERFIL #############3
     def MiPerfil(self):
         self.label_MiPerfil.setText("")
         self.label_Nombre.setText("")
         self.label_PApellido.setText("")
         self.label_SApellido.setText("")
         
-        usuario=self.usuarioData.buscarusuarioID(self.idUsuario)
-        print(usuario)
-        self.label_Nombre.setText(usuario[0][1])
-        self.label_MiPerfil.setText(usuario[0][2])
-        self.label_PApellido.setText(usuario[0][4])
-        self.label_SApellido.setText(usuario[0][5])
+        self.usuario=self.usuarioData.buscarusuarioID(self.idUsuario)
+        self.label_Nombre.setText(self.usuario[0][1])
+        self.label_MiPerfil.setText(self.usuario[0][2])
+        self.label_PApellido.setText(self.usuario[0][4])
+        self.label_SApellido.setText(self.usuario[0][5])
+    
+    def CambiarContrasena(self):
+        if self.lineEditContActual.text() == "" :
+            mBox= QMessageBox()
+            mBox.setText("Debe llenar Los Campos Vacios")
+            mBox.exec()
+        elif self.lineEditContNueva.text()== "" :
+            mBox= QMessageBox()
+            mBox.setText("Debe llenar Los Campos Vacios")
+            mBox.exec()
+
+        elif self.lineEditConfContr.text()=="":
+            mBox= QMessageBox()
+            mBox.setText("Debe llenar Los Campos Vacios")
+            mBox.exec()
+
+        elif self.lineEditContActual.text() != self.usuario[0][3]:
+            mBox= QMessageBox()
+            mBox.setText("Contraseña  Actual es Incorrecta")
+            mBox.exec()
+        elif self.lineEditContNueva.text() != self.lineEditConfContr.text():
+            mBox= QMessageBox()
+            mBox.setText("La Contraseña Nueva No Coincide con la Confirmada")
+            mBox.exec()
+        else:
+            nombre=self.usuario[0][1]
+            usuario=self.usuario[0][2]
+            clave=self.lineEditContNueva.text()
+            PApellido=self.usuario[0][4]
+            SApellido=self.usuario[0][5]
+            CI=self.usuario[0][6]
+            correo=self.usuario[0][7]
+            tipo=self.usuario[0][8]
+            sexo=self.usuario[0][9]
+            usuario=Usuario(nombre,usuario,clave,PApellido,SApellido,CI,correo,tipo,sexo)
+            self.usuarioData.actualizarUsuario(usuario,self.idUsuario)
+
+            mBox= QMessageBox()
+            mBox.setText("La Contraseña Actualizada con Éxito")
+            mBox.exec()
+
+            eliminado= self.eventos.CambioContrasena()
+            self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= eliminado)
+            self.trazadata.insertarTraza(self.trazas)
+
 
 
 
