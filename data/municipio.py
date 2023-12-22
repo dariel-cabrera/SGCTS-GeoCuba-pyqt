@@ -1,17 +1,17 @@
 from model.conexion import Conexion
 
-class UbicacionData():
+class MunicipioData():
     
     
-    def insertarUbicacion(self,nombre):
+    def insertarMunicipio(self,nombre):
         self.db=Conexion().conectar()
         try:
-            sql_insert= """INSERT INTO ubicaciones (NOMBRE) VALUES('{}') """.format(nombre)
+            sql_insert= """INSERT INTO municipio (NOMBRE) VALUES('{}') """.format(nombre)
             cur= self.db.cursor()
             cur.execute(sql_insert)
             self.db.commit()
         except Exception as ex:
-            print ("Ya se Creo la Ubicacion",ex)
+            print ("Ya se Creo el Municipio ",ex)
         if cur.rowcount == 1:
             cur.close()
             self.db.close()
@@ -22,19 +22,19 @@ class UbicacionData():
             return  False
 
 
-    def listaUbicaciones (self,id):
+    def listaMunicipio (self):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        res=self.cursor.execute(""" SELECT * FROM ubicaciones WHERE IDMUNICIPIO ='{}' order by NOMBRE """ ) .format(id)
+        res=self.cursor.execute(""" SELECT * FROM municipio  order by NOMBRE """ ) 
         ubicaciones= res.fetchall()
         self.cursor.close()
         self.db.close()
         return ubicaciones
     
-    def editarUbicacion(self,nombre,nombreant):
+    def editarMunicipio(self,nombre,nombreant):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        actual= """ UPDATE  ubicaciones SET NOMBRE= '{}' WHERE NOMBRE= '{}' """  .format(nombre,nombreant) 
+        actual= """ UPDATE  municipio SET NOMBRE= '{}' WHERE NOMBRE= '{}' """  .format(nombre,nombreant) 
         self.cursor.execute(actual)
         a= self.cursor.rowcount
         self.db.commit()
@@ -42,14 +42,11 @@ class UbicacionData():
         self.db.close()
         return a
     
-    def eliminarUbicacion(self,id):
+    def eliminarMunicipio(self,id):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        eliminar=""" DELETE FROM ubicaciones WHERE ID={} """ .format(id)
+        eliminar=""" DELETE FROM municipio WHERE ID={} """ .format(id)
         self.cursor.execute(eliminar)
         self.db.commit()
         self.cursor.close()
         self.db.close()
- 
-
-

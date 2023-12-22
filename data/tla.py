@@ -4,7 +4,7 @@ from model.conexion import Conexion
 class TLAData():  
     def insertar_datos_tla(self,Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado,IDUSUARIO):
         self.db= Conexion().conectar()
-        fecha= datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        fecha= datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.cursor=self.db.cursor()
         res=(""" INSERT INTO calculo(UBICACION,DENSIDAD_MAR,DENSIDAD_ARENA,COEFICIENTE,ALTURA,ANGULO,INDICE,RESULTADO,FECHA,IDUSUARIO) values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')   """   
         .format(Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado,fecha,IDUSUARIO))
@@ -62,10 +62,25 @@ class TLAData():
         self.cursor.close()
         self.db.close()
     
+    def buscarPorFechaUsuario(self,fechaDesde,fechaHasta,id):
+        self.db= Conexion().conectar()
+        self.cursor=self.db.cursor()
+        mostrar="SELECT * FROM calculo WHERE IDUSUARIO='{}' and FECHA >='{}' and FECHA <= '{}' ".format(id,fechaDesde,fechaHasta)
+        self.cursor.execute(mostrar)
+        registro=self.cursor.fetchall()
+        self.cursor.close()
+        self.db.close()
+        return registro 
+    
+    def buscarCalculoAdministrador(self,idUbicacion,fecha):
+        pass
+    
+
+    
     def calculosUsuarioEspecifico(self,id):
         self.db= Conexion().conectar()
         cursor=self.db.cursor()
-        mostrar="SELECT * FROM calculo WHERE IDUSUARIO='{}' ".format(id)
+        mostrar="SELECT * FROM calculo WHERE IDUSUARIO='{}'  ".format(id)
         cursor.execute(mostrar)
         registro=cursor.fetchall()
         cursor.close()

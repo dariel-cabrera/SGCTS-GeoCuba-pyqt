@@ -7,12 +7,15 @@ from PyQt6 import QtCore,QtWidgets
 from PyQt6.uic import loadUi
 from PyQt6 import uic
 from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtCore import QDate
 from data.tla import TLAData
 from .nuevocalculo import NuevoCalculo
 from .editarcalculo import EditarCalculo
 from .nuevousuario import NuevoUsuario
 from data.usuario import UsuarioData
 from .editarusuario import EditarUsuario
+from data.municipio import MunicipioData
+from model.validarcampos import ValidarCampos
 
 from model.traza import Traza
 from model.eventos import Evento 
@@ -29,6 +32,10 @@ class Principal(QMainWindow):
         self.show()
         #Llamando a la Funcion iniGUi()
         self.iniGUI()
+        
+        miFecha= QDate(2023,1,1)
+        self.dateEditTrazaDesde.setDate(miFecha)
+        self.dateEditTrazaHasta.setDate(miFecha)
 
         #Llamando a la funcion Mover Menu
         self.but_mover.clicked.connect(self.mover_menu)
@@ -36,6 +43,9 @@ class Principal(QMainWindow):
         #Trazas
         self.eventos=Evento()
         self.trazadata= TrazaData()
+
+        self.municipio=MunicipioData()
+        self.validar= ValidarCampos()
 
         #Conexion de Botones 
         self.button_Inicio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_inicio))
@@ -99,6 +109,10 @@ class Principal(QMainWindow):
         #### PAGINA TRAZAS #######
         self.button_Trazas.clicked.connect(self.mostrar_datos_tablaTraza)
         self.Button_EliminarTraza.clicked.connect(self.EliminarTraza)
+        self.ButtonBuscarTraza.clicked.connect(self.BuscarTraza)
+
+        ### PAGINA AJUSTES ######
+        self.button_Ajustes.clicked.connect(self.GUIAjustes)
 
     #def mover_ventana(self,event):
         #if self.isMaximized()==False:
@@ -332,6 +346,85 @@ class Principal(QMainWindow):
             self.table_Trazas.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
             
             tablerow += 1 
+    
+    def BuscarTraza(self):
+        
+        datos= self.trazadata.buscarPorFecha(self.dateEditTrazaDesde.date().toPyDate(),self.dateEditTrazaHasta.date().toPyDate())
+       
+
+        a=[]
+        for x in datos:
+            a.append([str(i) for i in x])
+       
+        i=len(a)
+        self.table_Trazas.setRowCount(i)
+        tablerow=0
+    
+        for row in a:
+            self.table_Trazas.setItem(tablerow,0,QtWidgets.QTableWidgetItem(row[0]))
+            self.table_Trazas.setItem(tablerow,1,QtWidgets.QTableWidgetItem(row[1]))
+            self.table_Trazas.setItem(tablerow,2,QtWidgets.QTableWidgetItem(row[2]))
+            self.table_Trazas.setItem(tablerow,3,QtWidgets.QTableWidgetItem(row[3]))
+            
+            tablerow += 1 
+        
+
+    
+    ################ AJUSTES  #########
+    def GUIAjustes(self):
+        self.Button_AnadirMun.clicked.connect(self.AnadirMunicipio)
+        self.MostrarMunicipio()
+        self.Button_EditarMun.clicked.connect(self.editarMunicipio)
+
+    def AnadirMunicipio(self):
+        validando= self.validar.validarCamposNombre(self.lineEdit_AddMunicipio.text())
+        
+        if validando== False:
+            mBox= QMessageBox()
+            mBox.setText("Datos Incorrectos")
+            mBox.exec()
+
+        else:
+            self.municipio.insertarMunicipio(self.lineEdit_AddMunicipio.text())
+            mBox= QMessageBox()
+            mBox.setText("Municipio Añadido con Éxito")
+            mBox.exec()
+    
+    def MostrarMunicipio(self):
+        datos=self.municipio.listaMunicipio()
+        for item in datos:
+            self.comboBoxMunicipio.addItem(item[1])
+            item + 1 
+    
+    def editarMunicipio(self):
+        validando= self.validar.validarCamposNombre(self.lineEdit_AddMunicipio.text())
+        self.lineEdit_AddMunicipio.setText(self.comboBoxMunicipio.currentText())
+
+        if self.comboBoxMunicipio.currentText()=="Seleccione de la lista" :
+            mBox= QMessageBox()
+            mBox.setText("Seleccione de la lista")
+            mBox.exec()
+        elif validando== False:
+            mBox= QMessageBox()
+            mBox.setText("Datos Incorrectos")
+            mBox.exec()
+        else:
+            nombreanterior= self.comboBoxMunicipio.currentText()
+            nombre=self.lineEdit_AddMunicipio.text()
+            a= self.municipio.editarMunicipio(nombre,nombreanterior)
+            if a:
+                mBox= QMessageBox()
+                mBox.setText("Municipio Editado con Éxito")
+                mBox.exec()
+            else:
+                mBox= QMessageBox()
+                mBox.setText("No se Editó")
+                mBox.exec()
+
+
+
+
+
             
             
 

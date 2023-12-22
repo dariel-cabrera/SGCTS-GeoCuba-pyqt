@@ -5,12 +5,12 @@ from datetime import datetime
 class TrazaData():
     def __init__(self):
         
-        self.fecha= datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        self.fecha= datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     def insertarTraza(self,traza:Traza):
         self.db= Conexion().conectar()
         try:
-            sql_insert= """INSERT INTO Trazas(NOMBRE,FECHA,EVENTO) VALUES('{}','{}','{}') """.format(traza._nombreUsuario,traza._evento,self.fecha)
+            sql_insert= """INSERT INTO Trazas(NOMBRE,FECHA,EVENTO) VALUES('{}','{}','{}') """.format(traza._nombreUsuario,self.fecha,traza._evento,)
             self.cur= self.db.cursor()
             self.cur.execute(sql_insert)
             self.db.commit()
@@ -38,6 +38,18 @@ class TrazaData():
         self.cursor.close()
         self.db.close()
     
+    def buscarPorFecha(self,fechaDesde,fechaHasta):
+        self.db= Conexion().conectar()
+        self.cursor=self.db.cursor()
+        mostrar="""SELECT * FROM Trazas WHERE FECHA >= '{}' AND FECHA <='{}' """.format(fechaDesde,fechaHasta)
+        self.cursor.execute(mostrar)
+        registro=self.cursor.fetchall()
+        self.cursor.close()
+        self.db.close()
+        return registro 
+    
+    
+        
         
         
         

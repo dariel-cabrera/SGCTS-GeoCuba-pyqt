@@ -228,7 +228,7 @@ border-bottom-left-radius:12px;
 background-color: rgb(201, 230, 255);</string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pageInicio">
       <widget class="QLabel" name="label_16">
@@ -428,7 +428,8 @@ color: rgb(0, 0, 127);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
        </property>
       </widget>
       <widget class="QDateEdit" name="dateEdit">
@@ -436,12 +437,19 @@ color: rgb(0, 0, 127);</string>
         <rect>
          <x>330</x>
          <y>90</y>
-         <width>110</width>
+         <width>111</width>
          <height>22</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <string notr="true">
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="displayFormat">
+        <string>dd/MM/yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QLabel" name="label_4">
@@ -567,6 +575,39 @@ border-bottom-left-radius:12px;
        </property>
        <property name="text">
         <string>Editar</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEditHasta">
+       <property name="geometry">
+        <rect>
+         <x>500</x>
+         <y>90</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="displayFormat">
+        <string>dd/MM/yyyy</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Button_Buscar">
+       <property name="geometry">
+        <rect>
+         <x>640</x>
+         <y>90</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Buscar</string>
        </property>
       </widget>
      </widget>

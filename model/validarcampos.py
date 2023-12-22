@@ -19,7 +19,7 @@ class ValidarCampos():
         return validando
 
     def validarCamposNombre(self,campo):
-        validarNombre=re.match('^[a-z A-Z\sÀÈÌÒÙáéíóúàèìòùäëïüö]+$',campo,re.I)
+        validarNombre=re.match('^[a-z A-Z\sÀÈÌÒÙáéíóúàèìòùäëïüöÑñ]+$',campo,re.I)
         if campo=="":
            return False
         
