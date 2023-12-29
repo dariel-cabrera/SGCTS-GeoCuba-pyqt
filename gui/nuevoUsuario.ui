@@ -19,7 +19,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MoreBeaches       Nuevo Usuario</string>
+   <string>MoreCoasts      Nuevo Usuario</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -80,7 +80,7 @@ color: rgb(0, 0, 0);
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
+         <family>Arial Black</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -124,6 +124,12 @@ color: rgb(255, 255, 255);</string>
          <height>41</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="cursor">
         <cursorShape>IBeamCursor</cursorShape>
        </property>
@@ -164,6 +170,12 @@ color: rgb(255, 255, 255);</string>
          <height>41</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
@@ -201,6 +213,12 @@ color: rgb(255, 255, 255);</string>
          <height>41</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
@@ -237,6 +255,12 @@ color: rgb(255, 255, 255);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -311,18 +335,18 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>0</y>
+         <x>470</x>
+         <y>10</y>
          <width>221</width>
          <height>51</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Cooper Black</family>
+         <pointsize>16</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -330,7 +354,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;MoreBeaches&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;MoreCoasts&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_NombreUsuario">
@@ -341,6 +365,12 @@ color: rgb(0, 0, 0);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -358,6 +388,12 @@ color: rgb(0, 0, 0);</string>
          <height>41</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
@@ -373,6 +409,12 @@ color: rgb(0, 0, 0);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -460,6 +502,14 @@ border-bottom-left-radius:12px;
          <height>31</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 1, 5);</string>
        </property>
@@ -478,14 +528,14 @@ border-bottom-left-radius:12px;
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
-         <pointsize>8</pointsize>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 1, 5);</string>
+        <string notr="true">color: rgb(143, 170, 163);</string>
        </property>
        <property name="text">
         <string>Los campos con (*)  son obligatorios</string>
@@ -520,6 +570,12 @@ border-bottom-left-radius:12px;
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -561,6 +617,12 @@ border-bottom-left-radius:12px;
          <height>41</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
@@ -595,11 +657,17 @@ border-bottom-left-radius:12px;
       <widget class="QComboBox" name="comboBox">
        <property name="geometry">
         <rect>
-         <x>130</x>
+         <x>120</x>
          <y>380</y>
-         <width>141</width>
+         <width>151</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -623,7 +691,7 @@ border-bottom-left-radius:12px;
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>450</x>
+         <x>480</x>
          <y>0</y>
          <width>51</width>
          <height>51</height>

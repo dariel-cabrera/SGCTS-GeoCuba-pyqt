@@ -54,3 +54,15 @@ class ValidarCampos():
         else:
             validando=True
         return validando
+    
+    def validarCamposNumEnteros(self,campo):
+        validando=False
+        validarcampo=re.match('^[0-9\.-]+$',campo,re.I)
+        if campo=="":
+           return validando
+        elif not  validarcampo:
+            return validando
+        else:
+            validando=True
+
+        return validando

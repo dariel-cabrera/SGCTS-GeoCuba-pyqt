@@ -106,6 +106,16 @@ class UsuarioData():
         self.db.close()
         return iDX
     
+    def buscarusuarioCI (self,ci):
+        self.db=Conexion().conectar()
+        self.cursor=self.db.cursor()
+        buscar=""" SELECT * FROM usuarios WHERE CI={} """ .format(ci)
+        self.cursor.execute(buscar)
+        iDX= self.cursor.fetchall()
+        self.cursor.close()
+        self.db.close()
+        return iDX
+    
    
             
     def actualizarUsuario(self,usuario:Usuario,ID):

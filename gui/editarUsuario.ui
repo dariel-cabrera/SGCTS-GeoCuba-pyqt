@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MoreBeaches  Editar Usuario</string>
+   <string>MoreCoasts Editar Usuario</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -72,7 +72,7 @@ color: rgb(0, 0, 0);
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
+         <family>Arial Black</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -266,18 +266,18 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>0</y>
+         <x>470</x>
+         <y>10</y>
          <width>221</width>
          <height>51</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Cooper Black</family>
+         <pointsize>16</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -285,7 +285,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;MoreBeaches&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;MoreCoasts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_NombreUsuario">
@@ -440,7 +440,7 @@ border-bottom-left-radius:12px;
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 1, 5);</string>
+        <string notr="true">color: rgb(143, 170, 163);</string>
        </property>
        <property name="text">
         <string>Los campos con (*)  son obligatorios</string>
@@ -529,7 +529,7 @@ border-bottom-left-radius:12px;
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>480</x>
          <y>0</y>
          <width>51</width>
          <height>51</height>

@@ -4,89 +4,89 @@ class Evento():
         pass
 
     def autenticarse(self):
-        self.autenticado= "Se autenticó "
-        return self.autenticado
+        autenticado= "Se autenticó "
+        return autenticado
     
     def autenticacionError(self):
-        self.autenticacionError="Autenticacion Erronea"
-        return self.autenticacionError
+        autenticacionError="Autenticacion Erronea"
+        return autenticacionError
     
     def crearNuevoCalculo(self):
-        self.crearcalculo="Creó un Nuevo Calculo"
-        return self.crearcalculo
+        crearcalculo="Creó un Nuevo Calculo"
+        return crearcalculo
     
     def CancelarNuevoCalculo(self):
-        self.Cancelar= "Canceló Nuevo Cálculo"
-        return self.Cancelar
+        Cancelar= "Canceló Nuevo Cálculo"
+        return Cancelar
 
     def editarCalculo(self):
-        self.editarCalculo="Editó un cálculo"
-        return self.editarCalculo
+        editarCalculo="Editó un cálculo"
+        return editarCalculo
     
     def mostrarEditar(self):
-        self.mostrarEditar="Se mostró los datos para Editar"
-        return self.mostrarEditar
+        mostrarEditar="Se mostró los datos para Editar"
+        return mostrarEditar
     
     def crearEditarCalculo(self):
-        self.editarCalculo="Creó un Cálculo con Editar "
-        return self.editarCalculo
+        editarCalculo="Creó un Cálculo con Editar "
+        return editarCalculo
     
     def CancelarEditar(self):
-        self.cancelar="Canceló la Edición"
-        return self.cancelar
+        cancelar="Canceló la Edición"
+        return cancelar
     
     
     def eliminarCalculo(self):
-        self.eliminarCalculo="Eliminó un Cálculo"
-        return self.eliminarCalculo
+        eliminarCalculo="Eliminó un Cálculo"
+        return eliminarCalculo
     
     def datoErroneo(self):
-        self.datoErroneo="Entró un dato Erroneo"
-        return self.datoErroneo
+        datoErroneo="Entró un dato Erroneo"
+        return datoErroneo
     
     def datosNoGuardados(self):
-        self.datosNoGuardados="Los Datos no se Guardaron"
-        return self.datosNoGuardados
+        datosNoGuardados="Los Datos no se Guardaron"
+        return datosNoGuardados
     
     def  divisionporCero(self):
-        self.divisionporCero="Intentó dividir por 0"
-        return self.divisionporCero
+        divisionporCero="Intentó dividir por 0"
+        return divisionporCero
     
     
     def eliminoUsuario(self):
-        self.eliminoUsuario="Eliminó un Usuario"
-        return self.eliminoUsuario
+        eliminoUsuario="Eliminó un Usuario"
+        return eliminoUsuario
     
     def mostrarDatosUsuario(self):
-        self.mostrarDatosUsuario="Mostró Datos de Usuario"
-        return self.mostrarDatosUsuario
+        mostrarDatosUsuario="Mostró Datos de Usuario"
+        return mostrarDatosUsuario
 
     def datoErroneousuario(self):
-        self.datoErroneo="Entró un dato Erroneo al entrar Usuario"
-        return self.datoErroneo
+        datoErroneo="Entró un dato Erroneo al entrar Usuario"
+        return datoErroneo
     
     def CreoUsuario(self):
-        self.creoUsuario="Creó Usuario"
-        return self.creoUsuario
+        creoUsuario="Creó Usuario"
+        return creoUsuario
     
     def cancelarNuevoUsuario(self):
-        self.cancelar="Canceló Nuevo Usuario"
-        return self.cancelar
+        cancelar="Canceló Nuevo Usuario"
+        return cancelar
 
     def actualizarUsuario(self):
-        self.actualizarUsuario="Actualizó Usuario"
-        return self.actualizarUsuario
+        actualizarUsuario="Actualizó Usuario"
+        return actualizarUsuario
     
     def cancelarEditarUsuario(self):
-        self.cancelar="Canceló Editar Usuario"
-        return self.cancelar
+        cancelar="Canceló Editar Usuario"
+        return cancelar
     
     def CambioContrasena(self):
-        self.cambiocontrasena="Cambió Contraseña"
-        return self.cambiocontrasena
+        cambiocontrasena="Cambió Contraseña"
+        return cambiocontrasena
 
 
     def cerroSesion(self):
-        self.cerroSesion= "Cerró Sesión"
-        return self.cerroSesion
+        cerroSesion= "Cerró Sesión"
+        return cerroSesion
         

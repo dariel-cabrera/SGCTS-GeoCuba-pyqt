@@ -41,11 +41,11 @@ class MunicipioData():
         self.cursor.close()
         self.db.close()
         return a
-    
-    def eliminarMunicipio(self,id):
+
+    def eliminarMunicipio(self,nombre):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        eliminar=""" DELETE FROM municipio WHERE ID={} """ .format(id)
+        eliminar=""" DELETE FROM municipio WHERE NOMBRE= '{}' """ .format(nombre)
         self.cursor.execute(eliminar)
         self.db.commit()
         self.cursor.close()

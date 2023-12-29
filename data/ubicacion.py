@@ -3,10 +3,11 @@ from model.conexion import Conexion
 class UbicacionData():
     
     
-    def insertarUbicacion(self,nombre):
+    def insertarUbicacion(self,nombre,nombreM,latitud,longitud):
         self.db=Conexion().conectar()
+        cur=self.db.cursor()
         try:
-            sql_insert= """INSERT INTO ubicaciones (NOMBRE) VALUES('{}') """.format(nombre)
+            sql_insert= """INSERT INTO ubicaciones (NOMBRE,NOMBREMUNICIPIO,LATITUD,LONGITUD) VALUES('{}','{}','{}','{}') """.format(nombre,nombreM,latitud,longitud)
             cur= self.db.cursor()
             cur.execute(sql_insert)
             self.db.commit()
@@ -22,19 +23,19 @@ class UbicacionData():
             return  False
 
 
-    def listaUbicaciones (self,id):
+    def listaUbicaciones (self,nombreM):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        res=self.cursor.execute(""" SELECT * FROM ubicaciones WHERE IDMUNICIPIO ='{}' order by NOMBRE """ ) .format(id)
+        res=self.cursor.execute(""" SELECT * FROM ubicaciones WHERE NOMBREMUNICIPIO ='{}' order by NOMBRE """  .format(nombreM))
         ubicaciones= res.fetchall()
         self.cursor.close()
         self.db.close()
         return ubicaciones
     
-    def editarUbicacion(self,nombre,nombreant):
+    def editarUbicacion(self,nombre,nombreM,latitud,longitud,nombreant):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        actual= """ UPDATE  ubicaciones SET NOMBRE= '{}' WHERE NOMBRE= '{}' """  .format(nombre,nombreant) 
+        actual= """ UPDATE  ubicaciones SET NOMBRE= '{}', NOMBREMUNICIPIO='{}',LATITUD='{}',LONGITUD='{}' WHERE NOMBRE= '{}' """  .format(nombre,nombreM,latitud,longitud,nombreant) 
         self.cursor.execute(actual)
         a= self.cursor.rowcount
         self.db.commit()
@@ -42,14 +43,24 @@ class UbicacionData():
         self.db.close()
         return a
     
-    def eliminarUbicacion(self,id):
+    def eliminarUbicacion(self,nombre):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        eliminar=""" DELETE FROM ubicaciones WHERE ID={} """ .format(id)
+        eliminar=""" DELETE FROM ubicaciones WHERE NOMBRE={} """ .format(nombre)
         self.cursor.execute(eliminar)
         self.db.commit()
         self.cursor.close()
         self.db.close()
+    
+    def buscarUbicacion(self,nombre):
+        self.db=Conexion().conectar()
+        self.cursor=self.db.cursor()
+        buscar=""" SELECT * FROM ubicaciones WHERE NOMBRE= '{}' """.format(nombre)
+        self.cursor.execute(buscar)
+        iDX= self.cursor.fetchall()
+        self.cursor.close()
+        self.db.close()
+        return iDX
  
 
 

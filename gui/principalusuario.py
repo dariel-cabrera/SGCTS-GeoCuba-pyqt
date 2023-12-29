@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
+from PyQt6.QtWidgets import QApplication,QMainWindow
+from PyQt6.QtWidgets import QHeaderView
 from PyQt6 import QtCore,QtWidgets
 from PyQt6.uic import loadUi
 from .nuevocalculo import NuevoCalculo
@@ -9,37 +10,46 @@ from PyQt6.QtCore import QDate
 from data.tla import TLAData
 from data.usuario import UsuarioData
 from model.usuario import Usuario
-
+from data.municipio import MunicipioData
+from data.ubicacion import UbicacionData
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
 
 class PrincipalUsuario(QMainWindow):
     def __init__(self):
-        #Iniciando
+        #Iniciando Interfaz
         super(PrincipalUsuario,self).__init__()
         loadUi("gui/PrincipalUsuario.ui",self)
-        self.iniGUI()
-
-        self.show()
+        
+        #Calculos
         self.mostrar= TLAData()
         #Trazas
         self.eventos=Evento()
         self.trazadata= TrazaData()
-
+        #Usuarios
         self.usuarioData=UsuarioData()
+        #Municipio
+        self.municipio= MunicipioData()
+        #Ubicacion
+        self.ubicaciondata=UbicacionData()
 
         #Conexion de Botones 
         self.button_Inicio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageInicio))
         self.button_Calculo.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageCalculo))
         self.button_Perfil.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageMiPerfil))
 
+        #self.table_Calculos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        self.iniGUI()
+
+        self.show()
+
     
     def iniGUI(self):
-        
         self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
-
-        #####  Pagina Calculo ############
+        self.button_Calculo.clicked.connect(self.MostrarComboMunCalculo)
+        self.Button_SeleccionarMun.clicked.connect(self.Seleccionar)
         self.button_NuevoCalculo.clicked.connect(self.nuevocalculo)
         self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
         self.button_EditarCalculo.clicked.connect(self.EditarCalculo)
@@ -89,8 +99,10 @@ class PrincipalUsuario(QMainWindow):
             self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
-            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[8]))
-            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[9]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[11]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,10,QtWidgets.QTableWidgetItem(row[8]))
+            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
     
     def EliminarCalculo(self):
@@ -159,9 +171,38 @@ class PrincipalUsuario(QMainWindow):
         self.mostrar= TLAData()
         fechadesde= self.dateEdit.date().toPyDate()
         fechahasta=self.dateEditHasta.date().toPyDate()
-        print(fechadesde)
-        datos=self.mostrar.buscarPorFechaUsuario(fechadesde,fechahasta, self.idUsuario)
-        print(datos)
+        ubicacion= self.comboBox_2.currentText()
+        
+        if ubicacion== "":
+            datos=self.mostrar.buscarPorFechaUsuario(fechadesde,fechahasta, self.idUsuario)
+            self.Mostrar(datos)
+        else:
+            datos=self.mostrar.buscarPorFechaUbicUsuario(fechadesde,fechahasta, self.idUsuario,ubicacion)
+            self.Mostrar(datos)
+    
+    def MostrarComboMunCalculo(self):
+        datos=self.municipio.listaMunicipio()
+        for item in datos:
+            self.comboBox.addItem(item[1])
+    
+    def MostrarComboUbicCalculo(self):
+        datos1= self.ubicaciondata.listaUbicaciones(self.comboBox.currentText())
+        for item in datos1:
+            self.comboBox_2.addItem(item[1])
+
+    def Seleccionar(self):
+        if self.comboBox.currentText()=="Seleccione un Municipio":
+            mBox= QMessageBox()
+            mBox.setText("Seleccione un Municipio")
+            mBox.exec()
+        else:
+            self.comboBox_2.clear()
+            self.MostrarComboUbicCalculo()
+
+
+
+    
+    def Mostrar(self,datos):
         a=[]
         for x in datos:
             a.append([str(i) for i in x])
@@ -179,8 +220,10 @@ class PrincipalUsuario(QMainWindow):
             self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
-            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[8]))
-            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[9]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[11]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,10,QtWidgets.QTableWidgetItem(row[8]))
+            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
        
 

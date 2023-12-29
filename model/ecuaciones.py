@@ -1,5 +1,5 @@
 import math
-def transporte_logitudinal_arena(p,k,ps,n,hb,a,g=9.8,K=0.77):
+def transporte_logitudinal_arena(p,k,ps,n,hb,a,K,g):
     # p-Densidad del Mar  1025
     # g aceleracion gravitatoria 9.8 
     # k- Inidice de Rompiente 0.78

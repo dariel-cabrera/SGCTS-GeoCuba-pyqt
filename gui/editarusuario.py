@@ -117,7 +117,7 @@ class EditarUsuario():
         validando=self.validandoeditarusuario()
         if validando==False:
             mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verfíquelos ")
+            mBox.setText("Datos Incorrectos Verifíquelos ")
             mBox.exec()
 
             datoErroneo=self.eventos.datoErroneousuario()
@@ -150,7 +150,7 @@ class EditarUsuario():
 
             else:
                 mBox= QMessageBox()
-                mBox.setText("No se  Guardaron, El Nombre de Usuario ya está Existe ")
+                mBox.setText("No se  Guardaron, El Nombre de Usuario ya está en el Sistema ")
                 mBox.exec()
     
     def bt_Cancelar(self):

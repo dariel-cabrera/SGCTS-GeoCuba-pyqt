@@ -10,6 +10,8 @@ from model.validarcampos import ValidarCampos
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
+from data.K import KData
+from data.G import GData
 
 class EditarCalculo():
     def __init__(self):
@@ -25,6 +27,8 @@ class EditarCalculo():
         self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
         self.editarcalculo.but_ActualizarEditar.clicked.connect(self.entrarEditarCalculo)
         self.editarcalculo.but_NuevoEditar.clicked.connect(self.entrarNuevoEditarCalculo)
+        self.K= KData()
+        self.G= GData()
         self.editarcalculo.show()
     
     def recibirUsuario(self,usuario):
@@ -38,7 +42,7 @@ class EditarCalculo():
         
         print(a)
         self.idEditar= a[0][0]
-        self.editarcalculo.lineEdit_Ubicacion.setText(a[0][1])
+        self.ubicacion=a[0][1]
         self.editarcalculo.lineEdit_densidadArena.setText(a[0][3])
         self.editarcalculo.lineEdit_DensidadMar.setText(a[0][2])
         self.editarcalculo.lineEdit_CoeficientePorocidad.setText(a[0][4])
@@ -66,7 +70,7 @@ class EditarCalculo():
         altura=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_altura.text())
         angulo=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_AnguloRompiente.text())
         indice=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_IndiceRompiente.text())
-        ubicacion=self.validarcampo.validarCamposNombre(self.editarcalculo.lineEdit_Ubicacion.text())
+        
         
         if DensidadArena==False:
             self.editarcalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
@@ -98,11 +102,6 @@ class EditarCalculo():
             self.editarcalculo.lineEdit_IndiceRompiente.setFocus()
             self.editarcalculo.lineEdit_IndiceRompiente.setText("0")
             self.editarcalculo.label_Error.setText("En el Índice sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
-        elif ubicacion ==False:
-            self.editarcalculo.lineEdit_Ubicacion.setStyleSheet("border: 1px solid red;")
-            self.editarcalculo.lineEdit_Ubicacion.setFocus()
-            self.editarcalculo.lineEdit_Ubicacion.setText("")
-            self.editarcalculo.label_Error.setText("En la Ubicación sólo puede entrar letras, texto mayor a 2 Caracteres y no puede entrar campos vacios")
         else:
             validando=True
         return validando
@@ -112,7 +111,7 @@ class EditarCalculo():
         
         if validando==False:
             mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verfíquelos ")
+            mBox.setText("Datos Incorrectos Verifíquelos ")
             mBox.exec()
 
             datoError= self.eventos.datoErroneo()
@@ -125,14 +124,24 @@ class EditarCalculo():
             altura=float(self.editarcalculo.lineEdit_altura.text())
             angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
             indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
-            ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
+            datos= self.K.mostrarK()
+            datos1=self.G.mostrarG()
+
+            K=[]
+            for x in datos:
+                K.append([float(i) for i in x])
             
-           
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
+
+            g=[]
+            for x in datos1:
+                g.append([float(i) for i in x])
+            
+        
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,K[0][0],g[0][0])
             
             if resultado== False:
                 mBox= QMessageBox()
-                mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
+                mBox.setText(" Verifíque los Datos la División por 0 no esta Permitida ")
                 mBox.exec()
 
                 datoError= self.eventos.divisionporCero()
@@ -140,7 +149,7 @@ class EditarCalculo():
                 self.trazadata.insertarTraza(self.trazas)
             else:
                 self.tla= TLAData()
-                actualizar=self.tla.actualizar_datos_tla(self.idEditar,ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
+                actualizar=self.tla.actualizar_datos_tla(self.idEditar,self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,K[0][0],g[0][0])
 
                 if actualizar==1:
                     mBox= QMessageBox()
@@ -159,7 +168,7 @@ class EditarCalculo():
                     mBox.exec()
 
                     noguardado= self.eventos.datosNoGuardados()
-                    self.trazas=Trazas(nombreUsuario=self.nombreUsuario,evento= noguardado)
+                    self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= noguardado)
                     self.trazadata.insertarTraza(self.trazas)
         
 
@@ -182,14 +191,24 @@ class EditarCalculo():
             altura=float(self.editarcalculo.lineEdit_altura.text())
             angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
             indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
-            ubicacion=self.editarcalculo.lineEdit_Ubicacion.text()
+            datos= self.K.mostrarK()
+            datos1=self.G.mostrarG()
+
+            K=[]
+            for x in datos:
+                K.append([float(i) for i in x])
             
-           
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo)
+
+            g=[]
+            for x in datos1:
+                g.append([float(i) for i in x])
+            
+        
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,K[0][0],g[0][0])
             
             if resultado== False:
                 mBox= QMessageBox()
-                mBox.setText(" Verfíque los Datos la Division por 0 no esta Permitida ")
+                mBox.setText(" Verifíque los Datos la División por 0 no esta Permitida ")
                 mBox.exec()
 
                 datoError= self.eventos.divisionporCero()
@@ -197,7 +216,7 @@ class EditarCalculo():
                 self.trazadata.insertarTraza(self.trazas)
             else:
                 self.tla= TLAData()
-                actualizar=self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado)
+                actualizar=self.tla.insertar_datos_tla(self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,K[0][0],G[0][0])
 
                 if actualizar==1:
                     mBox= QMessageBox()

@@ -69,7 +69,7 @@ class NuevoUsuario():
             self.nuevousuario.lineEdit_CI.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_CI.setFocus()
             self.nuevousuario.lineEdit_CI.setText("")
-            self.nuevousuario.label_Error.setText("En el CI sólo puede entrar numeros, texto 11 digitos y no puede entrar campos vacios")
+            self.nuevousuario.label_Error.setText("En el CI sólo puede entrar números, texto de 11 dígitos y no puede entrar campos vacios")
         elif sexo=="Seleccione una opción":
             self.nuevousuario.comboBox.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.comboBox.setFocus()
@@ -95,7 +95,7 @@ class NuevoUsuario():
             self.nuevousuario.lineEdit_Contrasena.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_ConfirmarConstrasena.setStyleSheet("border: 1px solid red;")
             self.nuevousuario.lineEdit_Contrasena.setFocus()
-            self.nuevousuario.label_Error.setText("Debe introduccir una contraseña y confirmarla")
+            self.nuevousuario.label_Error.setText("Debe introducir una contraseña y confirmarla")
         
         elif not contrasena== confirmarContrasena:
             self.nuevousuario.lineEdit_Contrasena.setStyleSheet("border: 1px solid red;")
@@ -111,7 +111,7 @@ class NuevoUsuario():
         validando=self.validandonuevousuario()
         if validando==False:
             mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verfíquelos ")
+            mBox.setText("Datos Incorrectos Verifíquelos ")
             mBox.exec()
 
             datoErroneo=self.eventos.datoErroneousuario()

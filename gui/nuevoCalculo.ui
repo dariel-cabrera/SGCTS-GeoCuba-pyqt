@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MoreBeaches       Nuevo Cálculo</string>
+   <string>MoreCoasts       Nuevo Cálculo</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -72,7 +72,7 @@ color: rgb(0, 0, 0);
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
+         <family>Arial Black</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -104,7 +104,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad de Arena (ρ)</string>
+        <string>Densidad de Arena (ρ)*</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_densidadArena">
@@ -115,6 +115,12 @@ color: rgb(255, 255, 255);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Agency FB</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="cursor">
         <cursorShape>IBeamCursor</cursorShape>
@@ -144,7 +150,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Densidad del Mar (ρs)</string>
+        <string>Densidad del Mar (ρs)*</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_DensidadMar">
@@ -155,6 +161,12 @@ color: rgb(255, 255, 255);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -168,7 +180,7 @@ color: rgb(255, 255, 255);</string>
         <rect>
          <x>0</x>
          <y>270</y>
-         <width>211</width>
+         <width>221</width>
          <height>41</height>
         </rect>
        </property>
@@ -181,7 +193,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Coeficiente de Porocidad (n)</string>
+        <string>Coeficiente de Porocidad (n)*</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_CoeficientePorocidad">
@@ -192,6 +204,12 @@ color: rgb(255, 255, 255);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -218,7 +236,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Altura (Hb)</string>
+        <string>Altura (Hb)*</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_altura">
@@ -229,6 +247,12 @@ color: rgb(255, 255, 255);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -255,7 +279,7 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Ángulo de Rompiente (α)</string>
+        <string>Ángulo de Rompiente (α)*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_IndiceR">
@@ -276,14 +300,14 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Índice de Rompiente(k)</string>
+        <string>Índice de Rompiente(k)*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_Ubicacion">
        <property name="geometry">
         <rect>
          <x>340</x>
-         <y>270</y>
+         <y>260</y>
          <width>191</width>
          <height>41</height>
         </rect>
@@ -297,24 +321,24 @@ color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Ubicación</string>
+        <string>Municipio*</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_SGCTS_GeoCuba">
        <property name="geometry">
         <rect>
-         <x>450</x>
-         <y>0</y>
+         <x>470</x>
+         <y>10</y>
          <width>221</width>
          <height>51</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <family>Verdana</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>Cooper Black</family>
+         <pointsize>16</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
@@ -322,23 +346,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;MoreBeaches&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_Ubicacion">
-       <property name="geometry">
-        <rect>
-         <x>530</x>
-         <y>270</y>
-         <width>121</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="maxLength">
-        <number>50</number>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;MoreCoasts&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_IndiceRompiente">
@@ -349,6 +357,12 @@ color: rgb(0, 0, 0);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -365,6 +379,14 @@ color: rgb(0, 0, 0);</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -477,7 +499,7 @@ border-bottom-left-radius:12px;
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 1, 5);</string>
+        <string notr="true">color: rgb(143, 170, 163);</string>
        </property>
        <property name="text">
         <string>Los campos con (*)  son obligatorios</string>
@@ -486,7 +508,7 @@ border-bottom-left-radius:12px;
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>480</x>
          <y>0</y>
          <width>51</width>
          <height>51</height>
@@ -501,6 +523,110 @@ border-bottom-left-radius:12px;
        <property name="scaledContents">
         <bool>true</bool>
        </property>
+      </widget>
+      <widget class="QLabel" name="label_Ubicacion_2">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>340</y>
+         <width>191</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Ubicación*</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>270</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccione un Municipio</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="but_SeleccionarMunCalculo">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>300</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color: rgb(0, 0, 0);
+background-color: rgb(0, 170, 255);
+border-radius:8px;
+}
+
+QPushButton:hover{
+background-color: rgb(0, 196, 255);
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}</string>
+       </property>
+       <property name="text">
+        <string>Seleccionar</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxUbicCalculo">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>350</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccione una Ubicación</string>
+        </property>
+       </item>
       </widget>
      </widget>
     </item>
