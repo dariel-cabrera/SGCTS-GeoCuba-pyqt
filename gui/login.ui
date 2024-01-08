@@ -10,6 +10,18 @@
     <height>553</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>674</width>
+    <height>553</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>674</width>
+    <height>553</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MoreCoasts</string>
   </property>
@@ -270,7 +282,7 @@ border-radius:8px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="../../Proyecto/iconos/nuevaimagen.qrc"/>
+  <include location="nimg.qrc"/>
   <include location="nimg.qrc"/>
  </resources>
  <connections/>

@@ -1,11 +1,12 @@
 from PyQt6 import uic
-from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
 from model.ecuaciones import transporte_logitudinal_arena 
 from PyQt6 import QtWidgets, QtGui
 from data.tla import TLAData
+from .mensaje import Mensaje
 from PyQt6 import QtCore,QtWidgets
 from model.validarcampos import ValidarCampos
+
 
 from model.traza import Traza
 from model.eventos import Evento 
@@ -22,6 +23,9 @@ class EditarCalculo():
         self.eventos=Evento()
         self.trazadata= TrazaData()
     
+    def Mensaje(self):
+        self.mensaje=Mensaje()
+
     def iniGUI(self):
         self.editarcalculo.label_Error.setText("")
         self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
@@ -31,8 +35,9 @@ class EditarCalculo():
         self.G= GData()
         self.editarcalculo.show()
     
-    def recibirUsuario(self,usuario):
+    def recibirUsuario(self,usuario,id):
         self.nombreUsuario=usuario
+        self.idUsuario=id
 
     def mostrarDatosEditar(self,idx):
         datos= idx
@@ -110,9 +115,9 @@ class EditarCalculo():
         validando= self.validandocamposEditarCalculo()
         
         if validando==False:
-            mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verifíquelos ")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Datos Incorrectos Verifíquelos")
+            self.mensaje.button()
 
             datoError= self.eventos.datoErroneo()
             self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
@@ -127,45 +132,46 @@ class EditarCalculo():
             datos= self.K.mostrarK()
             datos1=self.G.mostrarG()
 
-            K=[]
+            self.K=[]
             for x in datos:
-                K.append([float(i) for i in x])
+                self.K.append([float(i) for i in x])
             
 
-            g=[]
+            self.g=[]
             for x in datos1:
-                g.append([float(i) for i in x])
+                self.g.append([float(i) for i in x])
             
         
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,K[0][0],g[0][0])
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,self.K[0][0],self.g[0][0])
             
             if resultado== False:
-                mBox= QMessageBox()
-                mBox.setText(" Verifíque los Datos la División por 0 no esta Permitida ")
-                mBox.exec()
+                self.Mensaje()
+                self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
+                self.mensaje.button()
 
                 datoError= self.eventos.divisionporCero()
                 self.trazas=Trazas(nombreUsuario=self.nombreUsuario,evento= datoError)
                 self.trazadata.insertarTraza(self.trazas)
             else:
                 self.tla= TLAData()
-                actualizar=self.tla.actualizar_datos_tla(self.idEditar,self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,K[0][0],g[0][0])
+                actualizar=self.tla.actualizar_datos_tla(self.idEditar,self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.K[0][0],self.g[0][0])
 
                 if actualizar==1:
-                    mBox= QMessageBox()
-                    mBox.setText("Datos Guardados con Éxito Q="+ str(resultado))  
+                    self.Mensaje()
+                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado))
+                    self.mensaje.button()
 
                     self.editarcalculo.close()
-                    mBox.exec()
+    
 
                     editarCalculo= self.eventos.editarCalculo()
                     self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= editarCalculo)
                     self.trazadata.insertarTraza(self.trazas)
 
                 else:
-                    mBox= QMessageBox()
-                    mBox.setText("Los Datos NO se Guardaron")
-                    mBox.exec()
+                    self.Mensaje()
+                    self.mensaje.label("Los Datos NO se Guardaron")
+                    self.mensaje.button()
 
                     noguardado= self.eventos.datosNoGuardados()
                     self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= noguardado)
@@ -176,9 +182,9 @@ class EditarCalculo():
         validando= self.validandocamposEditarCalculo()
         
         if validando==False:
-            mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verfíquelos ")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Datos Incorrectos Verifíquelos")
+            self.mensaje.button()
 
             datoError= self.eventos.datoErroneo()
             self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
@@ -194,44 +200,45 @@ class EditarCalculo():
             datos= self.K.mostrarK()
             datos1=self.G.mostrarG()
 
-            K=[]
+            self.K=[]
             for x in datos:
-                K.append([float(i) for i in x])
+                self.K.append([float(i) for i in x])
             
 
-            g=[]
+            self.g=[]
             for x in datos1:
-                g.append([float(i) for i in x])
+                self.g.append([float(i) for i in x])
             
         
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,K[0][0],g[0][0])
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,self.K[0][0],self.g[0][0])
             
             if resultado== False:
-                mBox= QMessageBox()
-                mBox.setText(" Verifíque los Datos la División por 0 no esta Permitida ")
-                mBox.exec()
+                self.Mensaje()
+                self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
+                self.mensaje.button()
 
                 datoError= self.eventos.divisionporCero()
                 self.trazas=Trazas(nombreUsuario=self.nombreUsuario,evento= datoError)
                 self.trazadata.insertarTraza(self.trazas)
             else:
                 self.tla= TLAData()
-                actualizar=self.tla.insertar_datos_tla(self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,K[0][0],G[0][0])
+                actualizar=self.tla.insertar_datos_tla(self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.idUsuario,self.K[0][0],self.g[0][0])
 
                 if actualizar==1:
-                    mBox= QMessageBox()
-                    mBox.setText("Datos Guardados con Éxito Q="+ str(resultado)) 
+                    self.Mensaje()
+                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado))
+                    self.mensaje.button()
                     self.editarcalculo.close()
-                    mBox.exec()
+                    
 
                     editarCalculo= self.eventos.crearEditarCalculo()
                     self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= editarCalculo)
                     self.trazadata.insertarTraza(self.trazas)
         
                 else:
-                    mBox= QMessageBox()
-                    mBox.setText("Los Datos NO se Guardaron")
-                    mBox.exec()
+                    self.Mensaje()
+                    self.mensaje.label("Los Datos NO se Guardaron")
+                    self.mensaje.button()
 
                     noguardado= self.eventos.datosNoGuardados()
                     self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= noguardado)

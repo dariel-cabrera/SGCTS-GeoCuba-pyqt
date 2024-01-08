@@ -191,7 +191,6 @@ class NuevoCalculo():
                     self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= editarCalculo)
                     self.trazadata.insertarTraza(self.trazas)       
                 else:
-                    pass
                     self.Mensaje()
                     self.mensaje.label("Los Datos NO se Guardaron")
                     self.mensaje.button()

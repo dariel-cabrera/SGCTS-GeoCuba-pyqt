@@ -46,7 +46,7 @@ class UbicacionData():
     def eliminarUbicacion(self,nombre):
         self.db=Conexion().conectar()
         self.cursor=self.db.cursor()
-        eliminar=""" DELETE FROM ubicaciones WHERE NOMBRE={} """ .format(nombre)
+        eliminar=""" DELETE FROM ubicaciones WHERE NOMBRE= '{}' """ .format(nombre)
         self.cursor.execute(eliminar)
         self.db.commit()
         self.cursor.close()

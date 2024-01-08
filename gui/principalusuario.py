@@ -15,6 +15,8 @@ from data.ubicacion import UbicacionData
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
+from .mensaje import Mensaje
+import ctypes
 
 class PrincipalUsuario(QMainWindow):
     def __init__(self):
@@ -39,6 +41,14 @@ class PrincipalUsuario(QMainWindow):
         self.button_Calculo.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageCalculo))
         self.button_Perfil.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageMiPerfil))
 
+        #Mover la ventana y centrarla en el escritorio
+        resolucion= ctypes.windll.user32
+        resolucion_ancho=resolucion.GetSystemMetrics(0)
+        resolucion_alto=resolucion.GetSystemMetrics(1)
+        left=int((resolucion_ancho/2)-(self.frameSize().width()/2))
+        top= int((resolucion_alto/2)-(self.frameSize().height()/2))
+        self.move(left,top)
+
         #self.table_Calculos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         self.iniGUI()
@@ -48,7 +58,7 @@ class PrincipalUsuario(QMainWindow):
     
     def iniGUI(self):
         self.button_Calculo.clicked.connect(self.mostrar_datos_tablaCalculos)
-        self.button_Calculo.clicked.connect(self.MostrarComboMunCalculo)
+        self.button_Calculo.clicked.connect(self.LimpiarCamposBuscar)
         self.Button_SeleccionarMun.clicked.connect(self.Seleccionar)
         self.button_NuevoCalculo.clicked.connect(self.nuevocalculo)
         self.button_EliminarCalculo.clicked.connect(self.EliminarCalculo)
@@ -60,17 +70,16 @@ class PrincipalUsuario(QMainWindow):
         self.dateEdit.setDate(miFecha) 
         self.Button_Buscar.clicked.connect(self.buscarCalculo)
     
-   
-    
+    #Inciando la Interfaz de Mensaje
+    def Mensaje(self):
+        self.mensaje=Mensaje()
+
     def recibirInicio(self,inicio):
         self.inicio= inicio
     
     def recibirUsuario(self,usuario,id):
         self.idUsuario=id
         self.nombreUsuario= usuario
-    
-    
-    
     
     def cerrarSesion(self):
         cerrar= self.eventos.cerroSesion()
@@ -109,10 +118,9 @@ class PrincipalUsuario(QMainWindow):
         rows=self.table_Calculos.selectionModel().selectedRows()
         
         if len(rows)==0:
-            mBox= QMessageBox()
-            mBox.setText("Debe seleccionar una Fila de la Tabla para eliminar")
-            mBox.exec()
-
+            self.Mensaje()
+            self.mensaje.label("Debe seleccionar una Fila de la Tabla para eliminar")
+            self.mensaje.button()
         else:
             index=[]
             for i in rows:
@@ -133,9 +141,9 @@ class PrincipalUsuario(QMainWindow):
         rows=self.table_Calculos.selectionModel().selectedRows()
         
         if len(rows)==0:
-            mBox= QMessageBox()
-            mBox.setText("Debe seleccionar una Fila de la Tabla para editar")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Debe seleccionar una Fila de la Tabla para editar")
+            self.mensaje.button()
         else:
             self.editarcalculoGUI()
             index=[]
@@ -164,7 +172,7 @@ class PrincipalUsuario(QMainWindow):
         actualizar.clicked.connect(self.mostrar_datos_tablaCalculos)
         nuevo=self.editarcalculo.boton_nuevo()
         nuevo.clicked.connect(self.mostrar_datos_tablaCalculos)
-        self.editarcalculo.recibirUsuario(self.nombreUsuario)
+        self.editarcalculo.recibirUsuario(self.nombreUsuario,self.idUsuario)
     
     ######## BUSCAR CALCULO ##################
     def buscarCalculo(self):
@@ -189,12 +197,18 @@ class PrincipalUsuario(QMainWindow):
         datos1= self.ubicaciondata.listaUbicaciones(self.comboBox.currentText())
         for item in datos1:
             self.comboBox_2.addItem(item[1])
+    
+    def LimpiarCamposBuscar(self):
+        self.comboBox.clear()
+        self.MostrarComboMunCalculo()
+        self.comboBox_2.clear()
+
 
     def Seleccionar(self):
         if self.comboBox.currentText()=="Seleccione un Municipio":
-            mBox= QMessageBox()
-            mBox.setText("Seleccione un Municipio")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Seleccione un Municipio")
+            self.mensaje.button()
         else:
             self.comboBox_2.clear()
             self.MostrarComboUbicCalculo()
@@ -243,27 +257,26 @@ class PrincipalUsuario(QMainWindow):
     
     def CambiarContrasena(self):
         if self.lineEditContActual.text() == "" :
-            mBox= QMessageBox()
-            mBox.setText("Debe llenar Los Campos Vacios")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Debe llenar Los Campos Vacios")
+            self.mensaje.button()
         elif self.lineEditContNueva.text()== "" :
-            mBox= QMessageBox()
-            mBox.setText("Debe llenar Los Campos Vacios")
-            mBox.exec()
-
+            self.Mensaje()
+            self.mensaje.label("Debe llenar Los Campos Vacios")
+            self.mensaje.button()
         elif self.lineEditConfContr.text()=="":
-            mBox= QMessageBox()
-            mBox.setText("Debe llenar Los Campos Vacios")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Debe llenar Los Campos Vacios")
+            self.mensaje.button()
 
         elif self.lineEditContActual.text() != self.usuario[0][3]:
-            mBox= QMessageBox()
-            mBox.setText("Contraseña  Actual es Incorrecta")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Contraseña  Actual es Incorrecta")
+            self.mensaje.button()
         elif self.lineEditContNueva.text() != self.lineEditConfContr.text():
-            mBox= QMessageBox()
-            mBox.setText("La Contraseña Nueva No Coincide con la Confirmada")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("La Contraseña Nueva No Coincide con la Confirmada")
+            self.mensaje.button()
         else:
             nombre=self.usuario[0][1]
             usuario=self.usuario[0][2]
@@ -277,9 +290,9 @@ class PrincipalUsuario(QMainWindow):
             usuario=Usuario(nombre,usuario,clave,PApellido,SApellido,CI,correo,tipo,sexo)
             self.usuarioData.actualizarUsuario(usuario,self.idUsuario)
 
-            mBox= QMessageBox()
-            mBox.setText("La Contraseña Actualizada con Éxito")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("La Contraseña Actualizada con Éxito")
+            self.mensaje.button()
 
             eliminado= self.eventos.CambioContrasena()
             self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= eliminado)

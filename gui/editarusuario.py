@@ -9,6 +9,7 @@ from model.validarcampos import ValidarCampos
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
+from .mensaje import Mensaje
 
 class EditarUsuario():
     def __init__(self):
@@ -26,6 +27,10 @@ class EditarUsuario():
         self.editarusuario.butCancelarEditarUsuario.clicked.connect(self.bt_Cancelar)
         self.editarusuario.show()
     
+    #Inciando la Interfaz de Mensaje
+    def Mensaje(self):
+        self.mensaje=Mensaje()
+
     def recibirUsuario(self,usuario):
         self.nombreUsuario= usuario
     
@@ -116,9 +121,9 @@ class EditarUsuario():
     def actualizarUsuario(self):
         validando=self.validandoeditarusuario()
         if validando==False:
-            mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verifíquelos ")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Datos Incorrectos Verifíquelos")
+            self.mensaje.button()
 
             datoErroneo=self.eventos.datoErroneousuario()
             self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoErroneo)
@@ -139,9 +144,10 @@ class EditarUsuario():
             confirmar= self.usuariodata.actualizarUsuario(self.usu,self.idUsuario)
             
             if confirmar==True:
-                mBox= QMessageBox()
-                mBox.setText("Datos Guardados con Éxitos")
-                mBox.exec()
+                self.Mensaje()
+                self.mensaje.label("Datos Guardados con Éxitos")
+                self.mensaje.button()
+                
                 self.editarusuario.close()
 
                 mostrar= self.eventos.actualizarUsuario()
@@ -149,9 +155,10 @@ class EditarUsuario():
                 self.trazadata.insertarTraza(self.trazas)
 
             else:
-                mBox= QMessageBox()
-                mBox.setText("No se  Guardaron, El Nombre de Usuario ya está en el Sistema ")
-                mBox.exec()
+                self.Mensaje()
+                self.mensaje.label("No se  Guardaron, El Nombre de Usuario ya está en el Sistema ")
+                self.mensaje.button()
+                
     
     def bt_Cancelar(self):
         self.editarusuario.close()

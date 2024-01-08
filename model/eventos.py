@@ -44,6 +44,14 @@ class Evento():
         datoErroneo="Entró un dato Erroneo"
         return datoErroneo
     
+    def datoCI(self):
+        datoErroneo="Entró un CI no Válido"
+        return datoErroneo
+    
+    def buscarUsuario(self):
+        datoErroneo="Entró Usuario Buscado"
+        return datoErroneo
+    
     def datosNoGuardados(self):
         datosNoGuardados="Los Datos no se Guardaron"
         return datosNoGuardados
@@ -84,6 +92,46 @@ class Evento():
     def CambioContrasena(self):
         cambiocontrasena="Cambió Contraseña"
         return cambiocontrasena
+    
+    def CambioConstantes(self):
+        cambioconstantes="Cambió las Constantes"
+        return cambioconstantes
+    
+    def AnadioMunicipio(self):
+        AnadioMunicipio="Añadió un Municipio"
+        return AnadioMunicipio
+    
+    def AnadioMunicipioExiste(self):
+        AnadioMunicipio="Añadió un Municipio ya Existente"
+        return AnadioMunicipio
+    
+    def EditoMunicipio(self):
+        AnadioMunicipio="Editó un Municipio"
+        return AnadioMunicipio
+    
+    def NoSeEditoMunicipio(self):
+        AnadioMunicipio="No se Editó el Municipio"
+        return AnadioMunicipio
+    
+    def EliminoMunicipio(self):
+        AnadioMunicipio="Eliminó un Municipio"
+        return AnadioMunicipio
+    
+    def AnadioUbicacion(self):
+        AnadioMunicipio="Añadió un Ubicacion"
+        return AnadioMunicipio
+    
+    def EditoUbicacion(self):
+        AnadioMunicipio="Editó un Ubicacion"
+        return AnadioMunicipio
+    
+    def NoSeEdito(self):
+        AnadioMunicipio="No se Editó la Ubicación "
+        return AnadioMunicipio
+    
+    def EliminoUbicacion(self):
+        AnadioMunicipio="Eliminó una Ubicacion"
+        return AnadioMunicipio
 
 
     def cerroSesion(self):

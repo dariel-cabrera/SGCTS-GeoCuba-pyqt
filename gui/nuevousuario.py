@@ -1,5 +1,4 @@
 from PyQt6 import uic
-from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
 from PyQt6 import QtWidgets, QtGui
 from PyQt6 import QtCore,QtWidgets
@@ -9,6 +8,7 @@ from model.validarcampos import ValidarCampos
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
+from .mensaje import Mensaje
 
 class NuevoUsuario():
     def __init__(self):
@@ -26,6 +26,10 @@ class NuevoUsuario():
         self.nuevousuario.butCancelarNuevoUsuario.clicked.connect(self.bt_Cancelar)
         self.nuevousuario.show()
     
+    #Inciando la Interfaz de Mensaje
+    def Mensaje(self):
+        self.mensaje=Mensaje()
+
     def recibirUsuario(self,usuario):
         self.nombreUsuario=usuario
     
@@ -110,9 +114,9 @@ class NuevoUsuario():
     def EntrarNuevoUsuario(self):
         validando=self.validandonuevousuario()
         if validando==False:
-            mBox= QMessageBox()
-            mBox.setText("Datos Incorrectos Verifíquelos ")
-            mBox.exec()
+            self.Mensaje()
+            self.mensaje.label("Datos Incorrectos Verifíquelos")
+            self.mensaje.button()
 
             datoErroneo=self.eventos.datoErroneousuario()
             self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoErroneo)
@@ -134,9 +138,10 @@ class NuevoUsuario():
             confirmar=usuData.crearUsuario(self.usu)
             print(confirmar)
             if confirmar==True:
-                mBox= QMessageBox()
-                mBox.setText("Datos Guardados con Éxitos")
-                mBox.exec()
+                self.Mensaje()
+                self.mensaje.label("Datos Guardados con Éxitos")
+                self.mensaje.button()
+    
                 self.limpiarlosCamposNuevoUsuario()
                 self.nuevousuario.close()
 
@@ -145,9 +150,9 @@ class NuevoUsuario():
                 self.trazadata.insertarTraza(self.trazas)
 
             else:
-                mBox= QMessageBox()
-                mBox.setText("No se  Guardaron, El Nombre de Usuario o CI ya está Registrado ")
-                mBox.exec()
+                self.Mensaje()
+                self.mensaje.label("El Nombre de Usuario o CI ya está Registrado")
+                self.mensaje.button()
     
     def limpiarlosCamposNuevoUsuario(self):
         nombre=self.nuevousuario.lineEdit_Nombre.clear()

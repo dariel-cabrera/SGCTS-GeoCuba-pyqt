@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QApplication
 from gui.inicio import Login
 
-class SGCTS():
+class MoreCoasts():
     def __init__(self):
         self.app=QApplication([])
         self.inicio=Login()
@@ -9,4 +9,4 @@ class SGCTS():
         self.app.exec()
 
 
-app = SGCTS () 
+app = MoreCoasts() 
