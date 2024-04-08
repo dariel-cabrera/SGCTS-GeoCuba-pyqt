@@ -1,5 +1,5 @@
 import math
-def transporte_logitudinal_arena(p,k,ps,n,hb,a,K,g):
+def transporte_logitudinal_arena(p,k,ps,n,hb,a,g):
     # p-Densidad del Mar  1025
     # g aceleracion gravitatoria 9.8 
     # k- Inidice de Rompiente 0.78
@@ -17,8 +17,13 @@ def transporte_logitudinal_arena(p,k,ps,n,hb,a,K,g):
     if D==0:
         return False
     else:
-        Q= K * (N)/ (D) * math.sqrt(math.pow(hb,5))* math.sin(2*a)
+        Q= (N)/ (D) * math.sqrt(math.pow(hb,5))* math.sin(2*a)
         print(Q)
         return Q
 
-    
+
+def obtniedo_K(P,Q):
+    if Q==0:
+        return False
+    else:
+        return P / Q 

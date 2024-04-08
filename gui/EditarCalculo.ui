@@ -497,20 +497,33 @@ color: rgb(255, 255, 255);</string>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QLabel" name="label_Error">
+          <widget class="QLabel" name="label_2">
            <property name="font">
             <font>
-             <family>Arial</family>
-             <pointsize>10</pointsize>
+             <family>Verdana</family>
+             <pointsize>9</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 1, 5);</string>
-           </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Label Error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>Medida Práctica (P)*</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_PEditar">
+           <property name="minimumSize">
+            <size>
+             <width>121</width>
+             <height>41</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>121</width>
+             <height>41</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -528,6 +541,24 @@ color: rgb(255, 255, 255);</string>
           </spacer>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Error">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 1, 5);</string>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Label Error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -568,7 +599,7 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
-background-color: rgb(11, 15, 255);
+background-color: rgb(71, 74, 255);
 color: rgb(0, 0, 0);
 border-radius:8px;
 }
@@ -674,7 +705,6 @@ border-bottom-left-radius:12px;
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

@@ -1,6 +1,7 @@
 from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
 from model.ecuaciones import transporte_logitudinal_arena 
+from model.ecuaciones import obtniedo_K
 from PyQt6 import QtWidgets, QtGui
 from data.tla import TLAData
 from .mensaje import Mensaje
@@ -9,7 +10,6 @@ from model.validarcampos import ValidarCampos
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
-from data.K import KData
 from data.G import GData
 import pathlib
 
@@ -31,7 +31,6 @@ class EditarCalculo():
         self.editarcalculo.butCancelarEditar.clicked.connect(self.boton_Cancelar_EditarCalculo)
         self.editarcalculo.but_ActualizarEditar.clicked.connect(self.entrarEditarCalculo)
         self.editarcalculo.but_NuevoEditar.clicked.connect(self.entrarNuevoEditarCalculo)
-        self.K= KData()
         self.G= GData()
         self.editarcalculo.show()
     
@@ -54,6 +53,7 @@ class EditarCalculo():
         self.editarcalculo.lineEdit_altura.setText(a[0][5])
         self.editarcalculo.lineEdit_AnguloRompiente.setText(a[0][6])
         self.editarcalculo.lineEdit_IndiceRompiente.setText(a[0][7])
+        self.editarcalculo.lineEdit_PEditar.setText(a[0][13])
 
         mostrar= self.eventos.mostrarEditar()
         self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= mostrar)
@@ -75,7 +75,7 @@ class EditarCalculo():
         altura=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_altura.text())
         angulo=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_AnguloRompiente.text())
         indice=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_IndiceRompiente.text())
-        
+        P=self.validarcampo.validarCamposfloat(self.editarcalculo.lineEdit_PEditar.text())
         
         if DensidadArena==False:
             self.editarcalculo.lineEdit_densidadArena.setStyleSheet("border: 1px solid red;")
@@ -92,6 +92,11 @@ class EditarCalculo():
             self.editarcalculo.lineEdit_CoeficientePorocidad.setFocus()
             self.editarcalculo.lineEdit_CoeficientePorocidad.setText("0")
             self.editarcalculo.label_Error.setText("En el Coeficiente sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
+        elif P == False:
+            self.editarcalculo.editarcalculo.lineEdit_PEditar.setStyleSheet("border: 1px solid red;")
+            self.editarcalculo.editarcalculo.lineEdit_PEditar.setFocus()
+            self.editarcalculo.editarcalculo.lineEdit_PEditar.setText("0")
+            self.editarcalculo.label_Error.setText("En P sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
         elif altura ==False:
             self.editarcalculo.lineEdit_altura.setStyleSheet("border: 1px solid red;")
             self.editarcalculo.lineEdit_altura.setFocus()
@@ -129,36 +134,42 @@ class EditarCalculo():
             altura=float(self.editarcalculo.lineEdit_altura.text())
             angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
             indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
-            datos= self.K.mostrarK()
+            P=float(self.editarcalculo.lineEdit_PEditar.text())
             datos1=self.G.mostrarG()
-
-            self.K=[]
-            for x in datos:
-                self.K.append([float(i) for i in x])
-            
 
             self.g=[]
             for x in datos1:
                 self.g.append([float(i) for i in x])
             
         
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,self.K[0][0],self.g[0][0])
-            
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,self.g[0][1])
+
+            K=obtniedo_K(P,resultado)
+
             if resultado== False:
                 self.Mensaje()
                 self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
                 self.mensaje.button()
 
                 datoError= self.eventos.divisionporCero()
-                self.trazas=Trazas(nombreUsuario=self.nombreUsuario,evento= datoError)
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
+                self.trazadata.insertarTraza(self.trazas)
+
+            elif K== False:
+                self.Mensaje()
+                self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
+                self.mensaje.button()
+
+                datoError= self.eventos.divisionporCero()
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
                 self.trazadata.insertarTraza(self.trazas)
             else:
                 self.tla= TLAData()
-                actualizar=self.tla.actualizar_datos_tla(self.idEditar,self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.K[0][0],self.g[0][0])
+                actualizar=self.tla.actualizar_datos_tla(self.idEditar,self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,K,self.g[0][1],P)
 
                 if actualizar==1:
                     self.Mensaje()
-                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado))
+                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado) + " y \n  K="+ str(K))
                     self.mensaje.button()
 
                     self.editarcalculo.close()
@@ -189,7 +200,7 @@ class EditarCalculo():
             datoError= self.eventos.datoErroneo()
             self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
             self.trazadata.insertarTraza(self.trazas)
-
+     
         else:
             DensidadArena= float(self.editarcalculo.lineEdit_densidadArena.text())
             DensidadMar=  float(self.editarcalculo.lineEdit_DensidadMar.text())
@@ -197,36 +208,42 @@ class EditarCalculo():
             altura=float(self.editarcalculo.lineEdit_altura.text())
             angulo=float(self.editarcalculo.lineEdit_AnguloRompiente.text())
             indice=float(self.editarcalculo.lineEdit_IndiceRompiente.text())
-            datos= self.K.mostrarK()
+            P=float(self.editarcalculo.lineEdit_PEditar.text())
             datos1=self.G.mostrarG()
-
-            self.K=[]
-            for x in datos:
-                self.K.append([float(i) for i in x])
-            
 
             self.g=[]
             for x in datos1:
                 self.g.append([float(i) for i in x])
             
         
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,self.K[0][0],self.g[0][0])
-            
+            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,self.g[0][1])
+            K=obtniedo_K(P,resultado)
+
             if resultado== False:
                 self.Mensaje()
                 self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
                 self.mensaje.button()
 
                 datoError= self.eventos.divisionporCero()
-                self.trazas=Trazas(nombreUsuario=self.nombreUsuario,evento= datoError)
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
                 self.trazadata.insertarTraza(self.trazas)
+            
+            elif K== False:
+                self.Mensaje()
+                self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
+                self.mensaje.button()
+
+                datoError= self.eventos.divisionporCero()
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
+                self.trazadata.insertarTraza(self.trazas)
+
             else:
                 self.tla= TLAData()
-                actualizar=self.tla.insertar_datos_tla(self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.idUsuario,self.K[0][0],self.g[0][0])
+                actualizar=self.tla.insertar_datos_tla(self.ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.idUsuario,K,self.g[0][1],P)
 
                 if actualizar==1:
                     self.Mensaje()
-                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado))
+                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado) + " y \n  K="+ str(K))
                     self.mensaje.button()
                     self.editarcalculo.close()
                     

@@ -25,8 +25,8 @@ class TLAData():
         IDUSUARIO INTEGER,
         K REAL,
         G REAL,
+        P REAL,
         FOREIGN KEY("UBICACION") REFERENCES "ubicaciones"("NOMBRE"),
-	    FOREIGN KEY("K") REFERENCES "K"("K"),
 	    FOREIGN KEY("G") REFERENCES "G"("G"),
 	    FOREIGN KEY("IDUSUARIO") REFERENCES "usuarios"("ID")
         ) """
@@ -34,12 +34,12 @@ class TLAData():
         cur.close()
         self.db.close()
 
-    def insertar_datos_tla(self,Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado,IDUSUARIO,K,G):
+    def insertar_datos_tla(self,Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado,IDUSUARIO,K,G,P):
         self.db= Conexion().conectar()
         fecha= datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.cursor=self.db.cursor()
-        res=(""" INSERT INTO calculo(UBICACION,DENSIDAD_MAR,DENSIDAD_ARENA,COEFICIENTE,ALTURA,ANGULO,INDICE,RESULTADO,FECHA,IDUSUARIO,K,G) values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')   """   
-        .format(Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado,fecha,IDUSUARIO,K,G))
+        res=(""" INSERT INTO calculo(UBICACION,DENSIDAD_MAR,DENSIDAD_ARENA,COEFICIENTE,ALTURA,ANGULO,INDICE,RESULTADO,FECHA,IDUSUARIO,K,G,P) values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')   """   
+        .format(Ubicacion,Densidad_mar,Densidad_arena,Coeficiente_porocidad,Altura,Angulo_rompiente,Indice_rompiente,Resultado,fecha,IDUSUARIO,K,G,P))
         self.cursor.execute(res)
         self.db.commit()
         if self.cursor.rowcount == 1:
@@ -148,10 +148,10 @@ class TLAData():
 
        
     
-    def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,angulo,ir,result,k,g):
+    def actualizar_datos_tla(self,id_tla,ubicacion,dm,da,cp,hb,angulo,ir,result,k,g,P):
         self.db= Conexion().conectar()
         self.cursor=self.db.cursor()
-        actualizar= """ UPDATE  calculo SET UBICACION='{}',DENSIDAD_MAR ='{}',DENSIDAD_ARENA='{}',COEFICIENTE ='{}', ALTURA='{}',ANGULO='{}',INDICE ='{}',RESULTADO='{}',K='{}',G='{}' WHERE ID= '{}'  """    .format (ubicacion,dm,da,cp,hb,angulo,ir,result,k,g,id_tla)
+        actualizar= """ UPDATE  calculo SET UBICACION='{}',DENSIDAD_MAR ='{}',DENSIDAD_ARENA='{}',COEFICIENTE ='{}', ALTURA='{}',ANGULO='{}',INDICE ='{}',RESULTADO='{}',K='{}',G='{}',P= '{}' WHERE ID= '{}'  """    .format (ubicacion,dm,da,cp,hb,angulo,ir,result,k,g,P, id_tla)
         self.cursor.execute(actualizar)
         a= self.cursor.rowcount
         self.db.commit()

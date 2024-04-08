@@ -111,10 +111,11 @@ class PrincipalUsuario(QMainWindow):
             self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
-            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[11]))
-            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[13]))
             self.table_Calculos.setItem(tablerow,10,QtWidgets.QTableWidgetItem(row[8]))
-            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[9]))
+            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[11]))
+            self.table_Calculos.setItem(tablerow,12,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
     
     def EliminarCalculo(self):
@@ -237,10 +238,11 @@ class PrincipalUsuario(QMainWindow):
             self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
-            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[11]))
-            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[13]))
             self.table_Calculos.setItem(tablerow,10,QtWidgets.QTableWidgetItem(row[8]))
-            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[9]))
+            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[11]))
+            self.table_Calculos.setItem(tablerow,12,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
        
 
