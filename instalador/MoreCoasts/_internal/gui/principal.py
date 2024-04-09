@@ -20,7 +20,6 @@ import ctypes
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
-from data.K import KData
 from data.G import GData
 from .mensaje import Mensaje
 import pathlib
@@ -134,7 +133,6 @@ class Principal(QMainWindow):
         self.ButtonBuscarTraza.clicked.connect(self.BuscarTraza)
 
         ### PAGINA AJUSTES ######
-        self.K= KData()
         self.G= GData()
         self.button_Ajustes.clicked.connect(self.GUIAjustes)
 
@@ -209,7 +207,8 @@ class Principal(QMainWindow):
         i=len(a)
         self.table_Calculos.setRowCount(i)
         tablerow=0
-
+        
+        print(a)
         for row in a:
             #Mostrando Los Datos en la Tabla Calculos
             self.table_Calculos.setItem(tablerow,0,QtWidgets.QTableWidgetItem(row[0]))
@@ -220,10 +219,11 @@ class Principal(QMainWindow):
             self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
-            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[11]))
-            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[13]))
             self.table_Calculos.setItem(tablerow,10,QtWidgets.QTableWidgetItem(row[8]))
-            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[9]))
+            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[11]))
+            self.table_Calculos.setItem(tablerow,12,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
     
 
@@ -335,7 +335,7 @@ class Principal(QMainWindow):
         i=len(a)
         self.table_Calculos.setRowCount(i)
         tablerow=0
-
+        print(a)
         for row in a:
             #Mostrando Los Datos en la Tabla Calculos
             self.table_Calculos.setItem(tablerow,0,QtWidgets.QTableWidgetItem(row[0]))
@@ -346,10 +346,11 @@ class Principal(QMainWindow):
             self.table_Calculos.setItem(tablerow,5,QtWidgets.QTableWidgetItem(row[5]))
             self.table_Calculos.setItem(tablerow,6,QtWidgets.QTableWidgetItem(row[6]))
             self.table_Calculos.setItem(tablerow,7,QtWidgets.QTableWidgetItem(row[7]))
-            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[11]))
-            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,8,QtWidgets.QTableWidgetItem(row[12]))
+            self.table_Calculos.setItem(tablerow,9,QtWidgets.QTableWidgetItem(row[13]))
             self.table_Calculos.setItem(tablerow,10,QtWidgets.QTableWidgetItem(row[8]))
-            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[9]))
+            self.table_Calculos.setItem(tablerow,11,QtWidgets.QTableWidgetItem(row[11]))
+            self.table_Calculos.setItem(tablerow,12,QtWidgets.QTableWidgetItem(row[9]))
             tablerow += 1 
 
     ################# Nuevo  Calculo ##########        
@@ -639,30 +640,20 @@ class Principal(QMainWindow):
     
     def MostrarConstantes(self):
         #Obteniendo las Constante de la Base de Datos
-        datos=self.K.mostrarK()
+
         datos1=self.G.mostrarG()
-        
-        #Convirtiendo a str
-        Kconstante=[]
-        for x in datos:
-            Kconstante.append([str(i) for i in x])
 
         gconstante=[]
         for x in datos1:
             gconstante.append([str(i) for i in x])
-        
-        #Mostrando en las COnstantes en el lineEdit
-        self.lineEdit_K.setText(Kconstante[0][1])
         self.lineEdit_G.setText(gconstante[0][1])
         #Guardando los datos anterior en una Variable
         
     
     def Cambiar(self):
-        #Convirtiendo a float 
-        Kconstante=float(self.lineEdit_K.text())
+    
         gconstante=float(self.lineEdit_G.text())
         #Actualizar los Datos de la Constante de la BD
-        a= self.K.actualizarK(Kconstante)
         b= self.G.actualizarG(gconstante)
         
         self.Mensaje()
@@ -1016,6 +1007,15 @@ class Principal(QMainWindow):
         elif self.lineEditContrasenaActual.text() != self.usuario[0][3]:
             self.Mensaje()
             self.mensaje.label("Contraseña  Actual es Incorrecta")
+            self.mensaje.button()
+
+        elif len(self.lineEditNuevaContrasena.text()) < 3:
+            self.Mensaje()
+            self.mensaje.label("La Nueva Contraseña  debe teber un tamaño mayor a 3 caracteres")
+            self.mensaje.button()
+        elif len(self.lineEditConfirmContrsena.text()) < 3:
+            self.Mensaje()
+            self.mensaje.label("La Nueva Contraseña  debe teber un tamaño mayor a 3 caracteres")
             self.mensaje.button()
         #Si la Nueva Contraseña no COincide con la Confirmada
         elif self.lineEditNuevaContrasena.text() != self.lineEditConfirmContrsena.text():

@@ -453,7 +453,7 @@ color: rgb(0, 0, 255);</string>
                 <string notr="true">color: rgb(0, 0, 0);</string>
                </property>
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Las costas han sido tradicionalmente un espacio físico de gran interés para el progreso socioeconómico, en el que viven &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;aproximadamente dos tercios de la población mundial. Su creciente demanda como escenario para el esparcimiento y&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;la recreación, relacionado con sus atractivos naturales ha generado múltiples conflictos de uso, además del impacto &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;sobre sus principales subsistemas y recursos.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Es de vital importancia conocer los que factores y fenómenos que inciden tanto positiva como negativamente en &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;estos ecosistemas, un aspecto a tener en cuenta es el comportamiento&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;/&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:12pt; color:#000000;&quot;&gt;del transporte longitudinal de los sedimentos&lt;/span&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;MoreCoasts (Más Costas)&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; es una aplicación para el cálculo del Transporte Longitudinal de Sedimentos, que nos permite &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;gestionar, almacenar y búscar dichos cálculos realizados en las lineas costeras. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Las costas han sido tradicionalmente un espacio físico de gran interés para el progreso socioeconómico, en el que viven &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;aproximadamente dos tercios de la población mundial. Su creciente demanda como escenario para el esparcimiento y&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;la recreación, relacionado con sus atractivos naturales ha generado múltiples conflictos de uso, además del impacto &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;sobre sus principales subsistemas y recursos.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Es de vital importancia conocer los que factores y fenómenos que inciden tanto positiva como negativamente en &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;estos ecosistemas, un aspecto a tener en cuenta es el comportamiento &lt;/span&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:12pt; color:#000000;&quot;&gt;del transporte longitudinal de los sedimentos&lt;/span&gt;&lt;span style=&quot; font-family:'Arial,sans-serif'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;MoreCoasts (Más Costas)&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; es una aplicación para el cálculo del Transporte Longitudinal de Sedimentos, que nos permite &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;gestionar, almacenar y búscar dichos cálculos realizados en las lineas costeras. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -883,17 +883,22 @@ border:1px solid rgb(255,255,255);
              </column>
              <column>
               <property name="text">
+               <string>acele_grav (g)</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>P</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>G </string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
                <string>K</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>g</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Resultado</string>
               </property>
              </column>
              <column>
@@ -942,7 +947,7 @@ border:1px solid rgb(255,255,255);
                </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton{
-background-color: rgb(11, 15, 255);
+background-color: rgb(71, 74, 255);
 color: rgb(0, 0, 0);
 border-radius:8px;
 }

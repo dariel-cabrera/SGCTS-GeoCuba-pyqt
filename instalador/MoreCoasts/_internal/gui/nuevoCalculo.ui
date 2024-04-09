@@ -223,7 +223,7 @@ color: rgb(255, 255, 255);</string>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(11, 15, 255);
+background-color: rgb(71, 74, 255);
 color: rgb(0, 0, 0);
 border-radius:8px;
 }
@@ -872,6 +872,61 @@ border-bottom-left-radius:12px;
          <string>Seleccione un Municipio</string>
         </property>
        </item>
+      </widget>
+      <widget class="QLabel" name="label_DensidadArena_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>350</y>
+         <width>223</width>
+         <height>48</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Medición Práctica (P)*</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_PNuevo">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>360</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>121</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>121</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>50</number>
+       </property>
       </widget>
      </widget>
     </item>

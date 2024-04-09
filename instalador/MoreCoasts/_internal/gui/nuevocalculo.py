@@ -1,7 +1,8 @@
 from PyQt6 import uic
 from .mensaje import Mensaje
 from PyQt6.QtWidgets import QApplication,QMainWindow,QHeaderView
-from model.ecuaciones import transporte_logitudinal_arena 
+from model.ecuaciones import transporte_logitudinal_arena
+from model.ecuaciones import obtniedo_K
 from PyQt6 import QtWidgets, QtGui
 from data.tla import TLAData
 import pathlib
@@ -12,7 +13,6 @@ from data.ubicacion import UbicacionData
 from model.traza import Traza
 from model.eventos import Evento 
 from data.Trazas import TrazaData
-from data.K import KData
 from data.G import GData
 import pathlib
 
@@ -38,7 +38,6 @@ class NuevoCalculo():
         self.nuevocalculo.butCancelarNuevoCalculo.clicked.connect(self.boton_Cancelar_NuevoCalculo)
         self.MostrarMunicipio()
         self.nuevocalculo.but_SeleccionarMunCalculo.clicked.connect(self.Seleccionar)
-        self.K= KData()
         self.G=GData()
         self.nuevocalculo.show()
  
@@ -58,6 +57,7 @@ class NuevoCalculo():
         self.nuevocalculo.lineEdit_altura.setText("")
         self.nuevocalculo.lineEdit_AnguloRompiente.setText("")
         self.nuevocalculo.lineEdit_IndiceRompiente.setText("")
+        self.nuevocalculo.lineEdit_PNuevo.setText("")
         self.nuevocalculo.comboBoxUbicCalculo.clear()
     
     def MostrarMunicipio(self):
@@ -92,6 +92,7 @@ class NuevoCalculo():
         altura=self.validarcampo.validarCamposfloat(self.nuevocalculo.lineEdit_altura.text())
         angulo=self.validarcampo.validarCamposfloat(self.nuevocalculo.lineEdit_AnguloRompiente.text())
         indice=self.validarcampo.validarCamposfloat(self.nuevocalculo.lineEdit_IndiceRompiente.text())
+        P=self.validarcampo.validarCamposfloat(self.nuevocalculo.lineEdit_PNuevo.text())
         ubicacion=self.nuevocalculo.comboBoxUbicCalculo.currentText()
 
         if DensidadArena==False:
@@ -117,6 +118,12 @@ class NuevoCalculo():
             self.nuevocalculo.lineEdit_altura.setFocus()
             self.nuevocalculo.lineEdit_altura.setText("0")
             self.nuevocalculo.label_Error.setText("En la Altura sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
+
+        elif P==False:
+            self.nuevocalculo.lineEdit_PNuevo.setStyleSheet("border: 1px solid red;")
+            self.nuevocalculo.lineEdit_PNuevo.setFocus()
+            self.nuevocalculo.lineEdit_PNuevo.setText("0")
+            self.nuevocalculo.label_Error.setText("En P sólo puede entrar números, valores mayores que 0 y no puede entrar campos vacios")
 
         elif angulo ==False:
             self.nuevocalculo.lineEdit_AnguloRompiente.setStyleSheet("border: 1px solid red;")
@@ -157,22 +164,31 @@ class NuevoCalculo():
             altura=float(self.nuevocalculo.lineEdit_altura.text())
             angulo=float(self.nuevocalculo.lineEdit_AnguloRompiente.text())
             indice=float(self.nuevocalculo.lineEdit_IndiceRompiente.text())
+            P=float(self.nuevocalculo.lineEdit_PNuevo.text())
             ubicacion=self.nuevocalculo.comboBoxUbicCalculo.currentText()
-            datos= self.K.mostrarK()
+           
             datos1=self.G.mostrarG()
-
-            K=[]
-            for x in datos:
-                K.append([float(i) for i in x])
-            
+            print(datos1)
 
             g=[]
             for x in datos1:
                 g.append([float(i) for i in x])
 
-            resultado= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,K[0][0],g[0][0])
+            
+            Q= transporte_logitudinal_arena(DensidadMar,indice,DensidadArena,CoeficienteP,altura,angulo,g[0][1])
 
-            if resultado== False:
+            K= obtniedo_K(P,Q)
+
+            if Q == False:
+                self.Mensaje()
+                self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
+                self.mensaje.button()
+
+                datoError= self.eventos.divisionporCero()
+                self.trazas=Traza(nombreUsuario=self.nombreUsuario,evento= datoError)
+                self.trazadata.insertarTraza(self.trazas)
+            
+            elif K== False:
                 self.Mensaje()
                 self.mensaje.label("Verifíque los Datos la División por 0 no esta Permitida")
                 self.mensaje.button()
@@ -183,9 +199,9 @@ class NuevoCalculo():
 
             else:
                 self.tla= TLAData()
-                if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,resultado,self.idUsuario,K[0][0],g[0][0]): 
+                if self.tla.insertar_datos_tla(ubicacion,DensidadMar,DensidadArena,CoeficienteP,altura,angulo,indice,Q,self.idUsuario,K,g[0][1],P): 
                     self.Mensaje()
-                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(resultado))
+                    self.mensaje.label("Datos Guardados con Éxito Q="+ str(Q) + " y\n K="+str(K))
                     self.mensaje.button()
                     self.nuevocalculo.hide()
                     self.limpiarCamposNuevoCalculo()  
