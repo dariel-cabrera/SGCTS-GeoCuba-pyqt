@@ -1,4 +1,4 @@
-id,Nombre,Apellido,Municipio,CI,Correo,TipoTrabajador
+id_Usuario,Nombre,Apellido,id_Municipio,CI,Correo,TipoTrabajador
 1,Dariel,Cabrera,1,11111111111,dariel@gmail.com,Informatico
 2,Emilio,Perez,1,222222222222,emilio@nauta.cu,Director
 3,Dionis,Lopez,1,333333333333,dionis@uo.edu.cu,Tutor
