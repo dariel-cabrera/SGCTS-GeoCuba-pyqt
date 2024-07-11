@@ -1,6 +1,15 @@
-const express = require("express");
-const app = express();
+import React from "react";
+import  ReactDOM  from "react-dom/client";
+import App from './App';
+import './index.css';
 
-app.listen(3002,()=> {
-  console.log("Corriendo en el puerto 3002")
-})
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>
+);
+
+
+

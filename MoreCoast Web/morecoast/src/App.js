@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import './App.css';
 
+const mongoose= require('mongoose')
+const url= 'mongodb://localhost/MoreCoast'
 
 function App() {
 
@@ -62,3 +64,13 @@ function App() {
 }
 
 export default App;
+
+mongoose.connect(url,{
+  userNewUrlParser:true,
+  userUnifiedTopology:true,
+  useFindAndModify:false,
+  useCreateIndex:true
+
+})
+  .then(()=>console.log('CONECTADO A MONGO'))
+  .catch((e) => console.log('El error de conexion es: '+e)) 
