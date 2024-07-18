@@ -1,11 +1,11 @@
-
+import React from 'react';
 import { useState } from 'react';
 import './App.css';
 
-const mongoose= require('mongoose')
-const url= 'mongodb://localhost/MoreCoast'
+
 
 function App() {
+
 
   const [densidad_a,setDensidadA]=useState(0);
   const [densidad_m,setDensidadM]=useState(0);
@@ -18,6 +18,7 @@ function App() {
   const mostrarDatos = () => {
     alert(densidad_a);
   }
+
 
   return (
     <div className="App">
@@ -61,16 +62,8 @@ function App() {
       </div>
     </div>
   );
+ 
 }
 
 export default App;
 
-mongoose.connect(url,{
-  userNewUrlParser:true,
-  userUnifiedTopology:true,
-  useFindAndModify:false,
-  useCreateIndex:true
-
-})
-  .then(()=>console.log('CONECTADO A MONGO'))
-  .catch((e) => console.log('El error de conexion es: '+e)) 
