@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import express from 'express';
 
 
 
@@ -59,6 +60,10 @@ function App() {
       }}
       type="number"></input></label>
       <button onClick={mostrarDatos}>Calcular</button>
+      </div>
+      <div className='lista'>
+        <button>Listar</button>
+
       </div>
     </div>
   );

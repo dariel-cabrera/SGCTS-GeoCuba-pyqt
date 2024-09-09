@@ -11,6 +11,7 @@
     "browserify-zlib": "^0.2.0",
     "express": "^4.19.2",
     "html-webpack-plugin": "^5.6.0",
+    "mathjs": "^13.0.3",
     "mogoose": "^0.0.1-security",
     "mongoose": "^8.5.1",
     "nodemon": "^3.1.4",
@@ -24,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "devStart": "nodemon db.js"
+    "devStart": "nodemon src/index.js"
   },
   "eslintConfig": {
     "extends": [
