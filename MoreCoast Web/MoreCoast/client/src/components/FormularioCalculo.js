@@ -25,7 +25,7 @@ export const FormularioCalculo =(
         placeholder="Ingrese el valor de la Densidad del Mar" /> 
 
         <InputsGroups label="Coeficiente de Porocidad" value={coeficiente} 
-        onChange={(e) => setCoediciente(e.target.value)}
+        onChange={(e) => setCoeficiente(e.target.value)}
         placeholder="Ingrese el valor del Coeficiente de Porocidad" /> 
 
         <InputsGroups label="Indice de Rompiente" value={indice} 
