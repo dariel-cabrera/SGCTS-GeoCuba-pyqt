@@ -1,12 +1,14 @@
-import React from "react";
-import { actualizar, eliminar, fetchData } from './db_fronted';
+import { fetchData,eliminar,actualizar } from '../db_fronted';
 import Swal from 'sweetalert2';
 
-export const calcularDatos = ({datos, getDatos, limpiarDatos}) => {
+export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
 
     const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = datos;
+    console.log(datos)
+    console.log(densidad_a)
 
     if (!densidad_a || !densidad_m || !indice || !coeficiente || !altura || !angulo || !aceleracion || !P) {
+      console.log(densidad_a)
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -27,8 +29,9 @@ export const calcularDatos = ({datos, getDatos, limpiarDatos}) => {
 
   }
 
-  export const actualizarDatos= ({id, datos, getDatos, limpiarDatos}) =>{
+  export const actualizarDatos= ({id, datos={}, getDatos, limpiarDatos}) =>{
     const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = datos;
+    
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
