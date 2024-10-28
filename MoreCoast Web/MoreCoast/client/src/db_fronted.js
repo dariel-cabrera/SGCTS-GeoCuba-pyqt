@@ -85,3 +85,35 @@ export const eliminar =  (id) => {
     axios.delete(`http://localhost:3001/delete/${id}`)
    
 }
+
+export const crearUsuario= async(
+    usuario_,
+    nombre_,
+    apellido_,
+    segundoApellido_,
+    ci_,
+    tipoTrabajador_,
+    sexo_,
+    correo_,
+    constrasena_
+
+) =>{
+    try {
+        const response = await axios.post('http://localhost:3001/createUsuario',{
+            usuario_:usuario_,
+            nombre_:nombre_,
+            apellido_:apellido_,
+            segundoApellido_:segundoApellido_,
+            ci_:ci_,
+            tipoTrabajador_:tipoTrabajador_,
+            sexo_:sexo_,
+            correo_:correo_,
+            constrasena_:constrasena_
+
+        })
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+
+}
