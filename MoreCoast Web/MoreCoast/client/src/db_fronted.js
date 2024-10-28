@@ -87,28 +87,28 @@ export const eliminar =  (id) => {
 }
 
 export const crearUsuario= async(
-    usuario_,
-    nombre_,
-    apellido_,
-    segundoApellido_,
-    ci_,
-    tipoTrabajador_,
-    sexo_,
-    correo_,
-    constrasena_
+    usuario,
+    nombre,
+    apellido,
+    segundoApellido,
+    ci,
+    tipoTrabajador,
+    sexo,
+    correo,
+    constrasena
 
 ) =>{
     try {
         const response = await axios.post('http://localhost:3001/createUsuario',{
-            usuario_:usuario_,
-            nombre_:nombre_,
-            apellido_:apellido_,
-            segundoApellido_:segundoApellido_,
-            ci_:ci_,
-            tipoTrabajador_:tipoTrabajador_,
-            sexo_:sexo_,
-            correo_:correo_,
-            constrasena_:constrasena_
+            usuario_:usuario,
+            nombre_:nombre,
+            apellido_:apellido,
+            segundoApellido_:segundoApellido,
+            ci_:ci,
+            tipoTrabajador_:tipoTrabajador,
+            sexo_:sexo,
+            correo_:correo,
+            constrasena_:constrasena,
 
         })
         console.log(response.data);
@@ -117,3 +117,36 @@ export const crearUsuario= async(
     }
 
 }
+
+export const actualizarUsuario = async(
+    id,
+    usuario,
+    nombre,
+    apellido,
+    segundoApellido,
+    ci,
+    tipoTrabajador,
+    sexo,
+    correo,
+    constrasena
+)=>{
+    
+    try {
+        const response = await axios.put('http://localhost:3001/updateUsuario',{
+            _id:id,
+            usuario_:usuario,
+            nombre_:nombre,
+            apellido_:apellido,
+            segundoApellido_:segundoApellido,
+            ci_:ci,
+            tipoTrabajador_:tipoTrabajador,
+            sexo_:sexo,
+            correo_:correo,
+            constrasena_:constrasena,
+
+        })
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+} 
