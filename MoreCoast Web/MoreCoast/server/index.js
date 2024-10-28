@@ -120,6 +120,13 @@ app.put("/updateUsuario",(req,res)=> {
 
   actualizarUsuario(_id,usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
   console.log("Datos Guardados",_id);
+})
+
+
+app.delete("/deleteUsuario/:id",(req,res)=>{
+  const id= req.params.id;
+  console.log(id);
+  eliminarUsuario(id);
 
 })
 
