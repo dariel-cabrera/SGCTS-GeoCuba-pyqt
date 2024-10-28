@@ -100,8 +100,26 @@ pp.post("/createUsuario",(req,res)=> {
   const correo_=req.body.correo;
   const constrasena_= req.body.constrasena;
 
-  crear(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
+  crearUsuario(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
   console.log("Datos Guardados");
+
+})
+
+app.put("/updateUsuario",(req,res)=> {
+  const _id= req.body._id;
+  const usuario_= req.body.usuario;
+  const nombre_= req.body.nombre;
+  const apellido_=req.body.apellido;
+  const segundoApellido_=req.body.segundoApellido;
+  const ci_=req.body.ci;
+  const tipoTrabajador_=req.body.tipoTrabajador;
+  const sexo_= req.body.sexo;
+  const correo_=req.body.correo;
+  const constrasena_= req.body.constrasena;
+  
+
+  actualizarUsuario(_id,usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
+  console.log("Datos Guardados",_id);
 
 })
 
