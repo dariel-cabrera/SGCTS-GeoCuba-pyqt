@@ -13,7 +13,7 @@ const datosSchemaUsuario= mongoose.Schema({
 
 }, {versionKey:false})
 
-export const DatosModel= mongoose.model('datos',datosSchemaUsuario);
+export const DatosModelUsuario= mongoose.model('personas',datosSchemaUsuario);
 
 // Crear 
 export const crearUsuario = async(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_)=>{

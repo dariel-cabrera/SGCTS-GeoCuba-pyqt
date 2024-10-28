@@ -88,7 +88,7 @@ app.get("/mostrar",async(req,res)=>{
 
 })
 
-pp.post("/createUsuario",(req,res)=> {
+app.post("/createUsuario",(req,res)=> {
  
   const usuario_= req.body.usuario;
   const nombre_= req.body.nombre;
