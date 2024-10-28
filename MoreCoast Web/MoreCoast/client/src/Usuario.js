@@ -15,9 +15,10 @@ function Usuario () {
     const[ci,setCi]=useState("");
     const[usuario,setUsuario]= useState("");
     const[contrasena,setContrasena]=useState("");
-    const[sexo,setSexo]=useState("");
+    const[sexo,setSexo]=useState(true);
     const[tipoTrabajador,setTipoTrabajador]=useState("");
     const[usuariosData,setUsuariosData]=useState([]);
+    const[editarUsuario,setEditarUsuario]=useState(false);
 
     const getDatosUsuario = () => {
       axios.get("http://localhost:3001/mostraUsuario").then((respuesta) => {
@@ -27,6 +28,33 @@ function Usuario () {
     useEffect(() => {
       getDatosUsuario();
     }, []);
+
+    const limpiarDatos=()=>{
+      setId(0);
+      setEditarUsuario(false);
+      setUsuario("");
+      setNombre("");
+      setApellido("");
+      setSegundoApellido("");
+      setCi("");
+      setCorreo("");
+      setTipoTrabajador("");
+      setContrasena("");
+      setSexo(true);
+    }
+  
+    const editarUsuarios = (val)=>{
+      console.log('Editando Datos');
+      setEditarUsuario(true);
+      setUsuario(val.usuario);
+      setNombre(val.nombre);
+      setApellido(val.apellido);
+      setSegundoApellido(val.segundoApellido);
+      setCi(val.ci);
+      setCorreo(val.correo);
+      setTipoTrabajador(val.tipoTrabajador);
+      
+  }
 
     return (
     <div className="container">
