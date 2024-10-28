@@ -150,3 +150,8 @@ export const actualizarUsuario = async(
         console.error('Error fetching data:', error);
     }
 } 
+
+export const eliminarUsuario =  (id) => {
+    axios.delete(`http://localhost:3001/delete/${id}`)
+   
+}
