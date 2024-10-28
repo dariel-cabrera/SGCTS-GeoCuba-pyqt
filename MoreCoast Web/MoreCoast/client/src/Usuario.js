@@ -5,6 +5,7 @@ import { ButtonUsuario } from "./components/ButtonUsuarios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import axios from 'axios';
+import { crearUsuarios,actualizarDatosUsuarios,eliminarDatosUsuario } from "./components/AccionesUsuario";
 
 
 function Usuario () {
@@ -78,7 +79,20 @@ function Usuario () {
         />
 
       </div>
+      
+      <ButtonUsuario 
+          editar={editarUsuario}
+          onLimpiar={limpiarDatos}
+          onActualizar={()=>crearUsuarios({
+            datos:{usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena},
+            getDatosUsuario,
+            limpiarDatos})}
+          onRegistrar={()=>actualizarDatosUsuarios({
+            datos:{id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena},
+            getDatosUsuario,
+            limpiarDatos})}
 
+      />
 
 
       </div>
