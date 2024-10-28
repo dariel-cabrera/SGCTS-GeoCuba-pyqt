@@ -3,6 +3,8 @@ import  express from "express" ;
 import {actualizar, crear, eliminar }  from "./models/shema.js";
 import cors from 'cors';
 import { DatosModel } from "./models/shema.js";
+import { DatosModelUsuario } from "./models/shemaUsuario.js";
+import { actualizarUsuario,eliminarUsuario,crearUsuario } from "./models/shemaUsuario.js";
 
 
 
@@ -80,7 +82,28 @@ app.get("/mostrar",async(req,res)=>{
 
  })
 
-   
+ app.get("/mostrarUsuario",async(req,res)=>{
+  const resultado= await DatosModelUsuario.find()
+  res.json(resultado);
+
+})
+
+pp.post("/createUsuario",(req,res)=> {
+ 
+  const usuario_= req.body.usuario;
+  const nombre_= req.body.nombre;
+  const apellido_=req.body.apellido;
+  const segundoApellido_=req.body.segundoApellido;
+  const ci_=req.body.ci;
+  const tipoTrabajador_=req.body.tipoTrabajador;
+  const sexo_,
+  const correo_,
+  const constrasena_
+
+  crear(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
+  console.log("Datos Guardados");
+
+})
 
 
 
