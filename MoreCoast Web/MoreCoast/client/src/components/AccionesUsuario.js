@@ -25,4 +25,47 @@ export const crearUsuarios = ({datos={}, getDatos, limpiarDatos}) => {
       timer: 1500
     });
 
+}
+
+export const actualizarDatosUsuarios= ({id, datos={}, getDatos, limpiarDatos}) =>{
+
+    const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena} = datos;
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "¿Estas Seguro?",
+      text: "Deseas actualizar los datos",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si,actualizalos!",
+      cancelButtonText: "No, cancelar!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        actualizar(id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena);
+        getDatos();
+        swalWithBootstrapButtons.fire({
+          title: "Actualizdos!",
+          text: "Sus Datos han sido actualizados.",
+          icon: "success"
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelado",
+          text: "Operación Cancelada",
+          icon: "error"
+        });
+      }
+    });
+    limpiarDatos();
+
   }
