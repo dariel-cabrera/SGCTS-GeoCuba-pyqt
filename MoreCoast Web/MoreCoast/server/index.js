@@ -96,9 +96,9 @@ pp.post("/createUsuario",(req,res)=> {
   const segundoApellido_=req.body.segundoApellido;
   const ci_=req.body.ci;
   const tipoTrabajador_=req.body.tipoTrabajador;
-  const sexo_,
-  const correo_,
-  const constrasena_
+  const sexo_= req.body.sexo;
+  const correo_=req.body.correo;
+  const constrasena_= req.body.constrasena;
 
   crear(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
   console.log("Datos Guardados");
