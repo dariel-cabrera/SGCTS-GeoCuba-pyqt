@@ -152,6 +152,6 @@ export const actualizarUsuario = async(
 } 
 
 export const eliminarUsuario =  (id) => {
-    axios.delete(`http://localhost:3001/delete/${id}`)
+    axios.delete(`http://localhost:3001/deleteUsuario/${id}`)
    
 }

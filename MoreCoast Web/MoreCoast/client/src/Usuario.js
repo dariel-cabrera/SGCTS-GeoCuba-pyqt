@@ -1,6 +1,11 @@
 import React from "react";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { FormularioUsuario } from "./components/FormularioUsuario";
+import { ButtonUsuario } from "./components/ButtonUsuarios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import axios from 'axios';
+
 
 function Usuario () {
     const [nombre,setNombre]= useState("");
@@ -12,6 +17,16 @@ function Usuario () {
     const[contrasena,setContrasena]=useState("");
     const[sexo,setSexo]=useState("");
     const[tipoTrabajador,setTipoTrabajador]=useState("");
+    const[usuariosData,setUsuariosData]=useState([]);
+
+    const getDatosUsuario = () => {
+      axios.get("http://localhost:3001/mostraUsuario").then((respuesta) => {
+        setUsuariosData(respuesta.data);
+      })
+    }
+    useEffect(() => {
+      getDatosUsuario();
+    }, []);
 
     return (
     <div className="container">
@@ -36,15 +51,14 @@ function Usuario () {
 
       </div>
 
+
+
       </div>
 
       </div>
 
     );
 
-
-
-
-
-
 }
+
+export default Usuario;
