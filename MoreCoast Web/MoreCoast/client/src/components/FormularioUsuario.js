@@ -1,5 +1,6 @@
 import React from "react";
 import { InputsGroups } from "./InputsGrups";
+import PropTypes from 'prop-types';
 
 
 
@@ -67,7 +68,25 @@ export const FormularioUsuario = (
         />     
 
         </>
-
-
     )
 } 
+
+
+FormularioUsuario.PropTypes={
+    usuario,
+    setUsuario:PropTypes.func.isRequired,
+    nombre,
+    setUsuario:PropTypes.func.isRequired,
+    apellido,
+    setApellido:PropTypes.func.isRequired,
+    segundoApellido,
+    setSegundoApellido:PropTypes.func.isRequired,
+    ci,
+    setCi: PropTypes.func.isRequired,
+    tipoTrabajador,
+    setTipoTrabajador: PropTypes.func.isRequired,
+    correo,
+    setCorreo: PropTypes.func.isRequired,
+    contrasena,
+    setContrasena:PropTypes.func.isRequired
+}
