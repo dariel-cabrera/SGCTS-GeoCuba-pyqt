@@ -10,8 +10,6 @@ import { FormularioCalculo } from './components/FormularioCalculo';
 import { calcularDatos,actualizarDatos,eliminarDatos } from './components/AccionesCalculo';
 
 
-
-
 function App() {
 
   const [densidad_a,setDensidadA]=useState(0);
@@ -67,8 +65,6 @@ function App() {
     
 }
   
- 
-
   return (
     <div className="container">
       <div className="card text-center">
