@@ -3,11 +3,22 @@ import { InputsGroups } from "./InputsGrups";
 
 
 
-export const FormularioUsuario = ()=>{
+export const FormularioUsuario = (
+    {
+        usuario,setUsuario,
+        nombre,setUsuario,
+        apellido,setApellido,
+        segundoApellido,setSegundoApellido,
+        ci,setCi,
+        tipoTrabajador,setTipoTrabajador,
+        correo,setCorreo,
+        contrasena,setContrasena
+
+    }
+
+    )=>{
   
-    {/*  <InputsGroups label="Densidad de Arena" value={densidad_a} 
-        onChange={(e) => setDensidadA(e.target.value)}
-        placeholder="Ingrese el valor de la Densidad de Arena" /> */}
+    
     return (
         <>
         <InputsGroups  label ="Usuario" value={usuario}
@@ -20,9 +31,29 @@ export const FormularioUsuario = ()=>{
           placeholder="Ingrese el nombre del usuario"
         />
 
-        <InputsGroups  label ="Apellido" value={apellido}
+        <InputsGroups  label ="Primer Apellido" value={apellido}
           onChange={(e)=>setApellido(e.target.value)}
-          placeholder="Ingrese el nombre del usuario"
+          placeholder="Ingrese el primer apellido del usuario"
+        />
+
+        <InputsGroups  label ="Segundo Apellido" value={segundoApellido}
+          onChange={(e)=>setSegundoApellido(e.target.value)}
+          placeholder="Ingrese el segundo apellido del usuario"
+        />
+
+        <InputsGroups  label ="Carnet de Identidad (Id) " value={ci}
+          onChange={(e)=>setCi(e.target.value)}
+          placeholder="Ingrese el Ci del  usuario"
+        />
+
+        <InputsGroups  label ="Tipo de Trabajador" value={tipoTrabajador}
+          onChange={(e)=>setTipoTrabajador(e.target.value)}
+          placeholder="Ingrese el tipo de Trabajador del usuario"
+        />
+
+        <InputsGroups  label ="Correo" value={correo}
+          onChange={(e)=>setCorreo(e.target.value)}
+          placeholder="Ingrese el correo del usuario"
         />
 
         <InputsGroups  label ="Contraseña" value={contrasena}
