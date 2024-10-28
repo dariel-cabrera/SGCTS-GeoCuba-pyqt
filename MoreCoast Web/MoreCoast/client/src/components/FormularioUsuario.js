@@ -12,6 +12,7 @@ export const FormularioUsuario = (
         segundoApellido,setSegundoApellido,
         ci,setCi,
         tipoTrabajador,setTipoTrabajador,
+        sexo,setSexo,
         correo,setCorreo,
         contrasena,setContrasena
 
@@ -73,20 +74,20 @@ export const FormularioUsuario = (
 
 
 FormularioUsuario.PropTypes={
-    usuario,
+    usuario:PropTypes.string.isRequired,
     setUsuario:PropTypes.func.isRequired,
-    nombre,
+    nombre:PropTypes.string.isRequired,
     setUsuario:PropTypes.func.isRequired,
-    apellido,
+    apellido:PropTypes.string.isRequired,
     setApellido:PropTypes.func.isRequired,
-    segundoApellido,
+    segundoApellido:PropTypes.string.isRequired,
     setSegundoApellido:PropTypes.func.isRequired,
-    ci,
+    ci:PropTypes.number.isRequired,
     setCi: PropTypes.func.isRequired,
-    tipoTrabajador,
+    tipoTrabajador:PropTypes.string.isRequired,
     setTipoTrabajador: PropTypes.func.isRequired,
-    correo,
+    correo:PropTypes.string.isRequired,
     setCorreo: PropTypes.func.isRequired,
-    contrasena,
+    contrasena:PropTypes.string.isRequired,
     setContrasena:PropTypes.func.isRequired
 }
