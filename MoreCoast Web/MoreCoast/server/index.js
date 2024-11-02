@@ -90,16 +90,17 @@ app.get("/mostrar",async(req,res)=>{
 
 app.post("/createUsuario",(req,res)=> {
  
-  const usuario_= req.body.usuario;
-  const nombre_= req.body.nombre;
-  const apellido_=req.body.apellido;
-  const segundoApellido_=req.body.segundoApellido;
-  const ci_=req.body.ci;
-  const tipoTrabajador_=req.body.tipoTrabajador;
-  const sexo_= req.body.sexo;
-  const correo_=req.body.correo;
-  const constrasena_= req.body.constrasena;
-
+  const usuario_= req.body.usuario_;
+  const nombre_= req.body.nombre_;
+  const apellido_=req.body.apellido_;
+  const segundoApellido_=req.body.segundoApellido_;
+  const ci_=req.body.ci_;
+  const tipoTrabajador_=req.body.tipoTrabajador_;
+  const sexo_= req.body.sexo_;
+  const correo_=req.body.correo_;
+  const constrasena_= req.body.constrasena_;
+ 
+  console.log(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
   crearUsuario(usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
   console.log("Datos Guardados");
 

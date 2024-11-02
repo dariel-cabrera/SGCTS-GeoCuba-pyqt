@@ -98,6 +98,15 @@ export const crearUsuario= async(
     constrasena
 
 ) =>{
+    console.log(usuario,
+        nombre,
+        apellido,
+        segundoApellido,
+        ci,
+        tipoTrabajador,
+        sexo,
+        correo,
+        constrasena)
     try {
         const response = await axios.post('http://localhost:3001/createUsuario',{
             usuario_:usuario,
