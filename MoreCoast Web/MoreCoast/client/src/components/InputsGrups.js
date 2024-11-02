@@ -5,7 +5,6 @@ export const InputsGroups = ({ label, value, onChange, placeholder }) => {
     <div className="input-group mb-3">
       <span className="input-group-text" id="basic-addon1">{label}</span>
       <input
-        type="number"
         value={value}
         onChange={onChange}
         className="form-control"

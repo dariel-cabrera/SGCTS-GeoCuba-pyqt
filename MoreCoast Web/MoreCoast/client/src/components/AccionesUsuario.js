@@ -1,12 +1,11 @@
 import {crearUsuario,actualizarUsuario,eliminarUsuario} from '../db_fronted';
 import Swal from 'sweetalert2';
 
-export const crearUsuarios = ({datos={}, getDatos, limpiarDatos}) => {
+export const crearUsuarios = ({datos={}, limpiarDatos}) => {
 
-    const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena} = datos;
-
-    if (!usuario || !nombre || !apellido || !segundoApellido || !ci || !tipoTrabajador || !sexo || !correo || 
-        !constrasena) {
+    const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena} = datos;
+    console.log(datos);
+    if (!usuario || !nombre || !apellido || !segundoApellido || !ci || !tipoTrabajador || !sexo || !correo || !contrasena) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -14,8 +13,8 @@ export const crearUsuarios = ({datos={}, getDatos, limpiarDatos}) => {
       });
       return;
     }
-    crearUsuario(usuario,nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena);
-    getDatos();
+    crearUsuario(usuario,nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena);
+    /*getDatosUsuarios(); */
     limpiarDatos();
     Swal.fire({
       position: "top-end",
@@ -27,9 +26,9 @@ export const crearUsuarios = ({datos={}, getDatos, limpiarDatos}) => {
 
 }
 
-export const actualizarDatosUsuarios= ({id, datos={}, getDatos, limpiarDatos}) =>{
+export const actualizarDatosUsuarios= ({id, datos={}, /* getDatosUsuarios */ limpiarDatos}) =>{
 
-    const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena} = datos;
+    const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena} = datos;
     
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -48,8 +47,8 @@ export const actualizarDatosUsuarios= ({id, datos={}, getDatos, limpiarDatos}) =
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        actualizar(id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena);
-        getDatos();
+        actualizarUsuario(id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena);
+        /*getDatosUsuarios(); */
         swalWithBootstrapButtons.fire({
           title: "Actualizdos!",
           text: "Sus Datos han sido actualizados.",
@@ -70,7 +69,7 @@ export const actualizarDatosUsuarios= ({id, datos={}, getDatos, limpiarDatos}) =
 
   }
 
-  export const eliminarDatosUsuario= ({idValue,getDatos, limpiarDatos}) =>{
+  export const eliminarDatosUsuario= ({idValue,getDatosUsuarios, limpiarDatos}) =>{
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -88,7 +87,7 @@ export const actualizarDatosUsuarios= ({id, datos={}, getDatos, limpiarDatos}) =
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        eliminar(idValue);
+        eliminarUsuario(idValue);
         swalWithBootstrapButtons.fire({
           title: "Eliminados!",
           text: "Sus Datos han sido Eliminados",
@@ -105,7 +104,7 @@ export const actualizarDatosUsuarios= ({id, datos={}, getDatos, limpiarDatos}) =
         });
       }
     });
-    getDatos();
+    getDatosUsuarios();
     limpiarDatos();
     
   }

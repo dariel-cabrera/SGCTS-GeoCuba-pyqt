@@ -9,26 +9,29 @@ import { crearUsuarios,actualizarDatosUsuarios,eliminarDatosUsuario } from "./co
 
 
 function Usuario () {
+    const [id,setId]=useState(0);
     const [nombre,setNombre]= useState("");
     const [apellido,setApellido]=useState("");
     const[segundoApellido,setSegundoApellido]=useState("");
     const[correo, setCorreo]=useState("");
-    const[ci,setCi]=useState("");
+    const[ci,setCi]=useState(0);
     const[usuario,setUsuario]= useState("");
     const[contrasena,setContrasena]=useState("");
+    const[confirmarContrasena,setConfirmarContrasena]=useState("");
     const[sexo,setSexo]=useState(true);
     const[tipoTrabajador,setTipoTrabajador]=useState("");
     const[usuariosData,setUsuariosData]=useState([]);
     const[editarUsuario,setEditarUsuario]=useState(false);
 
     const getDatosUsuario = () => {
-      axios.get("http://localhost:3001/mostraUsuario").then((respuesta) => {
+      axios.get("http://localhost:3001/mostrarUsuario").then((respuesta) => {
         setUsuariosData(respuesta.data);
       })
     }
     useEffect(() => {
       getDatosUsuario();
-    }, []);
+    }, []); 
+
 
     const limpiarDatos=()=>{
       setId(0);
@@ -37,10 +40,11 @@ function Usuario () {
       setNombre("");
       setApellido("");
       setSegundoApellido("");
-      setCi("");
+      setCi(0);
       setCorreo("");
       setTipoTrabajador("");
       setContrasena("");
+      setConfirmarContrasena("")
       setSexo(true);
     }
   
@@ -76,22 +80,23 @@ function Usuario () {
             sexo={sexo} setSexo={setSexo}
             correo={correo} setCorreo={setCorreo}
             contrasena={contrasena} setContrasena={setContrasena}
+            confirmarContrasena={confirmarContrasena} setConfirmarContrasena={setConfirmarContrasena}
         />
 
       </div>
-      
+       
+
       <ButtonUsuario 
           editar={editarUsuario}
           onLimpiar={limpiarDatos}
-          onActualizar={()=>crearUsuarios({
-            datos:{usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena},
-            getDatosUsuario,
+          onActualizar={()=>actualizarDatosUsuarios({
+            datos:{id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena},
+            /*getDatosUsuario, */
             limpiarDatos})}
-          onRegistrar={()=>actualizarDatosUsuarios({
-            datos:{id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,constrasena},
-            getDatosUsuario,
+            onRegistrar={()=>crearUsuarios({
+            datos:{usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena},
+            /*getDatosUsuario,*/
             limpiarDatos})}
-
       />
 
 

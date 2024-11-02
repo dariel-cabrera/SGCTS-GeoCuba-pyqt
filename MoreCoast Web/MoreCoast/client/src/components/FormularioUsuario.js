@@ -7,14 +7,15 @@ import PropTypes from 'prop-types';
 export const FormularioUsuario = (
     {
         usuario,setUsuario,
-        nombre,setUsuario,
+        nombre,setNombre,
         apellido,setApellido,
         segundoApellido,setSegundoApellido,
         ci,setCi,
         tipoTrabajador,setTipoTrabajador,
         sexo,setSexo,
         correo,setCorreo,
-        contrasena,setContrasena
+        contrasena,setContrasena,
+        confirmarContrasena,setConfirmarContrasena
 
     }
 
@@ -23,48 +24,53 @@ export const FormularioUsuario = (
     
     return (
         <>
-        <InputsGroups  label ="Usuario" value={usuario}
+        <InputsGroups type="text" label ="Usuario" value={usuario}
           onChange={(e)=>setUsuario(e.target.value)}
           placeholder="Ingrese el usuario"
         />
 
-        <InputsGroups  label ="Nombre" value={nombre}
+        <InputsGroups  type="text" label ="Nombre" value={nombre}
           onChange={(e)=>setNombre(e.target.value)}
           placeholder="Ingrese el nombre del usuario"
         />
 
-        <InputsGroups  label ="Primer Apellido" value={apellido}
+        <InputsGroups  type="text" label ="Primer Apellido" value={apellido}
           onChange={(e)=>setApellido(e.target.value)}
           placeholder="Ingrese el primer apellido del usuario"
         />
 
-        <InputsGroups  label ="Segundo Apellido" value={segundoApellido}
+        <InputsGroups type="text"  label ="Segundo Apellido" value={segundoApellido}
           onChange={(e)=>setSegundoApellido(e.target.value)}
           placeholder="Ingrese el segundo apellido del usuario"
         />
 
-        <InputsGroups  label ="Carnet de Identidad (Id) " value={ci}
+        <InputsGroups  type="number" label ="Carnet de Identidad (Id) " value={ci}
           onChange={(e)=>setCi(e.target.value)}
           placeholder="Ingrese el Ci del  usuario"
         />
 
-        <InputsGroups  label ="Tipo de Trabajador" value={tipoTrabajador}
+        <InputsGroups  type="text" label ="Tipo de Trabajador" value={tipoTrabajador}
           onChange={(e)=>setTipoTrabajador(e.target.value)}
           placeholder="Ingrese el tipo de Trabajador del usuario"
         />
+        
+        <InputsGroups  type="checkbox" label="Sexo" checked={sexo}
+          onChange={(e) => setSexo(e.target.checked)}
+        />
 
-        <InputsGroups  label ="Correo" value={correo}
+
+        <InputsGroups  type="email" label ="Correo" value={correo}
           onChange={(e)=>setCorreo(e.target.value)}
           placeholder="Ingrese el correo del usuario"
         />
 
-        <InputsGroups  label ="Contraseña" value={contrasena}
+        <InputsGroups  type="password" label ="Contraseña" value={contrasena}
           onChange={(e)=>setContrasena(e.target.value)}
           placeholder="Ingrese la Contraseña usuario"
         /> 
 
-        <InputsGroups  label ="Repita la Contraseña" value={contrasena}
-          onChange={(e)=>setContrasena(e.target.value)}
+        <InputsGroups  type="password" label ="Repita la Contraseña" value={confirmarContrasena}
+          onChange={(e)=>setConfirmarContrasena(e.target.value)}
           placeholder="Confirme la Contrasena"
         />     
 
@@ -73,11 +79,11 @@ export const FormularioUsuario = (
 } 
 
 
-FormularioUsuario.PropTypes={
+FormularioUsuario.propTypes={
     usuario:PropTypes.string.isRequired,
     setUsuario:PropTypes.func.isRequired,
     nombre:PropTypes.string.isRequired,
-    setUsuario:PropTypes.func.isRequired,
+    setNombre:PropTypes.func.isRequired,
     apellido:PropTypes.string.isRequired,
     setApellido:PropTypes.func.isRequired,
     segundoApellido:PropTypes.string.isRequired,
@@ -89,5 +95,7 @@ FormularioUsuario.PropTypes={
     correo:PropTypes.string.isRequired,
     setCorreo: PropTypes.func.isRequired,
     contrasena:PropTypes.string.isRequired,
-    setContrasena:PropTypes.func.isRequired
+    setContrasena:PropTypes.func.isRequired,
+    confirmarContrasena:PropTypes.string.isRequired,
+    setconfirmarContrasena:PropTypes.func.isRequired
 }

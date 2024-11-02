@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { propTypes } from 'react-bootstrap/esm/Image';
+
 
 export const ButtonUsuario = (
     {
@@ -31,9 +31,9 @@ export const ButtonUsuario = (
 
 }
 
-ButtonUsuario.PropTypes={
+ButtonUsuario.propTypes={
     editar:PropTypes.bool.isRequired,
     onActualizar:PropTypes.func.isRequired,
     onLimpiar:PropTypes.func.isRequired,
-    onRegistrar:propTypes.func.isRequired
+    onRegistrar:PropTypes.func.isRequired
 }
