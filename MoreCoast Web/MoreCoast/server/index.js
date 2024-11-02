@@ -107,16 +107,16 @@ app.post("/createUsuario",(req,res)=> {
 })
 
 app.put("/updateUsuario",(req,res)=> {
-  const _id= req.body._id;
-  const usuario_= req.body.usuario;
-  const nombre_= req.body.nombre;
-  const apellido_=req.body.apellido;
-  const segundoApellido_=req.body.segundoApellido;
-  const ci_=req.body.ci;
-  const tipoTrabajador_=req.body.tipoTrabajador;
-  const sexo_= req.body.sexo;
-  const correo_=req.body.correo;
-  const constrasena_= req.body.constrasena;
+  const _id= req.body._id_;
+  const usuario_= req.body.usuario_;
+  const nombre_= req.body.nombre_;
+  const apellido_=req.body.apellido_;
+  const segundoApellido_=req.body.segundoApellido_;
+  const ci_=req.body.ci_;
+  const tipoTrabajador_=req.body.tipoTrabajador_;
+  const sexo_= req.body.sexo_;
+  const correo_=req.body.correo_;
+  const constrasena_= req.body.constrasena_;
   
 
   actualizarUsuario(_id,usuario_,nombre_,apellido_,segundoApellido_,ci_,tipoTrabajador_,sexo_,correo_,constrasena_);
