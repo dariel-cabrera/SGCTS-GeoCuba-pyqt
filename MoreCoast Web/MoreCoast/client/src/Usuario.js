@@ -2,6 +2,7 @@ import React from "react";
 import { useState,useEffect } from 'react';
 import { FormularioUsuario } from "./components/FormularioUsuario";
 import { ButtonUsuario } from "./components/ButtonUsuarios";
+import { TablaUsuario } from "./components/TablaUsuario";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import axios from 'axios';
@@ -98,9 +99,17 @@ function Usuario () {
             /*getDatosUsuario,*/
             limpiarDatos})}
       />
-
-
       </div>
+
+      <TablaUsuario
+         datos={usuariosData}
+         onEliminar={(id)=>eliminarDatosUsuario({idValue:id,getDatosUsuario,limpiarDatos})}
+         onEditar={(val)=>{
+          editarUsuarios(val);
+          setEditarUsuario(true);
+          setId(val._id);
+         }}
+      />
 
       </div>
 
