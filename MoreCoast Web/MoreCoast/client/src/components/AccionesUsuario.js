@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 export const crearUsuarios = ({datos={}, limpiarDatos}) => {
 
     const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena} = datos;
-    console.log(datos);
+  
     if (!usuario || !nombre || !apellido || !segundoApellido || !ci || !tipoTrabajador || !sexo || !correo || !contrasena) {
       Swal.fire({
         icon: 'error',
@@ -26,10 +26,11 @@ export const crearUsuarios = ({datos={}, limpiarDatos}) => {
 
 }
 
-export const actualizarDatosUsuarios= ({id, datos={}, /* getDatosUsuarios */ limpiarDatos}) =>{
+export const actualizarDatosUsuarios= ({id, datos={}, getDatosUsuario, limpiarDatos}) =>{
 
     const {usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena} = datos;
     
+
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -48,7 +49,7 @@ export const actualizarDatosUsuarios= ({id, datos={}, /* getDatosUsuarios */ lim
     }).then((result) => {
       if (result.isConfirmed) {
         actualizarUsuario(id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena);
-        /*getDatosUsuarios(); */
+        getDatosUsuario()
         swalWithBootstrapButtons.fire({
           title: "Actualizdos!",
           text: "Sus Datos han sido actualizados.",
@@ -69,7 +70,7 @@ export const actualizarDatosUsuarios= ({id, datos={}, /* getDatosUsuarios */ lim
 
   }
 
-  export const eliminarDatosUsuario= ({idValue,getDatosUsuarios, limpiarDatos}) =>{
+  export const eliminarDatosUsuario= ({idValue,getDatosUsuario, limpiarDatos}) =>{
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -104,7 +105,7 @@ export const actualizarDatosUsuarios= ({id, datos={}, /* getDatosUsuarios */ lim
         });
       }
     });
-    getDatosUsuarios();
+    getDatosUsuario();
     limpiarDatos();
     
   }

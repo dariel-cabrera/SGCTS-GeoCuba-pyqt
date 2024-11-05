@@ -91,12 +91,13 @@ function Usuario () {
           editar={editarUsuario}
           onLimpiar={limpiarDatos}
           onActualizar={()=>actualizarDatosUsuarios({
-            datos:{id,usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena},
-            /*getDatosUsuario, */
+            id,
+            datos:{usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena},
+            getDatosUsuario, 
             limpiarDatos})}
             onRegistrar={()=>crearUsuarios({
             datos:{usuario, nombre,apellido,segundoApellido,ci,tipoTrabajador,sexo,correo,contrasena},
-            /*getDatosUsuario,*/
+            getDatosUsuario,
             limpiarDatos})}
       />
       </div>

@@ -23,8 +23,6 @@ export const TablaUsuario = ({datos, onEliminar, onEditar}) => {
         {datos.map((val, index) => (
           <tr key={val._id}>
             <td>{val._id}</td>
-            <td></td>
-            <td></td>
             <td>{val.usuario}</td>
             <td>{val.nombre}</td>
             <td>{val.apellido}</td>
