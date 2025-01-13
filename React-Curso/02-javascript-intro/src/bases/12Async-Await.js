@@ -24,7 +24,7 @@ const getImagen= async () => {    // Esto es una promesa
     document.body.append(img);
 
     /*
-       Para el  Manejo de Errores con 
+       Para el  Manejo de Errores con: 
        try {
        
 

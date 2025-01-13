@@ -1,7 +1,10 @@
 import { heroes } from "../data/heroes";
 
-const getHeroeById= (id)=>heroes.find((heroe)=>heroe.id===id) ;
+export const getHeroeById= (id)=>heroes.find((heroe)=>heroe.id===id) ;
 
 console.log(getHeroeById(2));
 
-const getHeroeByOwner= (ower)=> heroes.find({heroe} => heroe.id===owner);
+
+// find? filter 
+const getHeroeByOwner= (ower)=> heroes.filter((heroe) => heroe.owner===owner);
+console.log(getHeroeByOwner('Marvel'));

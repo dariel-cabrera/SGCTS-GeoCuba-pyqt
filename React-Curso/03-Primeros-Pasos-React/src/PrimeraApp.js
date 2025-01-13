@@ -35,7 +35,7 @@ export default PrimeraApp;   */}
 }
 export default PrimeraApp; */}
 
-{/* Impresión de variables en el HTML */}
+{/* 010 Impresión de variables en el HTML 
 
 const  PrimeraApp = () => {
 	const saludo = 'Hola Mundo'; 
@@ -47,7 +47,7 @@ return (
 		</>
 	)
 }
-export default PrimeraApp;
+export default PrimeraApp; */}
 
 {/* Nota: Se puede imprimir datos primitivos String,Numeros, Float y Arreglos. 
     Los Booleanos no se muestra, en caso de los Objetos no se puede hacer de la manera anterior.
@@ -69,3 +69,16 @@ return (
 }
 export default PrimeraApp; */}
 
+{/*Comunicación entre Componentes  */}
+{/* Prop son las propiedades que se envían a los componentes */}
+
+const PrimeraApp = ({ saludo }) => {
+	
+	return (
+		<>
+		 	<h1> { saludo } </h1>
+			<p> 'MI primera aplicacion '</p>
+		</>
+    )
+} 
+export default PrimeraApp;
