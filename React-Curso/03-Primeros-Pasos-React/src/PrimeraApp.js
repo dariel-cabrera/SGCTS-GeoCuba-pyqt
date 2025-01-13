@@ -92,7 +92,7 @@ Existe varias formas una de ellas es poner un valor por defecto
 
 {/* 012 PropTypes */}
 {/* Se utiliza para realizar validaciones a los componentes. Los PropTypes 
-son los tipos de Prop que va a recibir el componente.  */}
+son los tipos de Prop que va a recibir el componente.  
 
 const PrimeraApp = ({ saludo }) => {
 	
@@ -105,9 +105,9 @@ const PrimeraApp = ({ saludo }) => {
 } 
 PrimeraApp.propTypes= {
 	saludo: PropTypes.string 
-    /*  // Le estoy diciendo que saludo tiene que ser un string pero no es obligatorio */
+     // Le estoy diciendo que saludo tiene que ser un string pero no es obligatorio 
 }
-export default PrimeraApp;
+export default PrimeraApp; */}
 
 {/* 
     Si quiero mandar un numero
@@ -122,3 +122,38 @@ PrimeraApp.propTypes= {
 
 */}
 
+{/* DefaultProps */}
+const PrimeraApp = ({ saludo, subtitulo = "Soy un subtitulo" }) => {   //Esta es la forma mas común de hacerlo 
+
+	return (
+		<>
+		 	<h1> { saludo } </h1>
+			<p> {subtitulo }</p>
+		</>
+    )
+} 
+PrimeraApp.propTypes= {
+	saludo: PropTypes.string 
+     // Le estoy diciendo que saludo tiene que ser un string pero no es obligatorio 
+}
+export default PrimeraApp;
+
+{/* Otra Forma de Hacerlo 
+
+ const PrimeraApp = ({ saludo, subtitulo }) => {             
+	
+	return (
+		<>
+		 	<h1> { saludo } </h1>
+			<p> {subtitulo }</p>
+		</>
+    )
+} 
+PrimeraApp.propTypes= {
+	saludo: PropTypes.string 
+     // Le estoy diciendo que saludo tiene que ser un string pero no es obligatorio 
+}
+PrimeraApp.defaultProps = {
+	saludo: 'Soy un subtitulo'
+}
+export default PrimeraApp; */}
