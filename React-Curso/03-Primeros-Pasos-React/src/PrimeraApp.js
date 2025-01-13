@@ -25,12 +25,47 @@ export default PrimeraApp;   */}
 
 {/* Existe una forma de hacer un Fragment más corta*/}
 
-const  PrimeraApp = () => {
+{/* const  PrimeraApp = () => {
 	return (
-		<>     {/* Nota:Signos vacios react lo toma como  Fragment */}
+		<>     {/* Nota:Signos vacios react lo toma como  Fragment 
              <h1>Hola Mundo </h1>
    <p>Mi primera aplicacion</p>
 		</>
 	)
 }
+export default PrimeraApp; */}
+
+{/* Impresión de variables en el HTML */}
+
+const  PrimeraApp = () => {
+	const saludo = 'Hola Mundo'; 
+	
+return (
+		<>     
+             <h1> {saludo } </h1>
+   <p>Mi primera aplicacion</p>
+		</>
+	)
+}
 export default PrimeraApp;
+
+{/* Nota: Se puede imprimir datos primitivos String,Numeros, Float y Arreglos. 
+    Los Booleanos no se muestra, en caso de los Objetos no se puede hacer de la manera anterior.
+
+const  PrimeraApp = () => {
+	const saludo ={
+		nombre:’Fernando’,
+		edad: 34
+
+}	
+return (
+		<>     
+             <h1> {JSON.stringify (saludo) } </h1>
+             /*<pre> {JSON.stringify (saludo,null,3) } </pre>  // Lo convierte a string 
+                                                               // Te sale en formato código 
+   <p>Mi primera aplicacion</p>
+		</>
+	)
+}
+export default PrimeraApp; */}
+
