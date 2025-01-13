@@ -7,4 +7,4 @@ import './index.css';
 // ultima letra si le sale una referencia se presiona tab  y se importa sola
 
 const divRoot = document.querySelector ('#app');
-ReactDOM.render( <PrimeraApp  saludo="Hola,Soy Goku"/>, divRoot);
+ReactDOM.render( <PrimeraApp  saludo= "Hola,Soy Goku" />, divRoot);

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 // import { Fragment } from 'react';
 
 {/* } 008 Nuestro Primer COmponente  
@@ -69,8 +70,8 @@ return (
 }
 export default PrimeraApp; */}
 
-{/*Comunicación entre Componentes  */}
-{/* Prop son las propiedades que se envían a los componentes */}
+{/*011 Comunicación entre Componentes  */}
+{/* Prop son las propiedades que se envían a los componentes 
 
 const PrimeraApp = ({ saludo }) => {
 	
@@ -81,4 +82,43 @@ const PrimeraApp = ({ saludo }) => {
 		</>
     )
 } 
+export default PrimeraApp; 
+
+Hay que tener en cuenta que si la propiedad no se manda del componente padre(index.js) voy a tener un undefine
+Existe varias formas una de ellas es poner un valor por defecto 
+
+
+*/}
+
+{/* 012 PropTypes */}
+{/* Se utiliza para realizar validaciones a los componentes. Los PropTypes 
+son los tipos de Prop que va a recibir el componente.  */}
+
+const PrimeraApp = ({ saludo }) => {
+	
+	return (
+		<>
+		 	<h1> { saludo } </h1>
+			<p>MI primera aplicacion</p>
+		</>
+    )
+} 
+PrimeraApp.propTypes= {
+	saludo: PropTypes.string 
+    /*  // Le estoy diciendo que saludo tiene que ser un string pero no es obligatorio */
+}
 export default PrimeraApp;
+
+{/* 
+    Si quiero mandar un numero
+React.render(<PrimeraApp /> saludo=[1,2,3] , divRoot);
+Sale un error 
+
+Si quiero que el saludo sea obligatorio
+PrimeraApp.propTypes= {
+	saludo: PropTypes.string.isRequired
+     // Le estoy diciendo que saludo tiene que ser obligatorio 
+}
+
+*/}
+
