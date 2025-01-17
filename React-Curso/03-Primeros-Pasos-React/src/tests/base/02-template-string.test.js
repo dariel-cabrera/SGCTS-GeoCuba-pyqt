@@ -4,6 +4,7 @@ describe('Pruebas en 02-template-string.js',()=>{
 	test('prueba en el método getSaludo',() =>{
 	const nombre='Ferando';
 	const saludo= getSaludo(nombre);
+    expect(saludo).toBe('Hola ' +  nombre + ' !');
     });
 });
 
