@@ -27,7 +27,7 @@ const saludar3= (nombre)=> `Hola,${nombre}`;
 const saludar4= ()=> `Hola,${nombre}`;
 
 // Para retornar un obj de forma implicita sin usar return 
-const objeto=()=>({
+export const getUser=()=>({
     id:'ABC1234',
     username:'El_papi'
 });
@@ -45,7 +45,7 @@ const objeto=()=>({
     };
 */
 
-const getUsuarioActivo=(nombre)=>(
+export const getUsuarioActivo=(nombre)=>(
     {
         uid:'ABC567',
         username:nombre
