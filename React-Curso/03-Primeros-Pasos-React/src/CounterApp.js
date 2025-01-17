@@ -3,22 +3,35 @@ import PropTypes from 'prop-types';
 
 const CounterApp = ({value}) =>{
 
-    return (
-        <>
-            <h1>CounterApp</h1>
-            <h2>{ value }</h2>
+    const handleAdd = (e) => {
+        console.log(e)
+    }
 
-           { console.log(value) }
-        
-        </>
+   return (
+     /* 
+            <> 
+                <h1> CounterApp</h1>
+                <h2> { value } </h2>
+    
+                <button onClick = { (e) => {console.log(e) } }>+1</button> 
+            </>
+    
 
-    )
+    
+    //  Otra forma */
+        <> 
+			<h1> CounterApp</h1> 
+			<h2> { value } </h2>
 
+			<button onClick = { handleAdd } >+1</button> 
+		</>
+
+    )  
 
 }
 
 CounterApp.propTypes= {
-	value: PropTypes.number.isRequired  
+	value: PropTypes.number
     
 }
-export default CounterApp;
+export default CounterApp; 
