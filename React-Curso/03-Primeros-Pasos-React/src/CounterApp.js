@@ -38,7 +38,7 @@ CounterApp.propTypes= {
 }
 export default CounterApp; */ }
 
-{/* useState*/}
+{/* useState 
 
 const CounterApp = ({value}) =>{
 
@@ -67,6 +67,40 @@ const [counter,setCounter]=useState(value);
 CounterApp.propTypes= {
 	value: PropTypes.number
     
+}
+*/}
+{/*handleSubtract y handleReset */}
+const CounterApp = ({ value= 10}) => {
+	const [counter,setCounter]=useState(value);
+
+	const handleAdd = () => {
+		setCounter(counter +1)
+    }
+    const handleRect = () => {
+	setCounter(counter -1)
+    }
+
+    const handleReset = () => {
+	setCounter(value)
+    }
+
+
+	return (
+		<> 
+			<h1> CounterApp</h1>
+			<h2> { counter} </h2>
+
+			<button onClick = { handleAdd } >+1</button> 
+            <button onClick = { handleRect } >-1</button>
+            <button onClick = { handleReset } >Reset</button>
+		</>
+    )
+
+}
+
+CounterApp.propTypes={
+	value:PropTypes.number
+
 }
 
 export default CounterApp;
