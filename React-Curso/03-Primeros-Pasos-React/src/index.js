@@ -8,4 +8,4 @@ import './index.css';
 // ultima letra si le sale una referencia se presiona tab  y se importa sola
 
 const divRoot = document.querySelector ('#app');
-ReactDOM.render( <CounterApp  value = {12} />, divRoot);
+ReactDOM.render( <PrimeraApp saludo = 'Hola,soy Goku' />, divRoot);
