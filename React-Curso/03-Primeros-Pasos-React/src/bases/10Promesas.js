@@ -23,8 +23,8 @@ promesa.then((heroe)=>{
 
 .catch(err =>console.warn(err)); */
 
-const getHeroeByIdAsync=(id)=>{
-    return promesa = new Promise((resolve,reject)=> {
+export const getHeroeByIdAsync=(id)=>{
+    return  new Promise((resolve,reject)=> {
     
         setTimeout(()=>{ 
             const h1 = getHeroeById(id);
@@ -37,7 +37,3 @@ const getHeroeByIdAsync=(id)=>{
 });
 
 }
-
-getHeroeByIdAsync(4)
-    .then( console.log)
-    .catch(console.warn);
