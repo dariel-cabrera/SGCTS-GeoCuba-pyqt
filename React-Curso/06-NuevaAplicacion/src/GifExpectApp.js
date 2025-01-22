@@ -1,4 +1,5 @@
 import React,{useState}from 'react'
+import AddCategory from './AddCategory'
 
 export const GifExpectApp = () => {
     // const categories= ['Micky','Pluma', 'Escudo'];
@@ -35,8 +36,9 @@ se pasa el id de la base de datos
       return (
         <>
            <h2>GifExpertApp </h2>
+           <AddCategory/>
            <hr/>
-           <button onClick={handleAdd}> Agregar</button>
+           
            <ol>
                 {
                     categories.map(category =>{
