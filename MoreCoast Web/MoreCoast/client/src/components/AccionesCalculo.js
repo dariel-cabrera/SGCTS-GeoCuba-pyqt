@@ -1,7 +1,7 @@
 import { fetchData,eliminar,actualizar } from '../db_fronted';
 import Swal from 'sweetalert2';
 
-export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
+export const calcularDatos = ({datos={}, getDatos, limpiarDatos }) => {
 
     const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = datos;
     console.log(datos)
@@ -18,7 +18,6 @@ export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
     }
     fetchData(densidad_a,densidad_m,indice,coeficiente,altura,angulo,aceleracion,P);
     getDatos();
-    limpiarDatos();
     Swal.fire({
       position: "top-end",
       icon: "success",
@@ -26,6 +25,7 @@ export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
       showConfirmButton: false,
       timer: 1500
     });
+    limpiarDatos();
 
   }
 

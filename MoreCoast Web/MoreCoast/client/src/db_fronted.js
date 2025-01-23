@@ -139,16 +139,7 @@ export const actualizarUsuario = async(
     correo,
     constrasena
 )=>{
-    console.log( id,
-        usuario,
-        nombre,
-        apellido,
-        segundoApellido,
-        ci,
-        tipoTrabajador,
-        sexo,
-        correo,
-        constrasena)
+  
     try {
         const response = await axios.put('http://localhost:3001/updateUsuario',{
             _id_:id,

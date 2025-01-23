@@ -14,7 +14,11 @@ export  const ButtonGroup = ({ editar, onCalcular, onActualizar, onLimpiar }) =>
             <button className='btn btn-info m-2' onClick={onLimpiar}>Cancelar</button> 
             <button className='btn btn-success' onClick={onCalcular}> Nuevo </button>
             </>
-            ):(<button className='btn btn-success m-2' onClick={onCalcular}>Calcular</button>
+            ):(
+              <>
+              <button className='btn btn-success m-2' onClick={onCalcular}>Calcular</button>
+              <button className='btn btn-info m-2' onClick={onLimpiar}>Cancelar</button> 
+              </>
             
             )}
     </div>

@@ -36,7 +36,7 @@ se pasa el id de la base de datos
       return (
         <>
            <h2>GifExpertApp </h2>
-           <AddCategory/>
+           <AddCategory setCategories={setCategories}/>
            <hr/>
            
            <ol>

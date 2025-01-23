@@ -5,10 +5,10 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { TablaCalculo } from './components/TablaCalculo';
 import { useEffect } from 'react'; // No olvides importar useEffect
-import { ButtonGroup } from './components/ButtonGroup';
-import { FormularioCalculo } from './components/FormularioCalculo';
 import { calcularDatos,actualizarDatos,eliminarDatos } from './components/AccionesCalculo';
-
+import Menu  from './components/Menu';
+import NuevoCalculo from './NuevoCalculo';
+import { ButonCabecera } from './components/ButonCabecera';
 
 function App() {
 
@@ -23,6 +23,7 @@ function App() {
   const [id,setId]=useState(0);
   const[calculos,setCalculos]=useState([]);
   const[editar,setEditar]=useState(false);
+  const[mostrarNuevoCalculo,setmostrarNuevoCalculo]=useState(false);
 
   
   
@@ -48,11 +49,13 @@ function App() {
     setAceleracion(0);
     setP(0);
     setEditar(false);
+    setmostrarNuevoCalculo(false);
   }
 
   const editarCalculos = (val)=>{
     console.log('Editando Datos');
     setEditar(true);
+    setmostrarNuevoCalculo(true);
 
     setDensidadA(val.densidad_a);
     setDensidadM(val.densidad_m);
@@ -64,17 +67,25 @@ function App() {
     setP(val.P);
     
 }
-  
+const handleNuevoCalculo = () =>{
+    setmostrarNuevoCalculo(true);
+}
   return (
+   
     <div className="container">
-      <div className="card text-center">
+    <div className="card text-center">
 
-      <div className="card-header">
-        <h1>Gestión de Cálculos</h1>
-      </div>
+    <div className="card-header">
+    <h1>Gestión de Cálculos</h1>
+    </div>
+   
+      <Menu/> 
+      <ButonCabecera  handleNuevoCalculo={handleNuevoCalculo} />
 
-      <div className="card-body">
-      <FormularioCalculo  
+  
+    <div className="card-body">
+    {mostrarNuevoCalculo? (
+        <NuevoCalculo 
         densidad_a={densidad_a} setDensidadA={setDensidadA}
         densidad_m={densidad_m} setDensidadM={setDensidadM}
         coeficiente={coeficiente} setCoeficiente={setCoeficiente}
@@ -83,30 +94,30 @@ function App() {
         angulo={angulo} setAngulo={setAngulo}
         aceleracion={aceleracion} setAceleracion={setAceleracion}
         P={P} setP={setP}
+        limpiarDatos={limpiarDatos}
+        getDatos={getDatos}
+        editar={editar}
+        calcularDatos={calcularDatos}
+        id={id}
+        actualizarDatos={actualizarDatos}
+        
       />
-      </div>
-     
-    {/* ButtonComponets */}
-    <ButtonGroup
-          editar={editar}
-          onCalcular={() => calcularDatos({datos:{ densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P }, getDatos, limpiarDatos})}
-          onActualizar={() => actualizarDatos({id, datos: {densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P }, getDatos, limpiarDatos})}
-          onLimpiar={limpiarDatos}
+      ):( 
+      <TablaCalculo 
+          datos={calculos}
+          onEliminar={(id) => eliminarDatos({idValue:id, getDatos, limpiarDatos})}
+          onEditar= {
+            (val) => {
+            editarCalculos(val);
+            setEditar(true);
+            setId(val._id);
+          }}
         />
+      )}
+     
+    
+     </div>
     </div>
-
-    {/*TableComponets */}
-    <TablaCalculo 
-       datos={calculos}
-       onEliminar={(id) => eliminarDatos({idValue:id, getDatos, limpiarDatos})}
-       onEditar= {(val) => {
-         editarCalculos(val);
-         setEditar(true);
-         setId(val._id);
-       }
-      }
-    /> 
-
 </div>
 
   );
