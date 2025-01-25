@@ -1,55 +1,71 @@
 import React from 'react';
-import {InputsGroups} from './InputsGrups';
+import { InputsGroups } from './InputsGrups';
 
-export const FormularioCalculo =(
+export const FormularioCalculo = ({ calculo, setCalculo }) => {
+  // Manejar el cambio de valores
+  const handleInputChange = (field, value) => {
+    setCalculo((prev) => ({
+      ...prev,
+      [field]: isNaN(value) ? value : parseFloat(value),
+    }));
+  };
+
+  // Configuración de los campos del formulario
+  const campos = [
     {
-        densidad_a, setDensidadA,
-        densidad_m,setDensidadM,
-        coeficiente, setCoeficiente,
-        indice, setIndice,
-        altura, setAltura,
-        angulo,setAngulo,
-        aceleracion, setAceleracion,
-        P, setP
+      label: "Densidad de Arena",
+      key: "densidad_a",
+      placeholder: "Ingrese el valor de la Densidad de Arena",
+    },
+    {
+      label: "Densidad del Mar",
+      key: "densidad_m",
+      placeholder: "Ingrese el valor de la Densidad del Mar",
+    },
+    {
+      label: "Coeficiente de Porosidad",
+      key: "coeficiente",
+      placeholder: "Ingrese el valor del Coeficiente de Porosidad",
+    },
+    {
+      label: "Índice de Rompiente",
+      key: "indice",
+      placeholder: "Ingrese el valor del Índice de Rompiente",
+    },
+    {
+      label: "Altura",
+      key: "altura",
+      placeholder: "Ingrese el valor de la Altura",
+    },
+    {
+      label: "Ángulo",
+      key: "angulo",
+      placeholder: "Ingrese el valor del Ángulo",
+    },
+    {
+      label: "Aceleración de la Gravedad",
+      key: "aceleracion",
+      placeholder: "Ingrese el valor de la Aceleración de la Gravedad",
+    },
+    {
+      label: "P",
+      key: "P",
+      placeholder: "Ingrese el valor de P",
+    },
+  ];
 
-    })=>{
-    
-    return(
-        <>
-        <InputsGroups label="Densidad de Arena" value={densidad_a} 
-        type="number" onChange={(e) => setDensidadA(e.target.value)}
-        placeholder="Ingrese el valor de la Densidad de Arena" />
-
-        <InputsGroups label="Densidad de Arena" value={densidad_m} 
-        type="number"onChange={(e) => setDensidadM(e.target.value)}
-        placeholder="Ingrese el valor de la Densidad del Mar" /> 
-
-        <InputsGroups label="Coeficiente de Porocidad" value={coeficiente} 
-        type="number" onChange={(e) => setCoeficiente(e.target.value)}
-        placeholder="Ingrese el valor del Coeficiente de Porocidad" /> 
-
-        <InputsGroups label="Indice de Rompiente" value={indice} 
-        type="number" onChange={(e) => setIndice(e.target.value)}
-        placeholder="Ingrese el valor del Indice de Rompiente" /> 
-
-        <InputsGroups label="Altura" value={altura} 
-        type="number" onChange={(e) => setAltura(e.target.value)}
-        placeholder="Ingrese el valor de la Altura" /> 
-
-        <InputsGroups label="Angulo" value={angulo} 
-        type="number" onChange={(e) => setAngulo(e.target.value)}
-        placeholder="Ingrese el valor del Angulo" /> 
-
-        <InputsGroups label="Aceleracion de la Gravedad" value={aceleracion} 
-        type="number" onChange={(e) => setAceleracion(e.target.value)}
-        placeholder="Ingrese el valor de la aceleracion de la Gravedad" /> 
-
-        <InputsGroups label="P" value={P} 
-        type="number" onChange={(e) => setP(e.target.value)}
-        placeholder="Ingrese el valor de P" /> 
-
-        </>
-    )
-    
-} 
-
+  return (
+    <>
+      {campos.map((campo) => (
+        <InputsGroups
+          key={campo.key}
+          label={campo.label}
+          value={calculo[campo.key] || ""}
+          type="number"
+          onChange={(e) => handleInputChange(campo.key, e.target.value)}
+          placeholder={campo.placeholder}
+        />
+      ))}
+    </>
+  );
+};

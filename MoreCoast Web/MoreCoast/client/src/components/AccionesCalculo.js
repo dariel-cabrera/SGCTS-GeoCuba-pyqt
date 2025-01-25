@@ -1,10 +1,17 @@
 import { fetchData,eliminar,actualizar } from '../db_fronted';
 import Swal from 'sweetalert2';
 
-export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
+export const calcularDatos = ({calculo, getDatos, limpiarDatos }) => {
+  if (!calculo) {
+    console.error("calculo is undefined");
+    return; // Salir de la función si calculo no está definido
+  }
 
-    const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = datos;
-    console.log(datos)
+  // Operaciones con calculo si está definido
+  console.log("Datos de calculo:", calculo);
+
+    const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = calculo;
+    console.log(calculo)
     console.log(densidad_a)
 
     if (!densidad_a || !densidad_m || !indice || !coeficiente || !altura || !angulo || !aceleracion || !P) {
@@ -18,7 +25,6 @@ export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
     }
     fetchData(densidad_a,densidad_m,indice,coeficiente,altura,angulo,aceleracion,P);
     getDatos();
-    limpiarDatos();
     Swal.fire({
       position: "top-end",
       icon: "success",
@@ -26,11 +32,12 @@ export const calcularDatos = ({datos={}, getDatos, limpiarDatos}) => {
       showConfirmButton: false,
       timer: 1500
     });
+    limpiarDatos();
 
   }
 
-  export const actualizarDatos= ({id, datos={}, getDatos, limpiarDatos}) =>{
-    const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = datos;
+  export const actualizarDatos= ({id, calculo, getDatos, limpiarDatos}) =>{
+    const { densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P } = calculo;
     
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

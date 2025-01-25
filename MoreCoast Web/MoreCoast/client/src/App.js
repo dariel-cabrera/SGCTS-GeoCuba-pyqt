@@ -1,114 +1,112 @@
-import React from 'react';
-import { useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import { TablaCalculo } from './components/TablaCalculo';
-import { useEffect } from 'react'; // No olvides importar useEffect
-import { ButtonGroup } from './components/ButtonGroup';
-import { FormularioCalculo } from './components/FormularioCalculo';
-import { calcularDatos,actualizarDatos,eliminarDatos } from './components/AccionesCalculo';
-
+import { calcularDatos, actualizarDatos, eliminarDatos } from './components/AccionesCalculo';
+import Menu from './components/Menu';
+import NuevoCalculo from './NuevoCalculo';
+import { ButonCabecera } from './components/ButonCabecera';
 
 function App() {
+  const [calculo, setCalculo] = useState({
+    densidad_a: 0,
+    densidad_m: 0,
+    coeficiente: 0,
+    indice: 0,
+    altura: 0,
+    angulo: 0,
+    aceleracion: 0,
+    P: 0,
+    id: 0,
+  });
 
-  const [densidad_a,setDensidadA]=useState(0);
-  const [densidad_m,setDensidadM]=useState(0);
-  const [coeficiente,setCoeficiente]=useState(0);
-  const [indice,setIndice]=useState(0);
-  const [altura,setAltura]=useState(0);
-  const [angulo,setAngulo]=useState(0);
-  const [aceleracion,setAceleracion]=useState(0);
-  const [P,setP]=useState(0);
-  const [id,setId]=useState(0);
-  const[calculos,setCalculos]=useState([]);
-  const[editar,setEditar]=useState(false);
+  const [calculos, setCalculos] = useState([]);
+  const [editar, setEditar] = useState(false);
+  const [mostrarNuevoCalculo, setMostrarNuevoCalculo] = useState(false);
 
-  
-  
-  const getDatos = () => {
-    axios.get("http://localhost:3001/mostrar").then((respuesta) => {
+  const getDatos = async () => {
+    try {
+      const respuesta = await axios.get("http://localhost:3001/mostrar");
       setCalculos(respuesta.data);
-    })
-  }
-
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+    }
+  };
 
   useEffect(() => {
     getDatos();
   }, []);
 
-  const limpiarDatos=()=>{
-    setId(0);
-    setDensidadA(0);
-    setDensidadM(0);
-    setIndice(0); 
-    setCoeficiente(0);
-    setAltura(0);
-    setAngulo(0);
-    setAceleracion(0);
-    setP(0);
+  const limpiarDatos = () => {
+    setCalculo({
+      densidad_a: 0,
+      densidad_m: 0,
+      coeficiente: 0,
+      indice: 0,
+      altura: 0,
+      angulo: 0,
+      aceleracion: 0,
+      P: 0,
+      id: 0,
+    });
     setEditar(false);
-  }
+    setMostrarNuevoCalculo(false);
+  };
 
-  const editarCalculos = (val)=>{
+  const editarCalculos = (val) => {
     console.log('Editando Datos');
     setEditar(true);
-
-    setDensidadA(val.densidad_a);
-    setDensidadM(val.densidad_m);
-    setIndice(val.indice); 
-    setCoeficiente(val.coeficiente);
-    setAltura(val.altura);
-    setAngulo(val.angulo);
-    setAceleracion(val.aceleracion);
-    setP(val.P);
+    setMostrarNuevoCalculo(true);
     
-}
-  
+    setCalculo({
+      densidad_a: val.densidad_a,
+      densidad_m: val.densidad_m,
+      coeficiente: val.coeficiente,
+      indice: val.indice,
+      altura: val.altura,
+      angulo: val.angulo,
+      aceleracion: val.aceleracion,
+      P: val.P,
+      id: val._id,
+    });
+  };
+
+  const handleNuevoCalculo = () => {
+    setMostrarNuevoCalculo(true);
+  };
+
   return (
     <div className="container">
       <div className="card text-center">
-
-      <div className="card-header">
-        <h1>Gestión de Cálculos</h1>
+        <div className="card-header">
+          <h1>Gestión de Cálculos</h1>
+        </div>
+        <Menu />
+        <ButonCabecera handleNuevoCalculo={handleNuevoCalculo} />
+        <div className="card-body">
+          {mostrarNuevoCalculo ? (
+            <NuevoCalculo
+              calculo={calculo}
+              setCalculo={setCalculo}
+              limpiarDatos={limpiarDatos}
+              getDatos={getDatos}
+              editar={editar}
+              calcularDatos={calcularDatos}
+              actualizarDatos={actualizarDatos}
+            />
+          ) : (
+            <TablaCalculo
+              datos={calculos}
+              onEliminar={(id) => eliminarDatos({ idValue: id, getDatos, limpiarDatos })}
+              onEditar={(val) => {
+                editarCalculos(val);
+              }}
+            />
+          )}
+        </div>
       </div>
-
-      <div className="card-body">
-      <FormularioCalculo  
-        densidad_a={densidad_a} setDensidadA={setDensidadA}
-        densidad_m={densidad_m} setDensidadM={setDensidadM}
-        coeficiente={coeficiente} setCoeficiente={setCoeficiente}
-        indice={indice} setIndice={setIndice}
-        altura={altura} setAltura={setAltura}
-        angulo={angulo} setAngulo={setAngulo}
-        aceleracion={aceleracion} setAceleracion={setAceleracion}
-        P={P} setP={setP}
-      />
-      </div>
-     
-    {/* ButtonComponets */}
-    <ButtonGroup
-          editar={editar}
-          onCalcular={() => calcularDatos({datos:{ densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P }, getDatos, limpiarDatos})}
-          onActualizar={() => actualizarDatos({id, datos: {densidad_a, densidad_m, indice, coeficiente, altura, angulo, aceleracion, P }, getDatos, limpiarDatos})}
-          onLimpiar={limpiarDatos}
-        />
     </div>
-
-    {/*TableComponets */}
-    <TablaCalculo 
-       datos={calculos}
-       onEliminar={(id) => eliminarDatos({idValue:id, getDatos, limpiarDatos})}
-       onEditar= {(val) => {
-         editarCalculos(val);
-         setEditar(true);
-         setId(val._id);
-       }
-      }
-    /> 
-
-</div>
-
   );
 }
 
