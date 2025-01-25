@@ -1,12 +1,10 @@
-MoreCoasts
-- NO necesita usar un programa externo para trabajar con la Base de Datos
-- Para ejecutarlo solo necesita instalar Pyqt y Python
+MoreCoast is a management system for calculating and processing coastal data.
 
-EN la carpeta MoreCoast Desktop esta la aplicacion de escritorio con sus ultimos 
-cambios
-En la carpeta instalador está el .exe
-En la carpeta Documentos esta el informe de MoreCoasts
+- In this directory you will find the DOC folder, which contains the undergraduate research project and the documents 
+used to carry it out.
 
-En la carpeta MoreCoast Web esta la aplicaion web de MoreCoast 
+-In the src folder you will find the code for the web application, where the frontend folder will be, which is the visual part, 
+and the backend folder, which is the logical part and oriented to the server.
 
-En la carpeta Tesis estan las cosas de la Tesis
+-In the Destop folder you will find the installer and code for the desktop version of MoreCoast.
+
