@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateCalculoDto } from './dto/create-Calculo.dto';
 
 @Injectable()
 export class CalculoService {
@@ -6,7 +7,7 @@ export class CalculoService {
         return "Retornando Calculos"
     }
 
-    createCalculo(calculo){
+    createCalculo(calculo:CreateCalculoDto){
         return "Creando Calculos"
     }
 

@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { CalculoService } from './calculo.service';
-import { CreateCalculoDto } from './dto/createCalculoDto';
+import { CreateCalculoDto } from './dto/create-Calculo.dto';
 
 @Controller('calculo')
 export class CalculoController {
