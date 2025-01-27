@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber } from "class-validator"
 
-export class UpdateTaskDto{
+export class UpdateCalculoDto{
     @IsNumber()
     @IsNotEmpty()
     densidad_a:number

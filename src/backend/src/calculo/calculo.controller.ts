@@ -9,22 +9,22 @@ export class CalculoController {
         this.calculoService= calculoService;
       }
 
-      @Get('/calculos')
+      @Get('/mostrarCalculos')
       getAllCalculos(){
         return this.calculoService.getCalculo();
       }
 
-      @Post('/calculos')
+      @Post('/crearCalculos')
       createCalculos(@Body() calculo:CreateCalculoDto){
         return this.calculoService.createCalculo(calculo);
       }
 
-      @Put('/calculos')
+      @Put('/actualizarCalculos')
       updateCalculos(){
         return this.calculoService.updateCalculo();
       }
 
-      @Delete('/Calculos')
+      @Delete('/eliminarCalculos')
       deleteCalculos(){
         return this.calculoService.deleteCalculo();
       }
