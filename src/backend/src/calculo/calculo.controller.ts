@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put,Param } from '@nestjs/common';
 import { CalculoService } from './calculo.service';
 import { CreateCalculoDto } from './dto/create-Calculo.dto';
+import { UpdateCalculoDto } from './dto/update-Calculo.dto';
 
 @Controller('calculo')
 export class CalculoController {
@@ -10,23 +11,71 @@ export class CalculoController {
       }
 
       @Get('/mostrarCalculos')
-      getAllCalculos(){
+      async getAllCalculos(){
         return this.calculoService.getCalculo();
       }
 
       @Post('/crearCalculos')
-      createCalculos(@Body() calculo:CreateCalculoDto){
-        return this.calculoService.createCalculo(calculo);
+      async createCalculos(@Body() calculo: CreateCalculoDto){
+        const {
+          densidad_a,
+          densidad_m,
+          indice,
+          coeficiente,
+          altura,
+          angulo,
+          aceleracion,
+          Q,
+          P,
+          K,
+        } = calculo;
+        return this.calculoService.createCalculo(
+          densidad_a,
+          densidad_m,
+          indice,
+          coeficiente,
+          altura,
+          angulo,
+          aceleracion,
+          Q,
+          P,
+          K,
+        );
+      }
+      @Put('/actualizarCalculos/:id')
+      async updateCalculos(@Param('id') id:string, @Body() calculo:UpdateCalculoDto){
+        const {
+          densidad_a,
+          densidad_m,
+          indice,
+          coeficiente,
+          altura,
+          angulo,
+          aceleracion,
+          Q,
+          P,
+          K,
+        } = calculo;
+        return this.calculoService.updateCalculo(
+          id,
+          densidad_a,
+          densidad_m,
+          indice,
+          coeficiente,
+          altura,
+          angulo,
+          aceleracion,
+          Q,
+          P,
+          K,
+        );
       }
 
-      @Put('/actualizarCalculos')
-      updateCalculos(){
-        return this.calculoService.updateCalculo();
-      }
+     
 
-      @Delete('/eliminarCalculos')
-      deleteCalculos(){
-        return this.calculoService.deleteCalculo();
+      @Delete('/eliminarCalculos/:id')
+      async deleteCalculos(@Param('id') id: string){
+        return this.calculoService.deleteCalculo(id);
       }
-
 }
+
