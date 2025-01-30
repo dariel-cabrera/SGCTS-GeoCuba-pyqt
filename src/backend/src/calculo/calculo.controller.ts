@@ -1,21 +1,21 @@
 import { Body, Controller, Delete, Get, Post, Put,Param } from '@nestjs/common';
-import { CalculoService } from './calculo.service';
-import { CreateCalculoDto } from './dto/create-Calculo.dto';
-import { UpdateCalculoDto } from './dto/update-Calculo.dto';
+import { CalculoService } from "./calculo.service";
+import { CreateCalculoDto } from './dto/createCalculo.dto';
+import { UpdateCalculoDto } from './dto/updateCalculo.dto';
 
-@Controller('calculo')
+@Controller()
 export class CalculoController {
       calculoService: CalculoService;
       constructor(calculoService: CalculoService){
         this.calculoService= calculoService;
       }
 
-      @Get('/mostrarCalculos')
+      @Get('/calculo')
       async getAllCalculos(){
         return this.calculoService.getCalculo();
       }
 
-      @Post('/crearCalculos')
+      @Post('/calculo')
       async createCalculos(@Body() calculo: CreateCalculoDto){
         const {
           densidad_a,
@@ -42,7 +42,7 @@ export class CalculoController {
           K,
         );
       }
-      @Put('/actualizarCalculos/:id')
+      @Put('/calculo/:id')
       async updateCalculos(@Param('id') id:string, @Body() calculo:UpdateCalculoDto){
         const {
           densidad_a,
@@ -73,9 +73,8 @@ export class CalculoController {
 
      
 
-      @Delete('/eliminarCalculos/:id')
+      @Delete('/calculo/:id')
       async deleteCalculos(@Param('id') id: string){
         return this.calculoService.deleteCalculo(id);
       }
-}
-
+	}

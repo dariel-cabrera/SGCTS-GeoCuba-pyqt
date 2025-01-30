@@ -3,7 +3,6 @@ import { calculando_K, calculo } from './ecuaciones';
 
 const BASE_URL = 'http://localhost:3001'; 
 
-
 export const fetchData = async (
   den_arena_,
   den_mar_,
@@ -26,18 +25,24 @@ export const fetchData = async (
 
   const K = calculando_K(P_, Q);
 
+  const data = {
+    densidad_a: den_arena_,
+    densidad_m: den_mar_,
+    indice: indice_,
+    coeficiente: coeficiente_,
+    altura: altura_,
+    angulo: angulo_,
+    aceleracion: aceleracion_,
+    P: P_,
+    Q,
+    K,
+  };
+
   try {
-    const response = await axios.post(`${BASE_URL}/calculo/crearCalculos`, {
-      densidad_a: den_arena_,
-      densidad_m: den_mar_,
-      indice: indice_,
-      coeficiente: coeficiente_,
-      altura: altura_,
-      angulo: angulo_,
-      aceleracion: aceleracion_,
-      Q,
-      P: P_,
-      K,
+    const response = await axios.post(`${BASE_URL}/calculo`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     console.log('Datos creados exitosamente:', response.data);
@@ -47,6 +52,7 @@ export const fetchData = async (
     throw error;
   }
 };
+
 
 // Función para actualizar un registro existente
 export const actualizar = async (
@@ -72,19 +78,24 @@ export const actualizar = async (
 
   const K = calculando_K(P_, Q);
 
+  const data = {
+    densidad_a: den_arena_,
+    densidad_m: den_mar_,
+    indice: indice_,
+    coeficiente: coeficiente_,
+    altura: altura_,
+    angulo: angulo_,
+    aceleracion: aceleracion_,
+    Q,
+    P: P_,
+    K,
+  };
+
   try {
-    const response = await axios.put(`${BASE_URL}/calculo/actualizarCalculos`, {
-      _id: id,
-      densidad_a: den_arena_,
-      densidad_m: den_mar_,
-      indice: indice_,
-      coeficiente: coeficiente_,
-      altura: altura_,
-      angulo: angulo_,
-      aceleracion: aceleracion_,
-      Q,
-      P: P_,
-      K,
+    const response = await axios.put(`${BASE_URL}/calculo/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     console.log('Datos actualizados exitosamente:', response.data);
@@ -98,7 +109,7 @@ export const actualizar = async (
 // Función para eliminar un registro por su ID
 export const eliminar = async (id) => {
   try {
-    const response = await axios.delete(`${BASE_URL}/calculo/eliminarCalculos/${id}`);
+    const response = await axios.delete(`${BASE_URL}/calculo/${id}`);
     console.log('Registro eliminado exitosamente:', response.data);
     return response.data;
   } catch (error) {
@@ -107,6 +118,7 @@ export const eliminar = async (id) => {
   }
 };
 
+/*
 // Función para crear un usuario
 export const crearUsuario = async (
   usuario,
@@ -140,7 +152,7 @@ export const crearUsuario = async (
   }
 };
 
-// Función para actualizar un usuario existente
+/ Función para actualizar un usuario existente
 export const actualizarUsuario = async (
   id,
   usuario,
@@ -185,4 +197,4 @@ export const eliminarUsuario = async (id) => {
     console.error('Error al eliminar el usuario:', error.response?.data || error.message);
     throw error;
   }
-};
+}; */

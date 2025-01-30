@@ -26,7 +26,7 @@ function App() {
 
   const getDatos = async () => {
     try {
-      const respuesta = fetch("http://localhost:3001/calculo/mostrarCalculos");
+      const respuesta = fetch("http://localhost:3001/calculo");
       const datos = await respuesta.json();
       setCalculos(datos);
     } catch (error) {

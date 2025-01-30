@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Datos } from './shema/datos.shema';
+import { Injectable } from "@nestjs/common";
+import { Datos} from "./shema/datos.schema";
+import { Model } from "mongoose";
+import { InjectModel } from "@nestjs/mongoose";
 
 @Injectable()
 export class CalculoService{
@@ -78,6 +78,8 @@ export class CalculoService{
 
   // Obtener todos los registros
   async getCalculo(): Promise<Datos[]> {
+    console.log('Hola Mundo');
     return await this.datosModel.find().exec();
+
   }
 }
