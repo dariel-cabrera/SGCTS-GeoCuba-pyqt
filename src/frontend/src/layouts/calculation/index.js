@@ -20,6 +20,8 @@ import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 
+import CalculationTable from "./table";
+
 
 function Calculation(){
     return (
@@ -36,6 +38,9 @@ function Calculation(){
                     Nuevo
                 </MDButton>
             </MDBox>
+            
+            <CalculationTable/>
+           
 
           
           <Footer />
