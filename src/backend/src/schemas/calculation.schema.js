@@ -17,6 +17,6 @@ calculationSchema.virtual("id").get(function () {
   return this._id.toHexString();
 });
 
-userSchema.set("toJSON", { virtuals: true });
+calculationSchema.set("toJSON", { virtuals: true });
 
-export const userModel = mongoose.model("calculation", calculationSchema);
+export const calculationModel = mongoose.model("calculation", calculationSchema);

@@ -40,7 +40,7 @@ function Calculation(){
                 </MDButton>
             </MDBox>
             
-            <TablaCalculo/>
+            
            
 
           
