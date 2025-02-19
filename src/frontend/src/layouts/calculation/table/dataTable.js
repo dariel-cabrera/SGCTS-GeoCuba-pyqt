@@ -4,7 +4,7 @@ import MDBox from 'components/MDBox';
 import MDButton from 'components/MDButton';
 
 
-export const TablaCalculo = ({ datos, onEliminar, onEditar }) => {
+export const TablaCalculo = ({ /*datos, onEliminar, onEditar */}) => {
   return (
     <MDBox component="table" className="table table-striped">
       <MDBox component="thead">
@@ -43,12 +43,14 @@ export const TablaCalculo = ({ datos, onEliminar, onEditar }) => {
             <MDBox component="td">{val.K}</MDBox>
             <MDBox component="td">
               <MDBox display="flex" justifyContent="space-between">
+                {/* 
                 <MDButton variant="gradient" color="info" size="small" onClick={() => onEditar(val)}>
                   Editar
                 </MDButton>
                 <MDButton variant="gradient" color="error" size="small" onClick={() => onEliminar(val._id)}>
                   Eliminar
                 </MDButton>
+                */}
               </MDBox>
             </MDBox>
           </MDBox>
@@ -57,9 +59,10 @@ export const TablaCalculo = ({ datos, onEliminar, onEditar }) => {
     </MDBox>
   );
 }
-
+{/* 
 TablaCalculo.propTypes = {
   datos: PropTypes.array.isRequired,
   onEliminar: PropTypes.func.isRequired,
   onEditar: PropTypes.func.isRequired,
 };
+*/}

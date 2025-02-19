@@ -10,12 +10,12 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 
 import DataTable from "examples/Tables/DataTable";
 
+
 // Data
 
 
 function CalculationTable() {
-  const { columns, rows } = authorsTableData();
-  const { columns: pColumns, rows: pRows } = projectsTableData();
+  
 
   return (
     <DashboardLayout>

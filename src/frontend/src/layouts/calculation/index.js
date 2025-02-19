@@ -21,6 +21,7 @@ import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 
 import CalculationTable from "./table";
+import { TablaCalculo } from "./table/dataTable";
 
 
 function Calculation(){
@@ -39,7 +40,7 @@ function Calculation(){
                 </MDButton>
             </MDBox>
             
-            <CalculationTable/>
+            <TablaCalculo/>
            
 
           
