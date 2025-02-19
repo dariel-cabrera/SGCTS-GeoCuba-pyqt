@@ -1,46 +1,48 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
+//  Librerías de terceros
+//Grid de Material UI se usa para estructurar la disposición de los 
+// elementos en filas y columnas.
 import Grid from "@mui/material/Grid";
 
 // Material Dashboard 2 React components
+// MDBox es un contenedor personalizado basado en Box de Material UI, utilizado 
+// para estructurar y dar estilo a los elementos
 import MDBox from "components/MDBox";
 
 // Material Dashboard 2 React example components
+// DashboardLayout: Contenedor principal del panel de control.
+// DashboardNavbar: Barra de navegación superior del panel.
+// Footer: Pie de página del panel.
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+/*ReportsBarChart → Gráfico de barras.
+ReportsLineChart → Gráfico de líneas.
+ComplexStatisticsCard → Tarjetas de estadísticas con iconos y valores */
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
+// reportsBarChartData: Datos del gráfico de barras.
+// reportsLineChartData: Datos del gráfico de líneas.
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 // Dashboard components
+// Projects: Muestra una lista de proyectos.
+// OrdersOverview: Resumen de pedidos recientes.
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
+// Se extraen sales y tasks desde reportsLineChartData,
+// que contienen los datos del gráfico de líneas.
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
+      {/*Sección de Tarjetas de Estadísticas */}
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -103,6 +105,7 @@ function Dashboard() {
             </MDBox>
           </Grid>
         </Grid>
+        {/*Sección de Gráficos */}
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={4}>
@@ -144,6 +147,7 @@ function Dashboard() {
             </Grid>
           </Grid>
         </MDBox>
+        {/* Sección de Proyectos y Pedidos */}
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>

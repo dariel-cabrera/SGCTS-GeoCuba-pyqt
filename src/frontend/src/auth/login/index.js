@@ -82,15 +82,21 @@ function Login() {
         attributes: { ...newUser },
       },
     };
+    console.log(myData);
+    // Hubo Cambios Aki 
 
     try {
       const response = await AuthService.login(myData);
       authContext.login(response.access_token, response.refresh_token);
     } catch (res) {
-      if (res.hasOwnProperty("message")) {
+      console.error("Error en el login:", res);
+    
+      if (res?.message) {
         setCredentialsError(res.message);
+      } else if (res?.errors && Array.isArray(res.errors) && res.errors.length > 0) {
+        setCredentialsError(res.errors[0].detail || "Error desconocido.");
       } else {
-        setCredentialsError(res.errors[0].detail);
+        setCredentialsError("Error inesperado. Inténtalo de nuevo.");
       }
     }
 

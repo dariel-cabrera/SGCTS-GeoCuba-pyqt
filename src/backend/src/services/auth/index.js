@@ -2,8 +2,8 @@ import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import randomToken from "random-token";
 import bcrypt from "bcrypt";
-import { userModel } from "../../schemas/user.schema";
-import { passwordResetModel } from "../../schemas/passwordResets.schema";
+import { userModel } from "../../schemas/user.schema.js";
+import { passwordResetModel } from "../../schemas/passwordResets.schema.js";
 import jwt from 'jsonwebtoken';
 
 dotenv.config();
@@ -20,12 +20,14 @@ const transporter = nodemailer.createTransport({
 export const loginRouteHandler = async (req, res, email, password) => {
   //Check If User Exists
   let foundUser = await userModel.findOne({ email: email });
+  console.log("🔍 Usuario encontrado en login:", foundUser);
   if (foundUser == null) {
     return res.status(400).json({
       errors: [{ detail: "Credentials don't match any existing users" }],
     });
   } else {
     const validPassword = await bcrypt.compare(password, foundUser.password);
+    console.log("🔑 Contraseña encriptada en DB:", foundUser.password);
     if (validPassword) {
       // Generate JWT token
       const token = jwt.sign(
@@ -89,7 +91,7 @@ export const registerRouteHandler = async (req, res, name, email, password) => {
 
 export const forgotPasswordRouteHandler = async (req, res, email) => {
   let foundUser = await userModel.findOne({ email: email });
-
+  
   if (!foundUser) {
     return res.status(400).json({
       errors: { email: ["The email does not match any existing user."] },

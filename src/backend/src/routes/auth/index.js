@@ -4,12 +4,13 @@ import {
   loginRouteHandler,
   registerRouteHandler,
   resetPasswordRouteHandler,
-} from "../../services/auth";
+} from "../../services/auth/index.js";
 
 const router = express.Router();
 
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body.data.attributes;
+  console.log(req.body.data.attributes);
   await loginRouteHandler(req, res, email, password);
 });
 

@@ -1,18 +1,5 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
+// Componente de Barra de Navegacion 
 import { useState, useEffect, useContext } from "react";
 
 // react-router components
@@ -98,6 +85,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const handleCloseMenu = () => setOpenMenu(false);
 
   // Render the notifications menu
+  // Renderizado del menu de notificaciones 
+  // Se renderiza un menú desplegable con notificaciones cuando 
+  // el usuario hace clic en el icono de notificaciones.
   const renderMenu = () => (
     <Menu
       anchorEl={openMenu}

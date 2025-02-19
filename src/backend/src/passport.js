@@ -1,27 +1,31 @@
-import { ExtractJwt } from "passport-jwt";
-import passportJWT from "passport-jwt";
 import dotenv from "dotenv";
-import passport from "passport";
+dotenv.config(); // Cargar variables de entorno antes de usarlas
 
-import { userModel } from "./schemas/user.schema";
-const JWTStrategy = passportJWT.Strategy;
-dotenv.config();
+import passport from "passport";
+import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
+import { userModel } from "./schemas/user.schema.js";
+
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
+// Verificar que JWT_SECRET está definido
+if (!process.env.JWT_SECRET) {
+  throw new Error("Falta la variable de entorno JWT_SECRET");
+}
+
+const opts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.JWT_SECRET,
+};
 
 passport.use(
-  new JWTStrategy(
-    {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: process.env.JWT_SECRET,
-    },
-    function (jwtPayload, done) {
-      return userModel
-        .findOne({ _id: jwtPayload.id })
-        .then((user) => {
-          return done(null, user);
-        })
-        .catch((err) => {
-          return done(err);
-        });
+  new JwtStrategy(opts, async (jwtPayload, done) => {
+    try {
+      const user = await userModel.findOne({ _id: jwtPayload.id });
+      if (!user) return done(null, false);
+      return done(null, user);
+    } catch (err) {
+      return done(err, false);
     }
-  )
+  })
 );
+
+export default passport;
