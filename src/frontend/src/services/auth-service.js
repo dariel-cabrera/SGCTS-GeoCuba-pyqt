@@ -37,6 +37,8 @@ class AuthService {
     const updateProfile = "me";
     return await HttpService.patch(updateProfile, newInfo);
   }
+
+  
 }
 
 export default new AuthService();

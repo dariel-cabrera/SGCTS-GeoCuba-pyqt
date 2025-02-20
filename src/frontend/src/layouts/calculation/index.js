@@ -23,6 +23,59 @@ import MDButton from "components/MDButton";
 import CalculationTable from "./table";
 import { TablaCalculo } from "./table/dataTable";
 
+const [calculo, setCalculo] = useState({
+  densidad_a: 0,
+  densidad_m: 0,
+  coeficiente: 0,
+  indice: 0,
+  altura: 0,
+  angulo: 0,
+  aceleracion: 0,
+  P: 0,
+  id: 0,
+});
+
+const [editar, setEditar] = useState(false);
+const [mstNvoCalc, setMstNvoCalc] = useState(false);
+
+const limpiarDatos = () => {
+  setCalculo({
+    densidad_a: 0,
+    densidad_m: 0,
+    coeficiente: 0,
+    indice: 0,
+    altura: 0,
+    angulo: 0,
+    aceleracion: 0,
+    P: 0,
+    id: 0,
+  });
+  setEditar(false);
+  setMstNvoCalc(false);
+};
+
+
+const editarCalculos = (val) => {
+  console.log('Editando Datos');
+  setEditar(true);
+  setMstNvoCalc(true);
+  
+  setCalculo({
+    densidad_a: val.densidad_a,
+    densidad_m: val.densidad_m,
+    coeficiente: val.coeficiente,
+    indice: val.indice,
+    altura: val.altura,
+    angulo: val.angulo,
+    aceleracion: val.aceleracion,
+    P: val.P,
+    id: val._id,
+  });
+};
+
+const handleNuevoCalculo = () => {
+  setMstNvoCalc(true);
+};
 
 function Calculation(){
     return (
@@ -39,8 +92,14 @@ function Calculation(){
                     Nuevo
                 </MDButton>
             </MDBox>
-            
-            
+
+            <TablaCalculo
+              datos={calculos}
+              onEliminar={(id) => eliminarDatos({ idValue: id, getDatos, limpiarDatos })}
+              onEditar={(val) => {
+                editarCalculos(val);
+              }}
+            />
            
 
           
