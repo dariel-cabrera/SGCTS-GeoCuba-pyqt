@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
 
-@Schema()
+@Schema({ timestamps: true })  // ✅ Agrega createdAt y updatedAt automáticamente
 export class User {
   @Prop({ required: true })
   name: string;
@@ -14,11 +14,17 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  @Prop({ default: Date.now })
-  created_at: Date;
-
   @Prop()
   profile_image: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+// ✅ Agregar virtual para `id`
+UserSchema.virtual('id').get(function () {
+  return this._id.toHexString();
+});
+
+// ✅ Asegurar que el `toJSON` incluya virtuals como en Express
+UserSchema.set('toJSON', { virtuals: true });
+UserSchema.set('toObject', { virtuals: true });
