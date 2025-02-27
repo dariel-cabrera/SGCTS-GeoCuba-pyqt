@@ -8,7 +8,7 @@ import { DatosSchema } from "./shema/datos.schema";
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Datos', schema: DatosSchema }])
+    MongooseModule.forFeature([{ name: 'calculation', schema: DatosSchema }])
   ],
    controllers:[CalculoController],
    providers:[CalculoService],
