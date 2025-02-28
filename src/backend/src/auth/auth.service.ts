@@ -7,7 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 import * as randomToken from 'random-token';
 
-import { User, UserDocument } from 'src/user/shema/user.shema';
+import { User } from 'src/user/shema/user.shema';
 import { PasswordReset, PasswordResetDocument } from '../user/shema/password-reset.schema';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class AuthService {
   private transporter: nodemailer.Transporter;
 
   constructor(
-    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
+    @InjectModel(User.name) private readonly userModel: Model<User>,
     @InjectModel(PasswordReset.name) private readonly passwordResetModel: Model<PasswordResetDocument>,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService

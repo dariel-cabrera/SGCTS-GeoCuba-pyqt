@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+
 
 @Schema({ versionKey: false })
 export class Calculation {
@@ -36,3 +36,4 @@ export class Calculation {
 
 // ✅ Se exporta con un nombre coherente
 export const CalculationSchema = SchemaFactory.createForClass(Calculation);
+ 

@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User, UserDocument } from './shema/user.shema';
+import { User } from './shema/user.shema';
 import { PasswordReset, PasswordResetDocument } from './shema/password-reset.schema';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(User.name) private userModel: Model<User>,
     @InjectModel(PasswordReset.name) private passwordResetModel: Model<PasswordResetDocument>,
   ) {}
 
@@ -15,7 +15,8 @@ export class UserService {
 
   // Obtener todos los usuarios
   async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+    const users = await this.userModel.find().exec();
+    return users;
   }
 
   // Obtener un usuario por ID

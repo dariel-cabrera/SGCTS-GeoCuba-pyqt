@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type UserDocument = User & Document;
 
 @Schema({ timestamps: true })  // ✅ Agrega createdAt y updatedAt automáticamente
 export class User {
