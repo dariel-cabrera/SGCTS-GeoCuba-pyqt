@@ -8,7 +8,7 @@ import { UserController } from './user.controller';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name:'users', schema: UserSchema },
+      { name:'User', schema: UserSchema },
       { name: PasswordReset.name, schema: PasswordResetSchema }, // Registro del schema
     ]),
   ],

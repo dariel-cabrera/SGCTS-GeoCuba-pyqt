@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { Datos} from "./shema/datos.schema";
+import { Calculation} from "./shema/datos.schema";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 
 @Injectable()
 export class CalculoService{
   constructor(
-    @InjectModel(Datos.name) private readonly datosModel: Model<Datos>,
+    @InjectModel(Calculation.name) private readonly datosModel: Model<Calculation>,
   ) {}
 
   // Crear un nuevo registro
@@ -21,7 +21,7 @@ export class CalculoService{
     Q: number,
     P: number,
     K: number,
-  ): Promise<Datos> {
+  ): Promise<Calculation> {
     const nuevoDato = new this.datosModel({
       densidad_a,
       densidad_m,
@@ -50,7 +50,7 @@ export class CalculoService{
     Q: number,
     P: number,
     K: number,
-  ): Promise<Datos> {
+  ): Promise<Calculation> {
     return await this.datosModel.findByIdAndUpdate(
       id,
       {
@@ -77,8 +77,7 @@ export class CalculoService{
   }
 
   // Obtener todos los registros
-  async getCalculo(): Promise<Datos[]> {
-    console.log('Hola Mundo');
+  async getCalculo(): Promise<Calculation[]> {
     return await this.datosModel.find().exec();
 
   }

@@ -2,13 +2,13 @@ import { Module } from "@nestjs/common";
 import { CalculoController } from "./calculo.controller";
 import { CalculoService } from "./calculo.service";
 import { MongooseModule } from '@nestjs/mongoose';
-import { DatosSchema } from "./shema/datos.schema";
+import { Calculation,CalculationSchema } from "./shema/datos.schema";
 
 
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'calculation', schema: DatosSchema }])
+    MongooseModule.forFeature([{ name: Calculation.name, schema:  CalculationSchema }])
   ],
    controllers:[CalculoController],
    providers:[CalculoService],

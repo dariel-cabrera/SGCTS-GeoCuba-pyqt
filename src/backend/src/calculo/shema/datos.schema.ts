@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema({ versionKey: false })
-export class Datos extends Document {
+export class Calculation {
   @Prop({ type: Number, required: true })
   densidad_a: number;
 
@@ -34,4 +34,5 @@ export class Datos extends Document {
   K: number;
 }
 
-export const DatosSchema = SchemaFactory.createForClass(Datos);
+// ✅ Se exporta con un nombre coherente
+export const CalculationSchema = SchemaFactory.createForClass(Calculation);

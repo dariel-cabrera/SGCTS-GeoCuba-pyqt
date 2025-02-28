@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { CalculoModule } from './calculo/calculo.module';
-import { AuthModule } from './auth/auth.module';
-import { DatabaseModule } from './shared/database/database.module';
-import { MeModule } from './me/me.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 @Module({
-  imports: [AuthModule, MeModule, CalculoModule, DatabaseModule],
+  imports: [CalculoModule,
+   MongooseModule.forRoot(process.env.MONGO_URI)
+  ],
+  
 })
 export class AppModule {}
